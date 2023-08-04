@@ -210,8 +210,9 @@ $dni = $_SESSION['dni'];
                                                 <div class="col-sm-10">
                                                     <?php if (!empty($telefono) && $telefono !== '0'): ?>
                                                         <a href="https://api.whatsapp.com/send?phone=<?php echo "51" . $telefono; ?>" target="_blank"><?php echo $telefono; ?></a>
+                                                        <input type="hidden" class="form-control" name="telefono" value="<?php echo $telefono; ?>" readonly>
                                                     <?php endif; ?>
-                                                    <input type="hidden" class="form-control" name="telefono" value="<?php echo $telefono; ?>" readonly>
+                                                    <input type="text" class="form-control" name="telefono" value="<?php echo $telefono; ?>" readonly>
                                                 </div>
                                             </div>
 
