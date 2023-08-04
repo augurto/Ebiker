@@ -149,12 +149,21 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 }
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
+                                            
                                                 $sql = "SELECT 
-                                                id_form_web,date_create,datos_form,email,telefono,mensaje,fecha,URL,nombre_formulario,ip_formulario,
-                                                time,estado_web,estado_web,fuente_dato,id_user,idEmpresa,documentoCliente,tipoCliente,prospecto,
-                                                observacionCliente,idid,estadoCliente
-                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser and randomUser=$idUsuarioSesion or tipoUsuario = 2  ORDER BY fecha DESC";
-                                                
+                                                            id_form_web, date_create, datos_form, email, telefono, mensaje, fecha, URL, nombre_formulario, ip_formulario,
+                                                            time, estado_web, estado_web, fuente_dato, id_user, idEmpresa, documentoCliente, tipoCliente, prospecto,
+                                                            observacionCliente, idid, estadoCliente
+                                                        FROM web_formularios
+                                                        WHERE estado_web != 99 AND prospecto != 4 AND idEmpresa = $empresaUser";
+
+                                                if ($tipoUsuario == 2) {
+                                                    $sql .= " ORDER BY fecha DESC";
+                                                } else {
+                                                    $sql .= " AND randomUser = $idUsuarioSesion ORDER BY fecha DESC";
+                                                }
+                                             
+
                                                 $result = $conn->query($sql);
                                                 
 
