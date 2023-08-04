@@ -285,7 +285,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         
                                                     }
                                                 } else {
-                                                    echo "<tr><td colspan='9'>No se encontraron resultados.</td></tr>";
+                                                    echo "<tr><td colspan='9'>No tienes ninguna asignacion .</td></tr>";
                                                 }
 
                                                 // Cerrar la conexión
