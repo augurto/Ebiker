@@ -13,19 +13,21 @@ $pr = $_POST['pr'];
 $tipoCliente = $_POST['tipoCliente'];
 $prospecto = $_POST['prospecto'];
 $empresa = $_POST['empresa'];
+$userRandom = $_POST['userRandom'];
+
 
 $estadoWeb = 0;
 $estadoCliente = ($documento == '') ? 4 : $tipoCliente;
 
 $query = "INSERT INTO web_formularios 
-(documentoCliente, datos_form, telefono, email, tipoCliente, prospecto, id_user, estado_web, mensaje, estadoCliente, idEmpresa) 
+(documentoCliente, datos_form, telefono, email, tipoCliente, prospecto, id_user, estado_web, mensaje, estadoCliente, idEmpresa,randomUser) 
     VALUES 
-('$documento', '$datos', '$telefono', '$email', '$tipoCliente', '$prospecto', '$iduser', '$estadoWeb', '$comentario', '$estadoCliente', '$empresa')";
+('$documento', '$datos', '$telefono', '$email', '$tipoCliente', '$prospecto', '$iduser', '$estadoWeb', '$comentario', '$estadoCliente', '$empresa','$userRandom')";
 
 if (mysqli_query($con, $query)) {
     // La inserción fue exitosa, redirecciona a editarcliente.php con el parámetro id
     $id = mysqli_insert_id($con);
-    header("Location: ../vendedor.php?p=0");
+    header("Location: ../inicio.php?p=0");
     exit();
 } else {
     // Manejar el caso de error en la inserción
