@@ -17,7 +17,8 @@ $userRandom = $_POST['userRandom'];
 
 
 $estadoWeb = 0;
-$estadoCliente = ($documento == '') ? 4 : $tipoCliente;
+/* $estadoCliente = ($documento == '') ? 4 : $tipoCliente; */
+$estadoCliente =$tipoCliente;
 
 $query = "INSERT INTO web_formularios 
 (documentoCliente, datos_form, telefono, email, tipoCliente, prospecto, id_user, estado_web, mensaje, estadoCliente, idEmpresa,randomUser) 
