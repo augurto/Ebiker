@@ -14,7 +14,7 @@ $dni = $_SESSION['dni'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
 $empresaUser = $_SESSION['empresaUser'];
 
-if ($empresaUser == 1) {
+if ($tipoUsuario == 1) {
     // Redireccionar al vendedor.php si la empresa es 1
     header("Location: vendedor.php");
     exit();
