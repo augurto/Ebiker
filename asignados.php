@@ -334,7 +334,32 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        
+                                                    <div class="mb-12">
+                                                <label class="form-label">Tipo de Cliente</label>
+                                                
+                                                <select class="form-control select2" id="usuario" name="usuario">
+                                                <?php
+                                                 include 'includes/conexion.php'; 
+                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                $query = "SELECT * FROM user";
+                                                $result = mysqli_query($con, $query);
+
+                                                // Verificar si se encontraron resultados
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    // Generar las opciones dentro del select
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                    $value = $row['id_user'];
+                                                    $text = $row['nombre_user'];
+                                                    echo "<option value='" . $value . "'>" . $text . "</option>";
+                                                    }
+                                                }
+
+                                                // Cerrar la conexión a la base de datos
+                                                mysqli_close($con);
+                                                ?>
+                                                </select>
+
+                                            </div>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
