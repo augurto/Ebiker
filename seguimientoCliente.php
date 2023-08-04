@@ -38,6 +38,7 @@ if (mysqli_num_rows($selectResult) > 0) {
     $mensajeOriginal= $selectRow['mensajeOriginal'];
     $idOriginal= $selectRow['idOriginal'];
     $fuenteDato= $selectRow['fuente_dato'];
+    $randomUser= $selectRow['randomUser'];
 
    
     $aterrizajeURL = '';
@@ -217,7 +218,14 @@ $dni = $_SESSION['dni'];
                                                 <label for="example-email-input" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-10">
                                                     <input class="form-control" type="email"  value="<?php echo $email  ; ?>" 
-                                                        id="example-email-input" name="email" readonly>
+                                                        id="example-email-input" name="email" >
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <label for="example-email-input" class="col-sm-2 col-form-label">Usuario Asignado</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" type="text"  value="<?php echo $randomUser  ; ?>" 
+                                                        id="example-email-input" name="randomUser" >
                                                 </div>
                                             </div>
                                             <!-- end row -->
