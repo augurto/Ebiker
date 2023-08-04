@@ -3,6 +3,7 @@
 $empresaUser2 = $_SESSION['empresaUser'];
 $idUsuarioSesion = $_SESSION['idUser'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
+$userName = $_SESSION['userName'];
 
 // Consulta SQL para contar los registros con prospecto igual a 4
 // Verificar el valor de $tipoUsuario y ajustar la consulta en consecuencia
