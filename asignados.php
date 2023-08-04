@@ -111,6 +111,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Asignar</th>
                                                     <th>Accion</th>
                                                     <th>Nombres</th>
                                                     <th>Fuente</th>
@@ -161,6 +162,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
+
+                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
+                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Center
+                                                        modal</button></td>';
+
+
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
@@ -182,7 +189,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                        
                                                             // Obtener el valor de $row["estado_web"]
                                                             $estado_web = $row["estado_web"];
-
+                                                            
                                                             if ($estado_web == 0 && !empty($a)) {
                                                                 echo "<td>
                                                                 
@@ -300,35 +307,38 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
-                        <!-- MODAL -->
+                                    <div class="col-sm-6 col-md-4 col-xl-3">
+                                        
+
+                                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
+                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title mt-0">Center modal</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Cras mattis consectetur purus sit amet fermentum.
+                                                            Cras justo odio, dapibus ac facilisis in,
+                                                            egestas eget quam. Morbi leo risus, porta ac
+                                                            consectetur ac, vestibulum at eros.</p>
+                                                        <p>Praesent commodo cursus magna, vel scelerisque
+                                                            nisl consectetur et. Vivamus sagittis lacus vel
+                                                            augue laoreet rutrum faucibus dolor auctor.</p>
+                                                        <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
+                                                            Praesent commodo cursus magna, vel scelerisque
+                                                            nisl consectetur et. Donec sed odio dui. Donec
+                                                            ullamcorper nulla non metus auctor
+                                                            fringilla.</p>
+                                                    </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                    </div>
+
                         
-                        <script>
-                            $(document).ready(function() {
-                                $('.bs-example-modal-center').on('show.bs.modal', function(event) {
-                                    var button = $(event.relatedTarget); // Botón que activó el modal
-                                    var idFormWeb = button.data('id'); // Obtener el valor de 'data-id'
-                                    var datosForm = button.data('datos'); // Obtener el valor de 'data-datos'
-
-                                    // Mostrar los valores en los campos de entrada
-                                    $(this).find('input[name="id_form_web"]').val(idFormWeb);
-                                    $(this).find('input[name="datos_form"]').val(datosForm);
-
-                                    // Realizar la solicitud AJAX para obtener el valor de la consulta
-                                    $.ajax({
-                                        url: 'includes/consulta.php',
-                                        type: 'POST',
-                                        data: { idFormWeb: idFormWeb },
-                                        success: function(response) {
-                                            // Asignar el valor al campo de entrada
-                                            $('.modal-body').find('#valor').val(response);
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.log(error);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
                         
                     </div> <!-- container-fluid -->
                 </div>
