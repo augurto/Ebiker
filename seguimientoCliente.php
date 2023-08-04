@@ -208,10 +208,13 @@ $dni = $_SESSION['dni'];
                                              <div class="row mb-6">
                                                 <label for="example-tel-input" class="col-sm-2 col-form-label">Telefono</label>
                                                 <div class="col-sm-10">
-                                                <a href="https://api.whatsapp.com/send?phone=<?php echo "51".$telefono; ?>" target="_blank"><?php echo $telefono; ?></a>
-                                                <input type="hidden" class="form-control" name="telefono" value="<?php echo $telefono ?>" readonly>
+                                                    <?php if (!empty($telefono) && $telefono !== '0'): ?>
+                                                        <a href="https://api.whatsapp.com/send?phone=<?php echo "51" . $telefono; ?>" target="_blank"><?php echo $telefono; ?></a>
+                                                    <?php endif; ?>
+                                                    <input type="hidden" class="form-control" name="telefono" value="<?php echo $telefono; ?>" readonly>
                                                 </div>
                                             </div>
+
                                             <!-- end row -->
                                             <br>
                                             <div class="row mb-3">
