@@ -336,6 +336,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                     <div class="modal-body">
                                         <p>Datos recibidos:</p>
                                         <p>ID Asignado: <span id="modal-id-asignado"></span></p>
+                                        <input type="text" id="modal-id-asignado">
                                         <p>Otro Dato: <span id="modal-otro-dato"></span></p>
                                     </div>
                                 </div><!-- /.modal-content -->
