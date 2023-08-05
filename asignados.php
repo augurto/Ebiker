@@ -325,18 +325,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-                        <script>
-                            $('#myModal').on('show.bs.modal', function (event) {
-                                var button = $(event.relatedTarget); // Botón que activó el modal
-                                var idAsignado = button.data('id-asignado'); // Extraer la información de los atributos data-*
-                                var otroDato = button.data('otro-dato');
-
-                                // Actualizar los inputs dentro del modal
-                                var modal = $(this);
-                                modal.find('#modal-id-asignado').val(idAsignado);
-                                modal.find('#modal-otro-dato').val(otroDato);
-                            });
-                        </script>
+                        
 
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -347,14 +336,29 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                     </div>
                                     <div class="modal-body">
                                         <p>Datos recibidos:</p>
-                                        <p>ID Asignado: <input type="text" id="modal-id-asignado" readonly></p>
-                                        <p>Otro Dato: <input type="text" id="modal-otro-dato" readonly></p>
+                                        <p>ID Asignado: <span id="modal-id-asignado"></span></p>
+                                        <input type="text" id="modal-otro-dato">
+                                        <p>Otro Dato: <span id="modal-otro-dato"></span></p>
                                     </div>
+
 
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-                        
+                        <script>
+                            $(document).ready(function () {
+                                $('#myModal').on('show.bs.modal', function (event) {
+                                    var button = $(event.relatedTarget); // Botón que activó el modal
+                                    var idAsignado = button.data('id-asignado'); // Extraer la información de los atributos data-*
+                                    var otroDato = button.data('otro-dato');
+
+                                    // Actualizar los inputs dentro del modal
+                                    var modal = $(this);
+                                    modal.find('#modal-id-asignado').attr('value', idAsignado);
+                                    modal.find('#modal-otro-dato').attr('value', otroDato);
+                                });
+                            });
+                        </script>
 
 
 
