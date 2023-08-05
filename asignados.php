@@ -178,8 +178,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>" . $id . "</td>";
                                                         if ($tipoUsuario == 2) {
 
-                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Asignar</button></td>';
+                                                            echo '<td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal' . $idWeb . '">Asignar</button></td>';
                                                         }
 
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
@@ -199,6 +198,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                                                                            
                                                         $documentoCliente=$row["documentoCliente"];
                                                         $fuente_dato = $row["fuente_dato"];
+                                                        $idWeb=$row['id_form_web'];
 
                                                        
                                                             // Obtener el valor de $row["estado_web"]
@@ -321,25 +321,22 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
-                                    <div class="col-sm-6 col-md-4 col-xl-3">
-                                        
-
-                                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
-                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title mt-0">Center modal</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                    <div class="mb-12">
-                                                <label class="form-label">Tipo de Cliente</label>
-                                                
-                                                <select class="form-control select2" id="usuario" name="usuario">
+                                    <!-- Modal -->
+                        <div class="modal fade" id="myModal<?php echo $idWeb; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">Asignar Vendedor</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-12">
+                                            <label class="form-label">Tipo de Cliente</label>
+                                            <input type="text" class="form-control" id="idWebInput<?php echo $idWeb; ?>" value="<?php echo $idWeb; ?>" readonly>
+                                            
+                                            <select class="form-control select2" id="usuario<?php echo $idWeb; ?>" name="usuario">
                                                 <?php
-                                                 include 'includes/conexion.php'; 
+                                                include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
                                                 $query = "SELECT * FROM user where empresaUser = 1 ";
                                                 $result = mysqli_query($con, $query);
@@ -348,23 +345,21 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 if (mysqli_num_rows($result) > 0) {
                                                     // Generar las opciones dentro del select
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                    $value = $row['id_user'];
-                                                    $text = $row['nombre_user'];
-                                                    echo "<option value='" . $value . "'>" . $text . "</option>";
+                                                        $value = $row['id_user'];
+                                                        $text = $row['nombre_user'];
+                                                        echo "<option value='" . $value . "'>" . $text . "</option>";
                                                     }
                                                 }
 
                                                 // Cerrar la conexión a la base de datos
                                                 mysqli_close($con);
                                                 ?>
-                                                </select>
-
-                                            </div>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
+                                            </select>
+                                        </div>
                                     </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
 
                         
                         
