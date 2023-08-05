@@ -325,6 +325,18 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+                        <script>
+                            $('#myModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget); // Botón que activó el modal
+                                var idAsignado = button.data('id-asignado'); // Extraer la información de los atributos data-*
+                                var otroDato = button.data('otro-dato');
+
+                                // Actualizar los inputs dentro del modal
+                                var modal = $(this);
+                                modal.find('#modal-id-asignado').val(idAsignado);
+                                modal.find('#modal-otro-dato').val(otroDato);
+                            });
+                        </script>
 
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
@@ -342,18 +354,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
-                        <script>
-                            $('#myModal').on('show.bs.modal', function (event) {
-                                var button = $(event.relatedTarget); // Botón que activó el modal
-                                var idAsignado = button.data('id-asignado'); // Extraer la información de los atributos data-*
-                                var otroDato = button.data('otro-dato');
-
-                                // Actualizar los inputs dentro del modal
-                                var modal = $(this);
-                                modal.find('#modal-id-asignado').val(idAsignado);
-                                modal.find('#modal-otro-dato').val(otroDato);
-                            });
-                        </script>
+                        
 
 
 
