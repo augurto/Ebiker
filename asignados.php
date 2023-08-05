@@ -178,9 +178,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>" . $id . "</td>";
                                                         if ($tipoUsuario == 2) {
 
-                                                         // Celda con el botón "Asignar" que abre el modal
-                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal' . $row['id_form_web'] . '">Asignar</button></td>';
-    
+                                                            echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#myModal' . $row['id_form_web'] . '"
+                                                            data-id-asignado="' . $row['id_form_web'] . '">
+                                                        Asignar
+                                                    </button></td>';
+                                                
                                                         }
 
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
@@ -303,43 +306,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "</tr>";
                                         
                                                         $id++; // Incrementar el ID
-                                                            
-                                                        echo '<div class="modal fade" id="myModal' . $row['id_form_web'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">';
-                                                        echo '<div class="modal-dialog modal-dialog-centered">';
-                                                        echo '<div class="modal-content">';
-                                                        echo '<div class="modal-header">';
-                                                        echo '<h5 class="modal-title mt-0">Center modal</h5>';
-                                                        echo '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>';
-                                                        echo '</div>';
-                                                        echo '<div class="modal-body">';
-                                                        echo '<select class="form-control select2" id="usuario" name="usuario">';
-                                                       
-                                                        include 'includes/conexion.php'; 
-                                                        // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                        $query = "SELECT * FROM user where empresaUser = 1 and tipo_user=1 ";
-                                                        $result = mysqli_query($con, $query);
-
-                                                        // Verificar si se encontraron resultados
-                                                        if (mysqli_num_rows($result) > 0) {
-                                                            // Generar las opciones dentro del select
-                                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                            $value = $row['id_user'];
-                                                            $text = $row['nombre_user'];
-                                                            echo "<option value='" . $value . "'>" . $text . "</option>";
-                                                            }
-                                                        }
-
-                                                        // Cerrar la conexión a la base de datos
-                                                        mysqli_close($con);
-                                                     
-                                                        echo '</select>';
-                                                        echo '</div>';
-                                                        echo '</div><!-- /.modal-content -->';
-                                                        echo '</div><!-- /.modal-dialog -->';
-                                                        echo '</div><!-- /.modal -->';
-
-                                                
-                                                        
 
                                                         
                                                     }
@@ -350,8 +316,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 // Cerrar la conexión
                                                 $conn->close();
                                                 ?>
-                                                <!-- Modal -->
-                        
                                             </tbody>
                                         </table>
 
@@ -360,6 +324,22 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal<?php echo $row['id_form_web']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">Center modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Campo de entrada para mostrar el valor recibido de data-id-asignado -->
+                                        <input type="text" class="form-control" value="<?php echo $row['id_form_web']; ?>" readonly>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
                         
                         
                     </div> <!-- container-fluid -->
