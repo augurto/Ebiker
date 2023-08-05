@@ -177,12 +177,13 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                         if ($tipoUsuario == 2) {
-
-                                                            echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
-                                                            data-bs-toggle="modal" data-bs-target="#myModal' . $row['id_form_web'] . '"
-                                                            data-id-asignado="' . $row['id_form_web'] . '">
-                                                        Asignar
-                                                    </button></td>';
+                                                            echo '<button type="button" class="btn btn-primary waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#myModal"
+                                                            data-id-asignado="' . $row['id_form_web'] . '"
+                                                            data-otro-dato="' . $row['otro_dato'] . '">
+                                                            Asignar
+                                                              </button>';
+                                                        
                                                 
                                                         }
 
@@ -325,8 +326,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div> <!-- end col -->
                         </div> <!-- end row -->
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal<?php echo $row['id_form_web']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -334,12 +334,30 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <!-- Campo de entrada para mostrar el valor recibido de data-id-asignado -->
-                                        <input type="text" class="form-control" value="<?php echo $row['id_form_web']; ?>" readonly>
+                                        <p>Datos recibidos:</p>
+                                        <p>ID Asignado: <span id="modal-id-asignado"></span></p>
+                                        <p>Otro Dato: <span id="modal-otro-dato"></span></p>
                                     </div>
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
+                        <script>
+                            var myModal = new bootstrap.Modal(document.getElementById('myModal'), {
+                                keyboard: false
+                            });
+
+                            $('#myModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget);
+                                var idAsignado = button.data('id-asignado');
+                                var otroDato = button.data('otro-dato');
+
+                                var modal = $(this);
+                                modal.find('#modal-id-asignado').text(idAsignado);
+                                modal.find('#modal-otro-dato').text(otroDato);
+                            });
+                        </script>
+
+
                         
                         
                     </div> <!-- container-fluid -->
