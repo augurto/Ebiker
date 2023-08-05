@@ -177,12 +177,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                         if ($tipoUsuario == 2) {
-                                                            echo '<button type="button" class="btn btn-primary waves-effect waves-light"
+                                                            echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
                                                             data-bs-toggle="modal" data-bs-target="#myModal"
                                                             data-id-asignado="' . $row['id_form_web'] . '"
                                                             data-otro-dato="' . $row['otro_dato'] . '">
                                                             Asignar
-                                                              </button>';
+                                                              </button></td>';
                                                         
                                                 
                                                         }
