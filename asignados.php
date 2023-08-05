@@ -341,7 +341,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 <?php
                                                  include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query = "SELECT * FROM user";
+                                                $query = "SELECT * FROM user where empresaUser = 1 ";
                                                 $result = mysqli_query($con, $query);
 
                                                 // Verificar si se encontraron resultados
