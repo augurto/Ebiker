@@ -178,8 +178,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>" . $id . "</td>";
                                                         if ($tipoUsuario == 2) {
 
-                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
-                                                        data-bs-toggle="modal" data-bs-target=".bs-example-modal-center">Asignar</button></td>';
+                                                         // Celda con el botón "Asignar" que abre el modal
+                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal' . $row['id_form_web'] . '">Asignar</button></td>';
+    
                                                         }
 
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
@@ -320,21 +321,17 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-
-                                    <div class="col-sm-6 col-md-4 col-xl-3">
-                                        
-
-                                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog"
-                                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title mt-0">Center modal</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                    <div class="mb-12">
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal<?php echo $row['id_form_web']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">Center modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Aquí puedes usar $row['id_form_web'] para mostrar el valor en el modal -->
+                                        <div class="mb-12">
                                                 <label class="form-label">Tipo de Cliente</label>
                                                 
                                                 <select class="form-control select2" id="usuario" name="usuario">
@@ -360,11 +357,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 </select>
 
                                             </div>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
                                     </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+
+                                   
 
                         
                         
