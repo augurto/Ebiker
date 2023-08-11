@@ -149,34 +149,42 @@ if ($tipoUsuario == 1) {
 
                                             
                                             <?php
-                                            // Realizar la conexión a la base de datos (asumiendo que ya has definido las variables de conexión)
-                                            
+                                            // Realizar la conexión a la base de datos (asegúrate de definir las variables de conexión)
 
-                                            // Inicializar un array con los valores permitidos
-                                            $valoresPermitidos = array(7, 9, 10, 21);
-                                            
-                                            // Realizar una búsqueda en el array para verificar si el último valor es uno de los permitidos
-                                            if (isset($_SESSION['ultimaValorRandom']) && in_array($_SESSION['ultimaValorRandom'], $valoresPermitidos)) {
-                                                // Obtener el índice del último valor
-                                                $indiceUltimoValor = array_search($_SESSION['ultimaValorRandom'], $valoresPermitidos);
-                                            
-                                                // Calcular el índice del siguiente valor, considerando el ciclo entre los valores permitidos
-                                                $indiceSiguienteValor = ($indiceUltimoValor + 1) % count($valoresPermitidos);
-                                            
-                                                // Obtener el siguiente valor
-                                                $siguienteValor = $valoresPermitidos[$indiceSiguienteValor];
+                                            // Verificar el valor de $tipoUsuario
+                                            if ($tipoUsuario == 2) {
+                                                // Inicializar un array con los valores permitidos
+                                                $valoresPermitidos = array(7, 9, 10, 21);
+
+                                                // Realizar una búsqueda en el array para verificar si el último valor es uno de los permitidos
+                                                if (isset($_SESSION['ultimaValorRandom']) && in_array($_SESSION['ultimaValorRandom'], $valoresPermitidos)) {
+                                                    // Obtener el índice del último valor
+                                                    $indiceUltimoValor = array_search($_SESSION['ultimaValorRandom'], $valoresPermitidos);
+
+                                                    // Calcular el índice del siguiente valor, considerando el ciclo entre los valores permitidos
+                                                    $indiceSiguienteValor = ($indiceUltimoValor + 1) % count($valoresPermitidos);
+
+                                                    // Obtener el siguiente valor
+                                                    $siguienteValor = $valoresPermitidos[$indiceSiguienteValor];
+                                                } else {
+                                                    // Si no hay un último valor o no es uno de los permitidos, iniciar en el primer valor (7)
+                                                    $siguienteValor = $valoresPermitidos[0];
+                                                }
+
+                                                // Guardar el último valor en la sesión
+                                                $_SESSION['ultimaValorRandom'] = $siguienteValor;
+
+                                                // Mostrar el valor en el input
+                                                echo '<input class="form-control" type="number" id="example-email-input" name="userRandom" value="' . $siguienteValor . '" readonly>';
+                                            } elseif ($tipoUsuario == 1) {
+                                                // Mostrar el valor de $idUsuarioSesion en el input
+                                                echo '<input class="form-control" type="number" id="example-email-input" name="userRandom" value="' . $idUsuarioSesion . '" readonly>';
                                             } else {
-                                                // Si no hay un último valor o no es uno de los permitidos, iniciar en el primer valor (7)
-                                                $siguienteValor = $valoresPermitidos[0];
+                                                // Otro caso o valor de $tipoUsuario
+                                                echo 'Tipo de usuario no reconocido.';
                                             }
-                                            
-                                            // Guardar el último valor en la sesión
-                                            $_SESSION['ultimaValorRandom'] = $siguienteValor;
-                                            
-                                            // Mostrar el valor en el input
-                                            echo '<input class="form-control" type="number" id="example-email-input" name="userRandom" value="' . $siguienteValor . '" readonly>';
                                             ?>
-                                            
+
 
 
 
@@ -215,7 +223,21 @@ if ($tipoUsuario == 1) {
                                              
                                                 include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
+                                                if ($tipoUsuario == 1) {
+                                                    // Verificar el valor de $idUsuarioSesion para seleccionar la consulta adecuada
+                                                    if ($idUsuarioSesion == 2) {
+                                                        $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
+                                                    } elseif ($idUsuarioSesion == 1) {
+                                                        $query2 = "SELECT * FROM fuente where id_fuente in (4,5,6)";
+                                                    } else {
+                                                        // Otro caso o valor de $idUsuarioSesion
+                                                        echo 'ID de usuario de sesión no reconocido.';
+                                                        // Puedes ajustar esta parte según tus necesidades
+                                                    }
+                                                } else {
+                                                    // Otro caso o valor de $tipoUsuario
+                                                    echo 'Tipo de usuario no reconocido.';
+                                                }
                                                 $result2 = mysqli_query($con, $query2);
 
                                                 // Verificar si se encontraron resultados
