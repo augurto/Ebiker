@@ -93,7 +93,7 @@ if ($resultadoContarFormularios) {
                             <span>Inicio</span>
                         </a>';
                     } elseif ($tipoUsuario == 1) {
-                        echo '<a href="vendedor.php" class="waves-effect">
+                        echo '<a href="asignados.php" class="waves-effect">
                             <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">' . $noAtendidos . '</span>
                             <span>Inicio</span>
                         </a>';
