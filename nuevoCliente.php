@@ -223,21 +223,7 @@ if ($tipoUsuario == 1) {
                                              
                                                 include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                if ($tipoUsuario == 1) {
-                                                    // Verificar el valor de $idUsuarioSesion para seleccionar la consulta adecuada
-                                                    if ($tipoUsuario == 2) {
-                                                        $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
-                                                    } elseif ($tipoUsuario == 1) {
-                                                        $query2 = "SELECT * FROM fuente where id_fuente in (4,5,6)";
-                                                    } else {
-                                                        // Otro caso o valor de $idUsuarioSesion
-                                                        echo 'ID de usuario de sesión no reconocido.';
-                                                        // Puedes ajustar esta parte según tus necesidades
-                                                    }
-                                                } else {
-                                                    // Otro caso o valor de $tipoUsuario
-                                                    echo 'Tipo de usuario no reconocido.';
-                                                }
+                                                $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
                                                 $result2 = mysqli_query($con, $query2);
 
                                                 // Verificar si se encontraron resultados
