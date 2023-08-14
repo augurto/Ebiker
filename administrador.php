@@ -76,7 +76,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                 <div class="page-content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xl-3 col-md-6">
+                            <div class="col-xl-6 col-md-6">
                                 <div class="card">
                                     <div>
                                         <label class="form-label">Filtrar por Fecha</label>
