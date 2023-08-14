@@ -52,7 +52,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
             .btn {
                 line-height:0.3 !important;
             }
-            .selection{
+            .select2-selection__rendered{
                 display: none;
             }
         </style>
