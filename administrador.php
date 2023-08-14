@@ -76,7 +76,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                 <div class="page-content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xl-6 col-md-6">
+                            <div class="col-xl-6 col-md-12">
                                 <div class="card">
                                     <div>
                                         <label class="form-label">Filtrar por Fecha</label>
@@ -86,7 +86,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <input type="text" class="form-control" name="start"
                                                 placeholder="Fecha Inicio" />
                                             <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
-                                            <input type="text" class="form-control" name="usuario"  />
                                             <select class="form-control select2" id="prospecto" name="prospecto">
                                                 <?php
                                              
