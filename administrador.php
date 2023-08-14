@@ -84,8 +84,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             data-date-format="dd M, yyyy" data-date-autoclose="true"
                                             data-provide="datepicker" data-date-container='#datepicker6'>
                                             <input type="text" class="form-control" name="start"
-                                                placeholder="Start Date" />
-                                            <input type="text" class="form-control" name="end" placeholder="End Date" />
+                                                placeholder="Fecha Inicio" />
+                                            <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
+                                            <input type="text" class="form-control" name="usuario"  />
                                         </div>
                                         <!-- input group -->
                                     </div>
