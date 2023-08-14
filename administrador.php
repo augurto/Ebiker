@@ -76,8 +76,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                 <div class="page-content">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xl-6 col-md-12">
-                                <div class="card">
+                            <div class="col-lg-6">
+                                <div class="card-body">
                                     <div>
                                         <label class="form-label">Filtrar por Fecha</label>
                                         <div class="input-daterange input-group" id="datepicker6"
@@ -108,6 +108,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 mysqli_close($con);
                                                 ?>
                                                 </select>
+                                                <button type="button"
+                                        class="btn btn-soft-primary waves-effect waves-light">Primary</button>
                                         </div>
                                         <!-- input group -->
                                     </div>
