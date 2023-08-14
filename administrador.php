@@ -55,7 +55,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
             .select2-selection__rendered{
                 display: none;
             }
-            .select2 select2-container{
+            .select2 select2-container--defaulter{
                 display: none;
             }
         </style>
