@@ -81,47 +81,38 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                 <div class="page-content">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card-body">
-                                    <div>
-                                        <label class="form-label">Filtrar por Fecha</label>
-                                        <div class="input-daterange input-group" id="datepicker6"
-                                            data-date-format="dd M, yyyy" data-date-autoclose="true"
-                                            data-provide="datepicker" data-date-container='#datepicker6'>
-                                            <input type="text" class="form-control" name="start"
-                                                placeholder="Fecha Inicio" />
-                                            <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
-                                            <select class="form-control select2" id="prospecto" name="prospecto">
-                                                <?php
-                                             
-                                                include 'includes/conexion.php'; 
-                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query2 = "SELECT * FROM user where id_user in(3,4,5,6)";
-                                                $result2 = mysqli_query($con, $query2);
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label">Filtrar por Fecha</label>
+                            <div class="input-daterange input-group" id="datepicker6" data-date-format="dd M, yyyy" data-date-autoclose="true" data-provide="datepicker" data-date-container='#datepicker6'>
+                                <input type="text" class="form-control" name="start" placeholder="Fecha Inicio" />
+                                <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
+                                <select class="form-control select2" id="prospecto" name="prospecto">
+                                    <?php
+                                    include 'includes/conexion.php'; 
+                                    // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                    $query2 = "SELECT * FROM user WHERE id_user IN (3, 4, 5, 6)";
+                                    $result2 = mysqli_query($con, $query2);
 
-                                                // Verificar si se encontraron resultados
-                                                if (mysqli_num_rows($result2) > 0) {
-                                                    // Generar las opciones dentro del select
-                                                    while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                    $value2 = $row2['id_user'];
-                                                    $text2 = $row2['nombre_user'];
-                                                    echo "<option value='" . $value2 . "'>" . $text2 . "</option>";
-                                                    }
-                                                }
+                                    // Verificar si se encontraron resultados
+                                    if (mysqli_num_rows($result2) > 0) {
+                                        // Generar las opciones dentro del select
+                                        while ($row2 = mysqli_fetch_assoc($result2)) {
+                                            $value2 = $row2['id_user'];
+                                            $text2 = $row2['nombre_user'];
+                                            echo "<option value='" . $value2 . "'>" . $text2 . "</option>";
+                                        }
+                                    }
 
-                                                // Cerrar la conexión a la base de datos
-                                                mysqli_close($con);
-                                                ?>
-                                                </select>
-                                                <button type="button"
-                                        class="btn btn-soft-primary waves-effect waves-light">Primary</button>
-                                        </div>
-                                        <!-- input group -->
-                                    </div>
-                                </div>
+                                    // Cerrar la conexión a la base de datos
+                                    mysqli_close($con);
+                                    ?>
+                                </select>
+                                <button type="button" class="btn btn-soft-primary waves-effect waves-light">Primary</button>
                             </div>
                         </div>
+                    </div>
+
                         <!-- INICIO DATOS -->
 
                         <div class="row">
