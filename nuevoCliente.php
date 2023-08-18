@@ -154,7 +154,7 @@ if ($tipoUsuario == 1) {
                                             // Verificar el valor de $tipoUsuario
                                             if ($tipoUsuario == 2) {
                                                 // Inicializar un array con los valores permitidos
-                                                $valoresPermitidos = array(7, 9, 10, 21);
+                                                $valoresPermitidos = array(5, 6, 4, 3);
 
                                                 // Realizar una búsqueda en el array para verificar si el último valor es uno de los permitidos
                                                 if (isset($_SESSION['ultimaValorRandom']) && in_array($_SESSION['ultimaValorRandom'], $valoresPermitidos)) {

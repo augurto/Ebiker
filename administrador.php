@@ -118,7 +118,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 ?>
                                                 </select>
                                                 <button type="button"
-                                        class="btn btn-soft-primary waves-effect waves-light">Primary</button>
+                                        class="btn btn-soft-primary waves-effect waves-light"></button>
 
                                             </div>
                                 </div>
