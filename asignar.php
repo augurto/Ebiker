@@ -163,13 +163,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                     
-                                                        include 'includes/conexion.php'; 
-                                                        // Realizar la consulta a la base de datos para obtener los datos de la tabla
-
                                                         $query2 = "SELECT * FROM user where id_user =$idUsuarioRandom";
                                                         $result2 = mysqli_query($con, $query2);
-
                                                         // Verificar si se encontraron resultados
                                                         if (mysqli_num_rows($result2) > 0) {
                                                             // Generar las opciones dentro del select
@@ -179,8 +174,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo "<td>" . $text2 . "</td>"; 
                                                             }
                                                         }
-                                                        // Cerrar la conexión a la base de datos
-                                                        mysqli_close($con);
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
@@ -262,12 +255,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                                 echo '<td><span class="badge rounded-pill" style="background-color: ' . $colorFuente . ';color:white;">' . $descripcionFuente . '</span></td>';
 
-
-
-                                                          
-
-                                                        
-                                                     
                                                         
                                                         $estadoCliente = $row["tipoCliente"];
                                                         
