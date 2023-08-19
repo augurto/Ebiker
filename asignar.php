@@ -352,12 +352,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
 
                         <script>
-                            $('#myModal').on('show.bs.modal', function (event) {
-                                var button = $(event.relatedTarget); // Botón que activó el modal
-                                var idValue = button.data('id'); // Extraer el valor del atributo data-id
-
-                                // Asignar el valor a la etiqueta span en el modal
-                                $('#idValue').text(idValue);
+                            $(document).ready(function () {
+                                $('.open-modal').click(function () {
+                                    var idValue = $(this).data('id');
+                                    $('#idValue').text(idValue);
+                                });
                             });
                         </script>
 
