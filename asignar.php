@@ -179,7 +179,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo '<td>';
                                                         echo '<button type="button" class="btn btn-primary waves-effect waves-light"
                                                                     data-bs-toggle="modal" data-bs-target="#myModal"
-                                                                    data-id="' . $row['id_form_web'] . '">Ver detalles</button>';
+                                                                    data-id="' . $idConsulta . '">detalles</button>';
                                                         echo '</td>';
                                                         echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
