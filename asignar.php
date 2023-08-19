@@ -302,53 +302,48 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                         <!-- MODAL -->
                         <!-- Modal -->
+                        
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <!-- ... Encabezado ... -->
-                                    </div>
-                                    <div class="modal-body">
-                                        <input type="text" id="modalInput" readonly>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Sample modal content -->
-                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title mt-0" id="myModalLabel">Editar Información</h5>
+                                        <h5 class="modal-title mt-0" id="myModalLabel">Detalles del Formulario</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <label for="inputText" class="form-label">Ingrese un texto:</label>
-                                                <input type="text" class="form-control" id="modalInput" readonly>
-                                                <input type="text" class="form-control" id="inputText" placeholder="Ingrese su texto aquí">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="selectOption" class="form-label">Seleccione una opción:</label>
-                                                <select class="form-select" id="selectOption">
-                                                    <option value="opcion1">Opción 1</option>
-                                                    <option value="opcion2">Opción 2</option>
-                                                    <option value="opcion3">Opción 3</option>
-                                                </select>
-                                            </div>
-                                        </form>
+                                        <div class="mb-3">
+                                            <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
+                                            <input type="text" class="form-control" id="inputIdFormWeb" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="selectEstado" class="form-label">Estado</label>
+                                            <select class="form-select" id="selectEstado">
+                                                <option value="1">En proceso</option>
+                                                <option value="2">Completado</option>
+                                                <option value="3">Cancelado</option>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
                                         <button type="button" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
                                     </div>
-                                </div><!-- /.modal-content -->
-                            </div><!-- /.modal-dialog -->
-                        </div><!-- /.FIN modal -->
+                                </div>
+                            </div>
+                        </div>
+
+<script>
+    // Cuando se abra el modal
+    $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget); // Botón que desencadenó el modal
+        var idFormWeb = button.data('id'); // Extraer la información del atributo data-id
+        var modal = $(this);
+        
+        // Asignar el valor de idFormWeb al input dentro del modal
+        modal.find('#inputIdFormWeb').val(idFormWeb);
+    });
+</script>
+
 
                         <script>
                             // Cuando se abra el modal
