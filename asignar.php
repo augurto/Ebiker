@@ -320,6 +320,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <div class="mb-3">
                                             <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
                                             <input type="text" class="form-control" id="inputIdFormWeb" readonly>
+                                            <input type="text" class="form-control" id="myInput">
                                         </div>
                                         <div class="mb-3">
                                             <label for="selectEstado" class="form-label">Estado</label>
@@ -339,14 +340,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         </div>
 
                         <script>
-                            // Cuando se abra el modal
-                            $('#myModal').on('show.bs.modal', function (event) {
-                                var button = $(event.relatedTarget); // Botón que desencadenó el modal
-                                var idFormWeb = button.data('id'); // Extraer la información del atributo data-id
-                                var modal = $(this);
-                                
-                                // Asignar el valor de idFormWeb al input dentro del modal
-                                modal.find('#inputIdFormWeb').val(idFormWeb);
+                            const myButton = document.getElementById('myButton');
+                            const myInput = document.getElementById('myInput');
+
+                            myButton.addEventListener('click', () => {
+                            const dataId = myButton.getAttribute('data-id');
+                            myInput.value = dataId;
                             });
                         </script>
 
