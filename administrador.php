@@ -274,6 +274,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>ID</th>
                                                     <th>Vendedor</th>
                                                     <th>Tiempo</th>
+                                                    <th>Hora actual</th>
+                                                    <th>Tiempo Atencion</th>
                                                     <th>Accion</th>
                                                     <th>Fuente</th>
                                                     <th>Estado</th>
@@ -363,11 +365,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                                 
                                                                 <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
                                                                     Atender
-                                                                </a>
-
-                                                            
-                                                                        " . "
-                                                                    </td>";
+                                                                </a>                                                       
+                                                                </td>";
                                                                
                                                             } elseif ($estado_web == 1) {
                                                                 echo "<td>
@@ -375,8 +374,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                                             <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
                                                                             Atendido
                                                                             </a>
-
-                                                                            " . "
                                                                         </td>";
                                                                    
                                                             } elseif (empty($a) && $estado_web == 0  ) {
