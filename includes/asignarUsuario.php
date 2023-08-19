@@ -1,24 +1,20 @@
 <?php
+include 'conexion.php';
 
-    // Obtén la conexión a la base de datos
-    include 'conexion.php';
-    // Obtén los valores enviados desde el formulario
-    $idFormWeb = $_POST['idFormWeb'];
-    $selectUsuario = $_POST['selectUsuario'];
+$idFormWeb = $_POST['idFormWeb'];
+$selectUsuario = $_POST['selectUsuario'];
+$query = "UPDATE web_formularios SET randomUser = '$selectUsuario' WHERE id_form_web = '$idFormWeb'";
 
-    // Construye la consulta SQL para actualizar el valor de randomUser
-    $queryUpdate = "UPDATE web_formularios SET randomUser = '$selectUsuario' WHERE id_form_web = '$idFormWeb'";
+if (mysqli_query($con, $query)) {
+    // La inserción fue exitosa, redirecciona a editarcliente.php con el parámetro id
+    $id = mysqli_insert_id($con);
+    header("Location: ../administrador.php?p=0");
+    exit();
+} else {
+    // Manejar el caso de error en la inserción
+    echo "Error en la inserción de datos: " . mysqli_error($con);
+}
 
-    // Ejecuta la consulta
-    if (mysqli_query($con, $queryUpdate)) {
-        mysqli_close($con);
-        // Redirige a la página administrador.php
-        exit(); // Termina el script para evitar ejecución adicional
-    } else {
-        echo "Error al actualizar: " . mysqli_error($con);
-    }
-
-    // Cierra la conexión a la base de datos
-    mysqli_close($con);
-
+// Cerrar la conexión a la base de datos
+mysqli_close($con);
 ?>
