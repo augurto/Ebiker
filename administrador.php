@@ -358,9 +358,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
                                                         } elseif ($diferenciaHoras > 0) {
-                                                            echo "<td>".$row["fecha"] . " y la fecha actual es: " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
+                                                            echo "<td>". $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
                                                         } else {
-                                                            echo "<td>".$row["fecha"] . " y la fecha actual es: " . $diferenciaMinutos . " minutos". "</td>";
+                                                            echo "<td>". $diferenciaMinutos . " minutos". "</td>";
                                                         }
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
