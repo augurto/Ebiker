@@ -275,6 +275,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>Vendedor</th>
                                                     <th>Tiempo</th>
                                                     <th>Accion</th>
+                                                    <th>Fuente</th>
+                                                    <th>Estado</th>
                                                     <th>Nombres</th>
                                                     
                                                     
@@ -345,8 +347,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             
                                                                         " . "
                                                                     </td>";
-                                                                echo "<td>" . $row['datos_form'] . "
-                                                                </td>";
+                                                               
                                                             } elseif ($estado_web == 1) {
                                                                 echo "<td>
                                                                         
@@ -356,15 +357,14 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                                             " . "
                                                                         </td>";
-                                                                    echo "<td>" . $row['datos_form'] . "
-                                                                    </td>";
+                                                                   
                                                             } elseif (empty($a) && $estado_web == 0  ) {
                                                                 echo "<td>
                                                                     <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
                                                                         Atender
                                                                     </a>
                                                                 </td>";
-                                                                echo "<td>" . $row['datos_form'] . "</td>";
+                                                               
                                                             }
                                                             
                                                         
@@ -419,7 +419,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                         }
                                                         
-                                                                                               
+                                                        echo "<td>" . $row["datosForm"] . "</td>";                                       
                                                         echo "</tr>";
                                         
                                                         $id++; // Incrementar el ID
