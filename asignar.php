@@ -340,12 +340,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         </div>
 
                         <script>
-                            const myButton = document.getElementById('myButton');
-                            const myInput = document.getElementById('myInput');
-
-                            myButton.addEventListener('click', () => {
-                            const dataId = myButton.getAttribute('data-id');
-                            myInput.value = dataId;
+                            $(document).ready(function () {
+                                $('.open-modal').click(function () {
+                                    var idValue = $(this).data('id');
+                                    $('#idInput').val(idValue);
+                                });
                             });
                         </script>
 
