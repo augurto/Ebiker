@@ -2,12 +2,6 @@
 session_start();
 include 'includes/conexion.php'; // Incluir el archivo de conexión
 
-if (!isset($_SESSION['usuario'])) {
-    // El usuario no ha iniciado sesión, redireccionar a la página de inicio de sesión o mostrar un mensaje de error
-    header("Location: login.php");
-    exit();
-}
-
 // El usuario ha iniciado sesión, puedes acceder a los datos de sesión
 $usuario = $_SESSION['usuario'];
 $dni = $_SESSION['dni'];
@@ -30,8 +24,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
-        <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-        <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
 
         <!-- DataTables -->
         <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -52,7 +44,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
             .btn {
                 line-height:0.3 !important;
             }
-            
         </style>
 
     </head>
@@ -76,138 +67,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                 <div class="page-content">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card-body">
-                                    <div>
-                                        <label class="form-label">Filtrar por Fecha</label>
-                                        <div class="input-daterange input-group" id="datepicker6"
-                                            data-date-format="dd M, yyyy" data-date-autoclose="true"
-                                            data-provide="datepicker" data-date-container='#datepicker6'>
-                                            <input type="text" class="form-control" name="start"
-                                                placeholder="Fecha Inicio" />
-                                            <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
-                                          
-                                                
-                                        </div>
-                                        <!-- input group -->
-                                    </div>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                        <!-- INICIO DATOS -->
-
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="p-4">
-                                            <div class="d-flex">
-                                                <div class="flex-1">
-
-                                                    <h3 class="mb-3"><span class="counter_value" data-target="20">20</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="">
-                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
-                                                        Hoy</p>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-muted font-size-14 mb-0">Atendidos</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- end cardbody -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                                                        
-                        
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="p-4">
-                                            <div class="d-flex">
-                                                <div class="flex-1">
-
-                                                    <h3 class="mb-3"><span class="counter_value" data-target="15">15</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="">
-                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
-                                                        Hoy o semana ?</p>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-muted font-size-14 mb-0">Ventas</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- end cardbody -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                                                        
-                        
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="p-4">
-                                            <div class="d-flex">
-                                                <div class="flex-1">
-
-                                                    <h3 class="mb-3"><span class="counter_value" data-target="25">25</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="">
-                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
-                                                        semana - Hoy ?</p>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-muted font-size-14 mb-0">Seguimiento</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- end cardbody -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                                                        
-                        
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body p-0">
-                                        <div class="p-4">
-                                            <div class="d-flex">
-                                                <div class="flex-1">
-
-                                                    <h3 class="mb-3"><span class="counter_value" data-target="999999">No Adriana, no me expl0tes</span>
-                                                    </h3>
-                                                </div>
-                                                <div class="">
-                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
-                                                        Semana </p>
-                                                </div>
-                                            </div>
-                                            <h5 class="text-muted font-size-14 mb-0">Tiempo de respuesta</h5>
-                                        </div>
-                                        
-                                    </div>
-                                    <!-- end cardbody -->
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                                                        
-                        </div>
-                        <!-- end row -->
-                        
-
-
-                        <!-- FIN DATOS -->
 
                         <!-- start page title -->
                         <div class="row">
@@ -215,9 +74,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Data Tables</h4>
                                     <div class="page-title-center">
-                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="height: 35px !important;" onclick="window.location.href = 'nuevoCliente.php';">
-                                        Nuevo Cliente <i class="mdi mdi-emoticon-excited-outline font-size-16 align-middle ms-2"></i>
-                                    </button>
+                                    <?php if ($tipoUsuario == 2): ?>
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" style="height: 35px !important;" onclick="window.location.href = 'nuevoCliente.php';">
+                                            Nuevo Cliente <i class="mdi mdi-emoticon-excited-outline font-size-16 align-middle ms-2"></i>
+                                        </button>
+                                    <?php endif; ?>
 
                                     </div>
                                     <div class="page-title-right">
@@ -239,11 +100,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                     <div class="card-body">
         
                                         <h4 class="card-title">Data Clientes</h4>
-                                       
-                                        <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                            <thead>
+                                        
+                                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>boton</th>
                                                     <th>Vendedor</th>
                                                     <th>Fecha Ingreso</th>
                                                     <th>Tiempo no atendido</th>
@@ -286,6 +148,18 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
+                                                        $idConsulta=$row['id_form_web'];
+                                                        // Consulta para obtener el usuario con el id_usuario específico
+                                                        $userQuery = "SELECT * FROM user WHERE id_user = $idUsuarioRandom";
+                                                        $userResult = $conn->query($userQuery);
+
+                                                        // Verificar si se encontró el usuario
+                                                        if ($userResult->num_rows > 0) {
+                                                            $userData = $userResult->fetch_assoc();
+                                                            $userName = $userData["userName"]; // Aquí capturamos el valor de userName
+                                                        } else {
+                                                            $userName = "Usuario no encontrado"; // Manejo de caso en que el usuario no se encuentra
+                                                        }
                                                         $fechaActual2 = date("Y-m-d H:i:s");
                                                         // Obtener la fecha actual en formato Unix Timestamp
                                                         $fechaActual = time();
@@ -302,24 +176,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                     
-                                                        include 'includes/conexion.php'; 
-                                                        // Realizar la consulta a la base de datos para obtener los datos de la tabla
-
-                                                        $query2 = "SELECT * FROM user where id_user =$idUsuarioRandom";
-                                                        $result2 = mysqli_query($con, $query2);
-
-                                                        // Verificar si se encontraron resultados
-                                                        if (mysqli_num_rows($result2) > 0) {
-                                                            // Generar las opciones dentro del select
-                                                            while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                            $value2 = $row2['id_user'];
-                                                            $text2 = $row2['userName'];
-                                                            echo "<td>" . $text2 . "</td>"; 
-                                                            }
-                                                        }
-                                                        // Cerrar la conexión a la base de datos
-                                                        mysqli_close($con);
+                                                        echo '<td>';
+                                                        echo '<button type="button" class="btn btn-primary waves-effect waves-light"
+                                                                    data-bs-toggle="modal" data-bs-target="#myModal"
+                                                                    data-id="' . $idConsulta . '"  data-random="' . $idUsuarioRandom . '">Asignar</button>';
+                                                        echo '</td>';
+                                                        echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
@@ -401,12 +263,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                                 echo '<td><span class="badge rounded-pill" style="background-color: ' . $colorFuente . ';color:white;">' . $descripcionFuente . '</span></td>';
 
-
-
-                                                          
-
-                                                        
-                                                     
                                                         
                                                         $estadoCliente = $row["tipoCliente"];
                                                         
@@ -450,35 +306,117 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         </div> <!-- end row -->
 
                         <!-- MODAL -->
+                        <!-- Modal -->
+                        <?php
                         
+
+                        $query3 = "SELECT u.userName, wf.randomUser, COUNT(*) AS cantidad
+                        FROM web_formularios wf
+                        INNER JOIN user u ON u.id_user = wf.randomUser
+                        WHERE wf.estado_web = 0
+                        GROUP BY wf.randomUser
+                        ORDER BY cantidad ASC";
+
+                        $result3 = mysqli_query($con, $query3);
+                        ?>
+
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0" id="myModalLabel">Detalles del Formulario</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <p>El valor del ID es: <span id="idValueSpan"></span></p>
+
+                                        <div class="mb-3">
+                                            
+                                    <form>
+                                            <input type="text" class="form-control" id="inputIdFormWeb" name="idFormWeb" >
+                                            <input type="text" class="form-control" id="inputIdFormWeb" name="iddd" >
+                                            <label for="inputIdFormWeb2" class="form-label">ID del Usuario actual</label>
+                                            <input type="text" class="form-control" id="myInput" readonly>
+                                            
+                                        </div>
+                                       
+                                        <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Vendedor</th>
+                                                <th>Cantidad no Atendidos</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
+                                                <tr>
+                                                    <td><?php echo $row3['userName']; ?></td>
+                                                    <td><?php echo $row3['cantidad']; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                         </table>
+                                        <div class="mb-3">
+                                            <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
+                                            <select class="form-select" id="selectUsuario" name="selectUsuario">
+                                                <?php
+                                                    $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
+                                                    $resultUsuarios = mysqli_query($con, $queryUsuarios);
+
+                                                    while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
+                                                        echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'].$rowUsuario['id_user'] . '</option>';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                            
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                       
                         <script>
-                            $(document).ready(function() {
-                                $('.bs-example-modal-center').on('show.bs.modal', function(event) {
-                                    var button = $(event.relatedTarget); // Botón que activó el modal
-                                    var idFormWeb = button.data('id'); // Obtener el valor de 'data-id'
-                                    var datosForm = button.data('datos'); // Obtener el valor de 'data-datos'
-
-                                    // Mostrar los valores en los campos de entrada
-                                    $(this).find('input[name="id_form_web"]').val(idFormWeb);
-                                    $(this).find('input[name="datos_form"]').val(datosForm);
-
-                                    // Realizar la solicitud AJAX para obtener el valor de la consulta
-                                    $.ajax({
-                                        url: 'includes/consulta.php',
-                                        type: 'POST',
-                                        data: { idFormWeb: idFormWeb },
-                                        success: function(response) {
-                                            // Asignar el valor al campo de entrada
-                                            $('.modal-body').find('#valor').val(response);
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.log(error);
-                                        }
-                                    });
-                                });
+                            
+                        $(document).ready(function () {
+                            $('.btn-primary').click(function () {
+                                var idValue = $(this).data('id');
+                                var randomValue = $(this).data('random');
+                                $('#idValueSpan').text(idValue); // Actualiza el valor del span
+                                $('#inputIdFormWeb').val(idValue); // Rellena el input con el valor del ID
+                                $('#myInput').val(randomValue); // Rellena el otro input con el valor de $idUsuarioRandom
                             });
+                        });
+
+                        $(document).ready(function () {
+                        $('.btn-primary').click(function () {
+                            var idValue = $(this).data('id');
+                            var randomValue = $(this).data('random');
+                            $('#idValueSpan').text(idValue);
+                            $('#inputIdFormWeb').val(idValue);
+                            $('#inputIdFormWeb2').val(idValue);
+                            $('#myInput').val(randomValue);
+
+                            // Enviar los datos del formulario al servidor usando AJAX con método GET
+                            $.ajax({
+                                type: "GET",
+                                url: "includes/asignarUsuario.php",  // Ruta del archivo PHP que procesa el formulario
+                                data: $('#myModal form').serialize(),  // Envía los datos del formulario al servidor
+                                success: function (response) {
+                                    // Manejar la respuesta del servidor si es necesario
+                                    console.log(response);
+                                }
+                            });
+                        });
+                    });
+
                         </script>
-                        
+                                                
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
@@ -499,14 +437,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
         <script src="assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="assets/libs/simplebar/simplebar.min.js"></script>
         <script src="assets/libs/node-waves/waves.min.js"></script>
-
-        <script src="assets/libs/select2/js/select2.min.js"></script>
-        <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-        <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
-        <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-        <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
-        <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-        <script src="assets/js/pages/form-advanced.init.js"></script>
 
         <!-- Required datatable js -->
         <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
