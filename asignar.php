@@ -40,11 +40,7 @@ $empresaUser = $_SESSION['empresaUser'];
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .btn {
-            line-height: 0.3 !important;
-        }
-    </style>
+    
 
 </head>
 
@@ -141,7 +137,7 @@ $empresaUser = $_SESSION['empresaUser'];
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="asignarUsuario2.php" method="get">
+                                    <form action="includes/asignarUsuario.php" method="get">
                                         <div class="mb-3">
                                             <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
                                             <select class="form-select" id="selectUsuario" name="selectUsuario">
@@ -156,9 +152,9 @@ $empresaUser = $_SESSION['empresaUser'];
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['idFormWeb']; ?>">
+                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['idFormWeb']; ?>" readonly>
                                         </div>
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Actualizar</button>
                                     </form>
 
                                 </div>
