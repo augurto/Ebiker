@@ -316,6 +316,16 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
                                                         $fechaActual = date("Y-m-d H:i:s");
+                                                        $fechaActual = time();
+
+                                                        // Supongamos que $row["fecha"] contiene una fecha en formato "Y-m-d H:i:s"
+                                                        $fechaBase = strtotime($row["fecha"]);
+
+                                                        // Calcular la diferencia en segundos
+                                                        $diferenciaSegundos = $fechaActual - $fechaBase;
+
+                                                        // Calcular la diferencia en minutos
+                                                        $diferenciaMinutos = round($diferenciaSegundos / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                      
@@ -341,7 +351,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         echo "<td>" . $fechaActual . "</td>";
-                                                        echo "<td>" . $fechaActual . "</td>";
+                                                        echo "<td>" . $diferenciaMinutos . "</td>";
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
