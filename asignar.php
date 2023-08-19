@@ -146,13 +146,13 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
                                                 while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
-                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'] . $rowUsuario['id_user'] . '</option>';
+                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'] . '</option>';
                                                 }
                                                 ?>
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['idFormWeb']; ?>" readonly>
+                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['id']; ?>" readonly>
                                         </div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">Actualizar</button>
                                     </form>
