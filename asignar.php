@@ -316,6 +316,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                    <p>El valor del ID es: <span id="idValue"></span></p>
                                         <div class="mb-3">
                                             <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
                                             <input type="text" class="form-control" id="inputIdFormWeb" readonly>
@@ -337,19 +338,6 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div>
                         </div>
 
-<script>
-    // Cuando se abra el modal
-    $('#myModal').on('show.bs.modal', function (event) {
-        var button = $(event.relatedTarget); // Botón que desencadenó el modal
-        var idFormWeb = button.data('id'); // Extraer la información del atributo data-id
-        var modal = $(this);
-        
-        // Asignar el valor de idFormWeb al input dentro del modal
-        modal.find('#inputIdFormWeb').val(idFormWeb);
-    });
-</script>
-
-
                         <script>
                             // Cuando se abra el modal
                             $('#myModal').on('show.bs.modal', function (event) {
@@ -358,9 +346,21 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 var modal = $(this);
                                 
                                 // Asignar el valor de idFormWeb al input dentro del modal
-                                modal.find('#modalInput').val(idFormWeb);
+                                modal.find('#inputIdFormWeb').val(idFormWeb);
                             });
                         </script>
+
+
+                        <script>
+                            $('#myModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget); // Botón que activó el modal
+                                var idValue = button.data('id'); // Extraer el valor del atributo data-id
+
+                                // Asignar el valor a la etiqueta span en el modal
+                                $('#idValue').text(idValue);
+                            });
+                        </script>
+
                         
                     </div> <!-- container-fluid -->
                 </div>
