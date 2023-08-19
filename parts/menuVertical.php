@@ -3,6 +3,7 @@
 $empresaUser2 = $_SESSION['empresaUser'];
 $idUsuarioSesion = $_SESSION['idUser'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
+$userName = $_SESSION['userName'];
 
 // Consulta SQL para contar los registros con prospecto igual a 4
 // Verificar el valor de $tipoUsuario y ajustar la consulta en consecuencia
@@ -72,6 +73,12 @@ if ($resultadoContarFormularios) {
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
+                <li>
+                        <a href="asignados.php" class="waves-effect">
+                            <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> <?php echo $conteoRegistros ; ?></span>
+                            <span>Asignados</span>
+                        </a>
+                </li>
 
                 <li>
                     <?php
@@ -86,7 +93,7 @@ if ($resultadoContarFormularios) {
                             <span>Inicio</span>
                         </a>';
                     } elseif ($tipoUsuario == 1) {
-                        echo '<a href="vendedor.php" class="waves-effect">
+                        echo '<a href="asignados.php" class="waves-effect">
                             <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">' . $noAtendidos . '</span>
                             <span>Inicio</span>
                         </a>';
@@ -159,6 +166,17 @@ if ($resultadoContarFormularios) {
                             <span>Atendidos</span>
                         </a>
                 </li>
+                <li>
+                    <?php 
+                        if ($tipoUsuario == 1) {
+                            echo '<a href="clienteNuevo.php" class="waves-effect">
+                                <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> </span>
+                                <span>Registrar Cliente</span>
+                            </a>';
+                        }
+                    ?>
+                </li>
+                
             </ul>
             <!-- end ul -->
         </div>

@@ -111,6 +111,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <?php
+                                                    if ($tipoUsuario == 2) {
+                                                        echo '<th>Asignar</th>';
+                                                    }
+                                                    ?>
+
                                                     <th>Accion</th>
                                                     <th>Nombres</th>
                                                     <th>Fuente</th>
@@ -143,12 +149,21 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 }
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
+                                            
                                                 $sql = "SELECT 
-                                                id_form_web,date_create,datos_form,email,telefono,mensaje,fecha,URL,nombre_formulario,ip_formulario,
-                                                time,estado_web,estado_web,fuente_dato,id_user,idEmpresa,documentoCliente,tipoCliente,prospecto,
-                                                observacionCliente,idid,estadoCliente
-                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser AND randomUser = $idUsuarioSesion  ORDER BY fecha DESC";
-                                                
+                                                            id_form_web, date_create, datos_form, email, telefono, mensaje, fecha, URL, nombre_formulario, ip_formulario,
+                                                            time, estado_web, estado_web, fuente_dato, id_user, idEmpresa, documentoCliente, tipoCliente, prospecto,
+                                                            observacionCliente, idid, estadoCliente
+                                                        FROM web_formularios
+                                                        WHERE estado_web != 99 AND prospecto != 4 AND idEmpresa = $empresaUser AND randomUser = $idUsuarioSesion ";
+
+                                                if ($tipoUsuario == 2) {
+                                                    $sql .= " ORDER BY fecha DESC";
+                                                } else {
+                                                    $sql .= " AND randomUser = $idUsuarioSesion ORDER BY fecha DESC";
+                                                }
+                                             
+
                                                 $result = $conn->query($sql);
                                                 
 
@@ -161,6 +176,17 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
+                                                        if ($tipoUsuario == 2) {
+                                                            echo '<td><button type="button" class="btn btn-primary waves-effect waves-light"
+                                                            data-bs-toggle="modal" data-bs-target="#myModal"
+                                                            data-id-asignado="' . $row['id_form_web'] . '"
+                                                            data-otro-dato="' . $row['otro_dato'] . '">
+                                                            Asignar
+                                                              </button></td>';
+                                                        
+                                                
+                                                        }
+
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
@@ -182,7 +208,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                        
                                                             // Obtener el valor de $row["estado_web"]
                                                             $estado_web = $row["estado_web"];
-
+                                                            
                                                             if ($estado_web == 0 && !empty($a)) {
                                                                 echo "<td>
                                                                 
@@ -285,7 +311,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         
                                                     }
                                                 } else {
-                                                    echo "<tr><td colspan='9'>No se encontraron resultados.</td></tr>";
+                                                    echo "<tr><td colspan='9'>No tienes ninguna asignacion .</td></tr>";
                                                 }
 
                                                 // Cerrar la conexión
@@ -299,36 +325,44 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-
-                        <!-- MODAL -->
                         
+
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0">Center modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Datos recibidos:</p>
+                                        <p>ID Asignado: <span id="modal-id-asignado"></span></p>
+                                        <input type="text" id="modal-otro-dato">
+                                        <p>Otro Dato: <span id="modal-otro-dato"></span></p>
+                                    </div>
+
+
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
                         <script>
-                            $(document).ready(function() {
-                                $('.bs-example-modal-center').on('show.bs.modal', function(event) {
+                            $(document).ready(function () {
+                                $('#myModal').on('show.bs.modal', function (event) {
                                     var button = $(event.relatedTarget); // Botón que activó el modal
-                                    var idFormWeb = button.data('id'); // Obtener el valor de 'data-id'
-                                    var datosForm = button.data('datos'); // Obtener el valor de 'data-datos'
+                                    var idAsignado = button.data('id-asignado'); // Extraer la información de los atributos data-*
+                                    var otroDato = button.data('otro-dato');
 
-                                    // Mostrar los valores en los campos de entrada
-                                    $(this).find('input[name="id_form_web"]').val(idFormWeb);
-                                    $(this).find('input[name="datos_form"]').val(datosForm);
-
-                                    // Realizar la solicitud AJAX para obtener el valor de la consulta
-                                    $.ajax({
-                                        url: 'includes/consulta.php',
-                                        type: 'POST',
-                                        data: { idFormWeb: idFormWeb },
-                                        success: function(response) {
-                                            // Asignar el valor al campo de entrada
-                                            $('.modal-body').find('#valor').val(response);
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.log(error);
-                                        }
-                                    });
+                                    // Actualizar los inputs dentro del modal
+                                    var modal = $(this);
+                                    modal.find('#modal-id-asignado').attr('value', idAsignado);
+                                    modal.find('#modal-otro-dato').attr('value', otroDato);
                                 });
                             });
                         </script>
+
+
+
+                        
                         
                     </div> <!-- container-fluid -->
                 </div>

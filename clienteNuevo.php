@@ -12,11 +12,7 @@ if (!isset($_SESSION['usuario'])) {
 $usuario = $_SESSION['usuario'];
 $dni = $_SESSION['dni'];
 $tipoUsuario = $_SESSION['tipoUsuario'];
-if ($tipoUsuario == 1) {
-    // Redireccionar al vendedor.php si la empresa es 1
-    header("Location: vendedor.php");
-    exit();
-}
+
 ?>
 
 <!doctype html>
@@ -154,7 +150,7 @@ if ($tipoUsuario == 1) {
                                             // Verificar el valor de $tipoUsuario
                                             if ($tipoUsuario == 2) {
                                                 // Inicializar un array con los valores permitidos
-                                                $valoresPermitidos = array(5, 6, 4, 3);
+                                                $valoresPermitidos = array(7, 9, 10, 21);
 
                                                 // Realizar una búsqueda en el array para verificar si el último valor es uno de los permitidos
                                                 if (isset($_SESSION['ultimaValorRandom']) && in_array($_SESSION['ultimaValorRandom'], $valoresPermitidos)) {
@@ -223,7 +219,7 @@ if ($tipoUsuario == 1) {
                                              
                                                 include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
+                                                $query2 = "SELECT * FROM fuente where id_fuente in(4,5,6)";
                                                 $result2 = mysqli_query($con, $query2);
 
                                                 // Verificar si se encontraron resultados
@@ -357,7 +353,7 @@ if ($tipoUsuario == 1) {
                                              
                                                 include 'includes/conexion.php'; 
                                                 // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query2 = "SELECT * FROM fuente where idAterrizajeFuente = 1";
+                                                $query2 = "SELECT * FROM fuente where id_fuente in(4,5,6)";
                                                 $result2 = mysqli_query($con, $query2);
 
                                                 // Verificar si se encontraron resultados

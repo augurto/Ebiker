@@ -30,6 +30,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
         <meta content="Themesdesign" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
 
         <!-- DataTables -->
         <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -50,6 +52,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
             .btn {
                 line-height:0.3 !important;
             }
+            
         </style>
 
     </head>
@@ -73,6 +76,166 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                 <div class="page-content">
                     <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card-body">
+                                    <div>
+                                        <label class="form-label">Filtrar por Fecha</label>
+                                        <div class="input-daterange input-group" id="datepicker6"
+                                            data-date-format="dd M, yyyy" data-date-autoclose="true"
+                                            data-provide="datepicker" data-date-container='#datepicker6'>
+                                            <input type="text" class="form-control" name="start"
+                                                placeholder="Fecha Inicio" />
+                                            <input type="text" class="form-control" name="end" placeholder="Fecha fin" />
+                                          
+                                                
+                                        </div>
+                                        <!-- input group -->
+                                    </div>
+                                    <div class="mb-6">
+                                                <label class="form-label">Fuente</label>
+                                                
+                                                <select class="form-control select2" id="prospecto" name="prospecto">
+                                                <?php
+                                             
+                                                include 'includes/conexion.php'; 
+                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                $query2 = "SELECT * FROM user where id_user in(3,4,5,6)";
+                                                $result2 = mysqli_query($con, $query2);
+
+                                                // Verificar si se encontraron resultados
+                                                if (mysqli_num_rows($result2) > 0) {
+                                                    // Generar las opciones dentro del select
+                                                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                    $value2 = $row2['id_user'];
+                                                    $text2 = $row2['nombre_user'];
+                                                    echo "<option value='" . $value2 . "'>" . $text2 . "</option>";
+                                                    }
+                                                }
+
+                                                // Cerrar la conexión a la base de datos
+                                                mysqli_close($con);
+                                                ?>
+                                                </select>
+                                                <button type="button"
+                                        class="btn btn-soft-primary waves-effect waves-light"></button>
+
+                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- INICIO DATOS -->
+
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="p-4">
+                                            <div class="d-flex">
+                                                <div class="flex-1">
+
+                                                    <h3 class="mb-3"><span class="counter_value" data-target="20">20</span>
+                                                    </h3>
+                                                </div>
+                                                <div class="">
+                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
+                                                        Hoy</p>
+                                                </div>
+                                            </div>
+                                            <h5 class="text-muted font-size-14 mb-0">Atendidos</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                                                        
+                        
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="p-4">
+                                            <div class="d-flex">
+                                                <div class="flex-1">
+
+                                                    <h3 class="mb-3"><span class="counter_value" data-target="15">15</span>
+                                                    </h3>
+                                                </div>
+                                                <div class="">
+                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
+                                                        Hoy o semana ?</p>
+                                                </div>
+                                            </div>
+                                            <h5 class="text-muted font-size-14 mb-0">Ventas</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                                                        
+                        
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="p-4">
+                                            <div class="d-flex">
+                                                <div class="flex-1">
+
+                                                    <h3 class="mb-3"><span class="counter_value" data-target="25">25</span>
+                                                    </h3>
+                                                </div>
+                                                <div class="">
+                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
+                                                        semana - Hoy ?</p>
+                                                </div>
+                                            </div>
+                                            <h5 class="text-muted font-size-14 mb-0">Seguimiento</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                                                        
+                        
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-body p-0">
+                                        <div class="p-4">
+                                            <div class="d-flex">
+                                                <div class="flex-1">
+
+                                                    <h3 class="mb-3"><span class="counter_value" data-target="999999">No Adriana, no me expl0tes</span>
+                                                    </h3>
+                                                </div>
+                                                <div class="">
+                                                    <p class="badge bg-soft-primary text-primary fw-bold font-size-12 mb-0">
+                                                        Semana </p>
+                                                </div>
+                                            </div>
+                                            <h5 class="text-muted font-size-14 mb-0">Tiempo de respuesta</h5>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- end cardbody -->
+                                </div>
+                                <!-- end card -->
+                            </div>
+                            <!-- end col -->
+                                                        
+                        </div>
+                        <!-- end row -->
+                        
+
+
+                        <!-- FIN DATOS -->
 
                         <!-- start page title -->
                         <div class="row">
@@ -80,11 +243,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                     <h4 class="mb-sm-0">Data Tables</h4>
                                     <div class="page-title-center">
-                                    <?php if ($tipoUsuario == 2): ?>
-                                        <button type="button" class="btn btn-primary waves-effect waves-light" style="height: 35px !important;" onclick="window.location.href = 'nuevoCliente.php';">
-                                            Nuevo Cliente <i class="mdi mdi-emoticon-excited-outline font-size-16 align-middle ms-2"></i>
-                                        </button>
-                                    <?php endif; ?>
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" style="height: 35px !important;" onclick="window.location.href = 'nuevoCliente.php';">
+                                        Nuevo Cliente <i class="mdi mdi-emoticon-excited-outline font-size-16 align-middle ms-2"></i>
+                                    </button>
 
                                     </div>
                                     <div class="page-title-right">
@@ -147,7 +308,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 id_form_web,date_create,datos_form,email,telefono,mensaje,fecha,URL,nombre_formulario,ip_formulario,
                                                 time,estado_web,estado_web,fuente_dato,id_user,idEmpresa,documentoCliente,tipoCliente,prospecto,
                                                 observacionCliente,idid,estadoCliente
-                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser AND randomUser = $idUsuarioSesion  ORDER BY fecha DESC";
+                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
                                                 
@@ -350,6 +511,14 @@ $empresaUser =$_SESSION['empresaUser'] ;
         <script src="assets/libs/metismenu/metisMenu.min.js"></script>
         <script src="assets/libs/simplebar/simplebar.min.js"></script>
         <script src="assets/libs/node-waves/waves.min.js"></script>
+
+        <script src="assets/libs/select2/js/select2.min.js"></script>
+        <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+        <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+        <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+        <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+        <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+        <script src="assets/js/pages/form-advanced.init.js"></script>
 
         <!-- Required datatable js -->
         <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
