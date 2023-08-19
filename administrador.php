@@ -332,8 +332,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             }
                                                         }
 
-                                                        // Cerrar la conexión a la base de datos
-                                                        mysqli_close($con);
+                                                       
                                                
                                                         
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
@@ -450,7 +449,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 } else {
                                                     echo "<tr><td colspan='9'>No se encontraron resultados.</td></tr>";
                                                 }
-
+                                                 // Cerrar la conexión a la base de datos
+                                                 mysqli_close($con);
                                                 // Cerrar la conexión
                                                 $conn->close();
                                                 ?>
