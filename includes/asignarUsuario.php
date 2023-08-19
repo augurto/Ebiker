@@ -1,8 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtén la conexión a la base de datos
-    include('conexion.php'); // Asegúrate de reemplazar esto con la ruta correcta
-
+    include('conexion.php'); 
     // Obtén los valores enviados desde el formulario
     $idFormWeb = $_POST['idFormWeb'];
     $selectUsuario = $_POST['selectUsuario'];
@@ -13,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Ejecuta la consulta
     if (mysqli_query($con, $queryUpdate)) {
         mysqli_close($con);
-        header('Location: ../administrador.php'); // Redirige a la página administrador.php
+        // Redirige a la página administrador.php
         exit(); // Termina el script para evitar ejecución adicional
     } else {
         echo "Error al actualizar: " . mysqli_error($con);
