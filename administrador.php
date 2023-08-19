@@ -315,8 +315,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
-                                                        $fechaActual = date("Y-m-d H:i:s");
-                                                       
+                                                        $fechaActual2 = date("Y-m-d H:i:s");
+                                                        $fechaActual = time();
 
                                                         // Supongamos que $row["fecha"] contiene una fecha en formato "Y-m-d H:i:s"
                                                         $fechaBase = strtotime($row["fecha"]);
@@ -350,7 +350,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                
                                                         
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
-                                                        echo "<td>" . $fechaActual . "</td>";
+                                                        echo "<td>" . $fechaActual2 . "</td>";
                                                         echo "<td>" . $diferenciaMinutos . "</td>";
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
