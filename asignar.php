@@ -163,17 +163,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        $query2 = "SELECT * FROM user where id_user =$idUsuarioRandom";
-                                                        $result2 = mysqli_query($con, $query2);
-                                                        // Verificar si se encontraron resultados
-                                                        if (mysqli_num_rows($result2) > 0) {
-                                                            // Generar las opciones dentro del select
-                                                            while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                            $value2 = $row2['id_user'];
-                                                            $text2 = $row2['userName'];
-                                                            echo "<td>" . $text2 . "</td>"; 
-                                                            }
-                                                        }
+                                                        
+
+                                                        echo "<td>" . $text2 . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
