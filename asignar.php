@@ -332,7 +332,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                         <div class="mb-3">
                                             
-                                    <form action="includes/asignarUsuario.php" method="get">
+                                    <form>
                                             <input type="text" class="form-control" id="inputIdFormWeb" name="idFormWeb" >
                                             <input type="text" class="form-control" id="inputIdFormWeb" name="iddd" >
                                             <label for="inputIdFormWeb2" class="form-label">ID del Usuario actual</label>
@@ -373,6 +373,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
                                             <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                            
                                         </div>
                                     </form>
                                 </div>
@@ -391,6 +392,29 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                 $('#myInput').val(randomValue); // Rellena el otro input con el valor de $idUsuarioRandom
                             });
                         });
+
+                        $(document).ready(function () {
+                        $('.btn-primary').click(function () {
+                            var idValue = $(this).data('id');
+                            var randomValue = $(this).data('random');
+                            $('#idValueSpan').text(idValue);
+                            $('#inputIdFormWeb').val(idValue);
+                            $('#inputIdFormWeb2').val(idValue);
+                            $('#myInput').val(randomValue);
+
+                            // Enviar los datos del formulario al servidor usando AJAX con método GET
+                            $.ajax({
+                                type: "GET",
+                                url: "includes/asignarUsuario.php",  // Ruta del archivo PHP que procesa el formulario
+                                data: $('#myModal form').serialize(),  // Envía los datos del formulario al servidor
+                                success: function (response) {
+                                    // Manejar la respuesta del servidor si es necesario
+                                    console.log(response);
+                                }
+                            });
+                        });
+                    });
+
                         </script>
                                                 
                     </div> <!-- container-fluid -->
