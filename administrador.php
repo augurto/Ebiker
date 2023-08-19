@@ -327,7 +327,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             // Generar las opciones dentro del select
                                                             while ($row2 = mysqli_fetch_assoc($result2)) {
                                                             $value2 = $row2['id_user'];
-                                                            $text2 = $row2['nombre_user'];
+                                                            $text2 = $row2['userName'];
                                                             echo "<td>" . $text2 . "</td>"; 
                                                             }
                                                         }
