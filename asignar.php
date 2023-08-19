@@ -176,7 +176,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal" data-id="' . $idConsulta . '">Detalles</button></td>';
+                                                        echo '<td>';
+                                                        echo '<button type="button" class="btn btn-primary waves-effect waves-light"
+                                                                    data-bs-toggle="modal" data-bs-target="#myModal"
+                                                                    data-id="' . $row['id_form_web'] . '">Ver detalles</button>';
+                                                        echo '</td>';
                                                         echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
