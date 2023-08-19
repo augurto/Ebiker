@@ -310,10 +310,12 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         <?php
                         
 
-                        $query3 = "SELECT randomUser, COUNT(*) AS cantidad
-                                    FROM web_formularios 
-                                    WHERE estado_web = 0
-                                    GROUP BY randomUser";
+                        $query3 = "SELECT u.userName, wf.randomUser, COUNT(*) AS cantidad
+                        FROM web_formularios wf
+                        INNER JOIN user u ON u.id_user = wf.randomUser
+                        WHERE wf.estado_web = 0
+                        GROUP BY wf.randomUser
+                        ORDER BY cantidad ASC";
 
                         $result3 = mysqli_query($con, $query3);
                         ?>
@@ -333,14 +335,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <input type="text" class="form-control" id="inputIdFormWeb" readonly>
                                             <input type="text" class="form-control" id="myInput">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="selectEstado" class="form-label">Estado</label>
-                                            <select class="form-select" id="selectEstado">
-                                                <option value="1">En proceso</option>
-                                                <option value="2">Completado</option>
-                                                <option value="3">Cancelado</option>
-                                            </select>
-                                        </div>
+                                        
                                         <table class="table">
                                         <thead>
                                             <tr>
@@ -351,13 +346,21 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <tbody>
                                             <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
                                                 <tr>
-                                                    <td><?php echo $row3['randomUser']; ?></td>
+                                                    <td><?php echo $row3['userName']; ?></td>
                                                     <td><?php echo $row3['cantidad']; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
                                     </table>
-                                                        </div>
+                                    <div class="mb-3">
+                                            <label for="selectEstado" class="form-label">Estado</label>
+                                            <select class="form-select" id="selectEstado">
+                                                <option value="1">En proceso</option>
+                                                <option value="2">Completado</option>
+                                                <option value="3">Cancelado</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
                                         <button type="button" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
