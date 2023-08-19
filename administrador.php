@@ -92,7 +92,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         </div>
                                         <!-- input group -->
                                     </div>
-                                    <div class="mb-6">
+                                    <!-- <div class="mb-6">
                                                 <label class="form-label">Fuente</label>
                                                 
                                                 <select class="form-control select2" id="prospecto" name="prospecto">
@@ -120,7 +120,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 <button type="button"
                                         class="btn btn-soft-primary waves-effect waves-light"></button>
 
-                                            </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
