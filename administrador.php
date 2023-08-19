@@ -301,7 +301,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
                                                 $sql = "SELECT *
-                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
+                                                 FROM web_formularios where estado_web != 99 and estado_web=0 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
                                                 
