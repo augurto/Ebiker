@@ -147,6 +147,17 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
+                                                        // Consulta para obtener el usuario con el id_usuario específico
+                                                        $userQuery = "SELECT * FROM user WHERE id_user = $idUsuarioRandom";
+                                                        $userResult = $conn->query($userQuery);
+
+                                                        // Verificar si se encontró el usuario
+                                                        if ($userResult->num_rows > 0) {
+                                                            $userData = $userResult->fetch_assoc();
+                                                            $userName = $userData["userName"]; // Aquí capturamos el valor de userName
+                                                        } else {
+                                                            $userName = "Usuario no encontrado"; // Manejo de caso en que el usuario no se encuentra
+                                                        }
                                                         $fechaActual2 = date("Y-m-d H:i:s");
                                                         // Obtener la fecha actual en formato Unix Timestamp
                                                         $fechaActual = time();
@@ -165,7 +176,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>" . $id . "</td>";
                                                         
 
-                                                        echo "<td>" . $text2 . "</td>"; 
+                                                        echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
