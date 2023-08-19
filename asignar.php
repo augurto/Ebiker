@@ -105,6 +105,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>boton</th>
                                                     <th>Vendedor</th>
                                                     <th>Fecha Ingreso</th>
                                                     <th>Tiempo no atendido</th>
@@ -174,7 +175,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        
+                                                        echo '<td><a href="#" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Ver Detalles</a></td>';
 
                                                         echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
@@ -301,34 +302,38 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         </div> <!-- end row -->
 
                         <!-- MODAL -->
-                        
-                        <script>
-                            $(document).ready(function() {
-                                $('.bs-example-modal-center').on('show.bs.modal', function(event) {
-                                    var button = $(event.relatedTarget); // Botón que activó el modal
-                                    var idFormWeb = button.data('id'); // Obtener el valor de 'data-id'
-                                    var datosForm = button.data('datos'); // Obtener el valor de 'data-datos'
+                        <!-- Sample modal content -->
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title mt-0" id="myModalLabel">Editar Información</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="inputText" class="form-label">Ingrese un texto:</label>
+                                                <input type="text" class="form-control" id="inputText" placeholder="Ingrese su texto aquí">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="selectOption" class="form-label">Seleccione una opción:</label>
+                                                <select class="form-select" id="selectOption">
+                                                    <option value="opcion1">Opción 1</option>
+                                                    <option value="opcion2">Opción 2</option>
+                                                    <option value="opcion3">Opción 3</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="button" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.FIN modal -->
 
-                                    // Mostrar los valores en los campos de entrada
-                                    $(this).find('input[name="id_form_web"]').val(idFormWeb);
-                                    $(this).find('input[name="datos_form"]').val(datosForm);
-
-                                    // Realizar la solicitud AJAX para obtener el valor de la consulta
-                                    $.ajax({
-                                        url: 'includes/consulta.php',
-                                        type: 'POST',
-                                        data: { idFormWeb: idFormWeb },
-                                        success: function(response) {
-                                            // Asignar el valor al campo de entrada
-                                            $('.modal-body').find('#valor').val(response);
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.log(error);
-                                        }
-                                    });
-                                });
-                            });
-                        </script>
                         
                     </div> <!-- container-fluid -->
                 </div>
