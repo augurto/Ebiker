@@ -334,7 +334,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             
                                     <form action="includes/asignarUsuario.php" method="get">
                                             <input type="text" class="form-control" id="inputIdFormWeb" name="inputIdFormWeb" readonly>
-                                            <label for="inputIdFormWeb" class="form-label">ID del Usuario actual</label>
+                                            <label for="inputIdFormWeb2" class="form-label">ID del Usuario actual</label>
                                             <input type="text" class="form-control" id="myInput" readonly>
                                             
                                         </div>
