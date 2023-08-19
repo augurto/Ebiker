@@ -312,9 +312,30 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     // Mostrar los datos en filas de la tabla
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
+                                                        $idUsuarioRandom=$row["randomUser"];
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        echo "<td>" . $row["randomUser"] . "</td>";
+                                                     
+                                                        include 'includes/conexion.php'; 
+                                                        // Realizar la consulta a la base de datos para obtener los datos de la tabla
+
+                                                        $query2 = "SELECT * FROM user where id_user =$idUsuarioRandom";
+                                                        $result2 = mysqli_query($con, $query2);
+
+                                                        // Verificar si se encontraron resultados
+                                                        if (mysqli_num_rows($result2) > 0) {
+                                                            // Generar las opciones dentro del select
+                                                            while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                            $value2 = $row2['id_user'];
+                                                            $text2 = $row2['nombre_user'];
+                                                            echo "<td>" . $text2 . "</td>"; 
+                                                            }
+                                                        }
+
+                                                        // Cerrar la conexión a la base de datos
+                                                        mysqli_close($con);
+                                               
+                                                        
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
@@ -419,7 +440,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                         }
                                                         
-                                                        echo "<td>" . $row["datosForm"] . "</td>";                                       
+                                                        echo "<td>" . $row["datos_form"] . "</td>";                                       
                                                         echo "</tr>";
                                         
                                                         $id++; // Incrementar el ID
