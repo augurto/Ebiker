@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../vendedor.php");
             exit();
         } elseif ($tipoUsuario == 2) {
-            header("Location: ../inicio.php");
+            header("Location: ../administrador.php");
             exit();
         }
     } else {
