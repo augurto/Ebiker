@@ -315,6 +315,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
+                                                        $fechaActual = date("Y-m-d H:i:s");
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                      
@@ -339,6 +340,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                
                                                         
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
+                                                        echo "<td>" . $id . "</td>";
+                                                        echo "<td>" . $id . "</td>";
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
