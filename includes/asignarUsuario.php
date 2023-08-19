@@ -1,7 +1,7 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     // Obtén la conexión a la base de datos
-    include('conexion.php'); 
+    include 'conexion.php';
     // Obtén los valores enviados desde el formulario
     $idFormWeb = $_POST['idFormWeb'];
     $selectUsuario = $_POST['selectUsuario'];
@@ -20,5 +20,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Cierra la conexión a la base de datos
     mysqli_close($con);
-}
+
 ?>
