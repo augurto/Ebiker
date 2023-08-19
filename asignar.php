@@ -354,10 +354,10 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         </tbody>
                                     </table>
                                     <div class="mb-3">
-                                        <label for="selectUsuario" class="form-label">Usuario</label>
+                                        <label for="selectUsuario" class="form-label">Usuario <?php echo  $randomUserValue ;?></label>
                                         <select class="form-select" id="selectUsuario">
                                             <?php
-                                                $queryUsuarios = "SELECT id_user, userName FROM user";
+                                                $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
                                                 $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
                                                 while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
@@ -377,6 +377,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                        
                         <script>
+                        var randomUserValue = <?php echo json_encode($randomUser); ?>;
                         $(document).ready(function () {
                             $('.btn-primary').click(function () {
                                 var idValue = $(this).data('id');
