@@ -316,7 +316,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
                                                         $fechaActual = date("Y-m-d H:i:s");
-                                                        $fechaActual = time();
+                                                       
 
                                                         // Supongamos que $row["fecha"] contiene una fecha en formato "Y-m-d H:i:s"
                                                         $fechaBase = strtotime($row["fecha"]);
