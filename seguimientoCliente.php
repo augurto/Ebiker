@@ -444,6 +444,114 @@ $dni = $_SESSION['dni'];
                         <!-- end card -->
                     </div>
                     <!-- end col -->
+                    <!-- inicio linea del tiempo -->
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-body bg-transparent">
+                                <div class="dropdown float-end">
+                                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                        <i class="mdi mdi-dots-vertical text-muted"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                        <!-- item-->
+                                        <a href="javascript:void(0);" class="dropdown-item">Another action</a>
+                                        <!-- item-->
+                                    </div>
+                                </div>
+                                <!-- end dropdown -->
+                                <h4 class="card-title mb-4">Eventos</h4>
+
+                                <div class="pe-lg-3" data-simplebar style="max-height: 350px;">
+                                    <ul class="list-unstyled activity-wid">
+                                        <?php
+                                        // Incluye el archivo con la conexión
+                                        include 'includes/conexion.php';  // Asegúrate de cambiar el nombre del archivo
+
+                                        // Consulta a la base de datos
+                                        $sql = "SELECT * FROM web_formularios WHERE idOriginal = '$idOriginal' or  id_form_web = '$idOriginal'";  // Modifica la consulta según tus necesidades
+                                        $result = mysqli_query($con, $sql);
+
+                                        // Generar elementos para cada fila de la consulta
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        $fechaRestada = date("Y-m-d H:i:s", strtotime($row["fecha"]) - 5 * 3600);
+                                        
+                                        $fecha2 = substr($fechaRestada, 0, 10);
+                                        // Consulta para obtener los detalles del usuario
+                                        $userId = $row["id_user"];
+                                        $userQuery = "SELECT * FROM user WHERE id_user = '$userId'";
+                                        $userResult = mysqli_query($con, $userQuery);
+                                        $userData = mysqli_fetch_assoc($userResult);
+
+                                        $tipoClienteLinea=$row["tipoCliente"];
+                                        $clienteQuery = "SELECT * FROM tipoCliente WHERE idTipoCliente = '$tipoClienteLinea'";
+                                        $clienteResult = mysqli_query($con, $clienteQuery);
+                                        $clienteData = mysqli_fetch_assoc($clienteResult);
+                                        
+                                        ?>
+                                        <!-- start li -->
+                                        <li class="activity-list border-left">
+                                            <div class="activity-icon avatar-xs">
+                                                <span class="avatar-title bg-soft-primary text-primary rounded-circle">
+                                                    <i class="ri-edit-2-fill"></i>
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <div class="d-flex">
+                                                    <div class="flex-1">
+                                                        <h5 class="font-size-13"><?php echo $fecha2; ?></h5>
+                                                    </div>
+                                                    <div>
+                                                        <small class="text-muted"><?php echo date("h:i a", strtotime($fechaRestada)); ?></small>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <p class="text-muted mb-0"><?php echo $row["mensaje"]; ?></p>
+                                                </div>
+                                                <div>
+                                                    
+                                                    <?php
+
+                                                    $descrpCliente=$clienteData["descripcionTipoCliente"];
+                                                    $colorCliente=$clienteData["colorTipoCliente"];
+                                                    
+                                                    echo "<td><span class=\"badge rounded-pill\" style=\"background-color: $colorCliente;\">$descrpCliente</span></td>";
+                                                    ?>
+                                                </div>
+                                                <div>
+                                                    <p class="text-muted mb-0"><?php 
+                                                    $nombreUsuarioAtencion = ucwords(strtolower($userData["nombre_user"]));
+                                                                                                       
+                                                    echo $nombreUsuarioAtencion; ?></p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <!-- end li -->
+                                        <?php
+                                        }
+
+                                        // Cierra la conexión
+                                        mysqli_close($con);
+                                        ?>
+                                    </ul>
+                                    <!-- end ul -->
+                                </div>
+                            </div>
+                            <!-- end body -->
+                            <div>
+
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+
+
+
+                    <!-- FIN LINEA TIEMPO -->
+
 
                     </div>
                     <!-- end col -->
