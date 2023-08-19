@@ -1,7 +1,7 @@
 <?php
 include 'conexion.php';
 
-$idFormWeb = $_GET['inputIdFormWeb'];
+$idFormWeb = $_GET['idFormWeb'];
 $selectUsuario = $_GET['selectUsuario'];
 $query = "UPDATE web_formularios SET randomUser = '$selectUsuario' WHERE id_form_web = '$idFormWeb'";
 
