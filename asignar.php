@@ -179,7 +179,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo '<td>';
                                                         echo '<button type="button" class="btn btn-primary waves-effect waves-light"
                                                                     data-bs-toggle="modal" data-bs-target="#myModal"
-                                                                    data-id="' . $idConsulta . '">detalles</button>';
+                                                                    data-id="' . $idConsulta . '"  data-random="' . $idUsuarioRandom . '">Asignar</button>';
                                                         echo '</td>';
                                                         echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
@@ -333,6 +333,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <div class="mb-3">
                                             <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
                                             <input type="text" class="form-control" id="inputIdFormWeb" readonly>
+                                            <input type="text" class="form-control" id="myInput" readonly>
                                             <input type="text" class="form-control" id="myInput">
                                         </div>
                                         
@@ -369,17 +370,19 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div>
                         </div>
 
+                       
                         <script>
-                            $(document).ready(function () {
-                                $('.btn-primary').click(function () {
-                                    var idValue = $(this).data('id');
-                                    $('#idValueSpan').text(idValue); // Actualiza el valor del span
-                                    $('#inputIdFormWeb').val(idValue); // Rellena el input con el valor del ID
-                                });
+                        $(document).ready(function () {
+                            $('.btn-primary').click(function () {
+                                var idValue = $(this).data('id');
+                                var randomValue = $(this).data('random');
+                                $('#idValueSpan').text(idValue); // Actualiza el valor del span
+                                $('#inputIdFormWeb').val(idValue); // Rellena el input con el valor del ID
+                                $('#myInput').val(randomValue); // Rellena el otro input con el valor de $idUsuarioRandom
                             });
+                        });
                         </script>
-
-                        
+                                                
                     </div> <!-- container-fluid -->
                 </div>
                 <!-- End Page-content -->
