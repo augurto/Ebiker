@@ -156,7 +156,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['id']; ?>">
+                                            <input type="text" class="form-control" id="idFormWeb" name="idFormWeb" value="<?php echo $_GET['idFormWeb']; ?>">
                                         </div>
                                         <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
                                     </form>

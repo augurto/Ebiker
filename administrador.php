@@ -178,7 +178,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>" . $id . "</td>";
                                                         echo "<td>
                                                                         
-                                                                            <a href='asignarUsuario.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
+                                                                            <a href='asignar.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
                                                                             Atendido
                                                                             </a>
                                                                         </td>";
