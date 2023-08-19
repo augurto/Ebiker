@@ -307,7 +307,17 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                         <!-- MODAL -->
                         <!-- Modal -->
+                        <?php
                         
+
+                        $query3 = "SELECT randomUser, COUNT(*) AS cantidad
+                                    FROM web_formularios 
+                                    WHERE estado_web = 0
+                                    GROUP BY randomUser";
+
+                        $result3 = mysqli_query($con, $query3);
+                        ?>
+
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -331,7 +341,23 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 <option value="3">Cancelado</option>
                                             </select>
                                         </div>
-                                    </div>
+                                        <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Random User</th>
+                                                <th>Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
+                                                <tr>
+                                                    <td><?php echo $row3['randomUser']; ?></td>
+                                                    <td><?php echo $row3['cantidad']; ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                                        </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
                                         <button type="button" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
