@@ -276,7 +276,9 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>Fecha Ingreso</th>
                                                     <th>Tiempo no atendido</th>
                                                     <th>Accion</th>
-                                                   
+                                                    <th>Fuente</th>
+                                                    <th>Estado</th>
+                                                    <th>Nombres</th>
                                                     
                                                     
                                                     
@@ -353,6 +355,103 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo "<td>". $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
                                                         } else {
                                                             echo "<td>". $diferenciaMinutos . " minutos". "</td>";
+                                                        }
+                                                        $url_dato = $row["URL"];
+                                                        // Obtener los parámetros de la URL
+                                                        $params = parse_url($url_dato, PHP_URL_QUERY);
+
+                                                        // Convertir los parámetros en un arreglo asociativo
+                                                        parse_str($params, $query);
+
+                                                        // Obtener los valores de las variables específicas
+                                                        $a = $query['utm_source'];
+                                                        $b = $query['utm_medium'];
+                                                        $c = $query['utm_campaign'];
+
+                                                        // Imprimir los valores
+                                                                                                           
+                                                        $documentoCliente=$row["documentoCliente"];
+                                                        $fuente_dato = $row["fuente_dato"];
+
+                                                       
+                                                            // Obtener el valor de $row["estado_web"]
+                                                            $estado_web = $row["estado_web"];
+
+                                                            if ($estado_web == 0 && !empty($a)) {
+                                                                echo "<td>
+                                                                
+                                                                <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
+                                                                    Atender
+                                                                </a>                                                       
+                                                                </td>";
+                                                               
+                                                            } elseif ($estado_web == 1) {
+                                                                echo "<td>
+                                                                        
+                                                                            <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
+                                                                            Atendido
+                                                                            </a>
+                                                                        </td>";
+                                                                   
+                                                            } elseif (empty($a) && $estado_web == 0  ) {
+                                                                echo "<td>
+                                                                    <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
+                                                                        Atender
+                                                                    </a>
+                                                                </td>";
+                                                               
+                                                            }
+                                                            
+                                                        
+                                                            if (empty($row["id_user"])) {
+                                                                if ($a == "Google ADS") {
+                                                                    $fuenteOriginal = 2;
+                                                                } elseif ($a == "Meta ADS") {
+                                                                    $fuenteOriginal = 3;
+                                                                } else {
+                                                                    $fuenteOriginal = 1;
+                                                                }
+                                                            } else {
+                                                                $fuenteOriginal = $row["prospecto"];
+                                                            }
+                                                            
+                                                        /* condicional para mostrar si es de facebook, google, organico o presencial */
+                                                      
+
+                                                                $queryFuente = "SELECT colorFuente,descripcionFuente FROM fuente WHERE tipoFuente = '$fuenteOriginal'";
+                                                                $resultFuente = mysqli_query($conn, $queryFuente);
+
+                                                                $rowFuente = mysqli_fetch_assoc($resultFuente);
+                                                                $descripcionFuente = $rowFuente['descripcionFuente'];
+                                                                $colorFuente = $rowFuente['colorFuente'];
+                                                                $tipoFuente = $rowFuente['tipoFuente'];                                            
+                                                                        
+
+                                                                echo '<td><span class="badge rounded-pill" style="background-color: ' . $colorFuente . ';color:white;">' . $descripcionFuente . '</span></td>';
+
+
+
+                                                          
+
+                                                        
+                                                     
+                                                        
+                                                        $estadoCliente = $row["tipoCliente"];
+                                                        
+                                                        // Realizar la consulta a la base de datos para obtener la descripción del tipo de cliente
+                                                        $queryTipoCliente = "SELECT * FROM tipoCliente WHERE valorTipoCliente = $estadoCliente";
+                                                        $resultTipoCliente = mysqli_query($conn, $queryTipoCliente);
+
+                                                        if ($resultTipoCliente && mysqli_num_rows($resultTipoCliente) > 0) {
+                                                            $rowTipoCliente = mysqli_fetch_assoc($resultTipoCliente);
+                                                            $descripcionTipoCliente = $rowTipoCliente["descripcionTipoCliente"];
+                                                            $colorTipoCliente = $rowTipoCliente["colorTipoCliente"];
+
+                                                            echo "<td><span class=\"badge rounded-pill\" style=\"background-color: $colorTipoCliente;\">$descripcionTipoCliente</span></td>";
+                                                        } else {
+                                                            
+                                                            echo '<td><span class="badge rounded-pill" style="background-color: black; color: white;">Prospecto Venta</span></td>';
+
                                                         }
                                                         
                                                         echo "<td>" . $row["datos_form"] . "</td>";                                       
