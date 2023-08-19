@@ -316,6 +316,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
                                                         $fechaActual2 = date("Y-m-d H:i:s");
+                                                        // Obtener la fecha actual en formato Unix Timestamp
                                                         $fechaActual = time();
 
                                                         // Supongamos que $row["fecha"] contiene una fecha en formato "Y-m-d H:i:s"
@@ -324,8 +325,10 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         // Calcular la diferencia en segundos
                                                         $diferenciaSegundos = $fechaActual - $fechaBase;
 
-                                                        // Calcular la diferencia en minutos
-                                                        $diferenciaMinutos = round($diferenciaSegundos / 60);
+                                                        // Calcular la diferencia en días, horas y minutos
+                                                        $diferenciaDias = floor($diferenciaSegundos / (60 * 60 * 24));
+                                                        $diferenciaHoras = floor(($diferenciaSegundos % (60 * 60 * 24)) / 3600);
+                                                        $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                      
@@ -351,7 +354,14 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         echo "<td>" . $fechaActual2 . "</td>";
-                                                        echo "<td>" . $diferenciaMinutos . "</td>";
+                                                       /*  echo "<td>" . $diferenciaMinutos . "</td>"; */
+                                                        if ($diferenciaDias > 0) {
+                                                            echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
+                                                        } elseif ($diferenciaHoras > 0) {
+                                                            echo "<td>".$row["fecha"] . " y la fecha actual es: " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
+                                                        } else {
+                                                            echo "<td>".$row["fecha"] . " y la fecha actual es: " . $diferenciaMinutos . " minutos". "</td>";
+                                                        }
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
