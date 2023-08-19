@@ -175,8 +175,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $diferenciaMinutos = floor(($diferenciaSegundos % 3600) / 60);
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        echo '<td><a href="#" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal">Ver Detalles</a></td>';
-
+                                                        echo '<td><button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#myModal" data-id="' . $row['id_form_web'] . '">Ver Detalles</button></td>';
                                                         echo "<td>" . $userName . "</td>"; 
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         if ($diferenciaDias > 0) {
@@ -302,6 +301,22 @@ $empresaUser =$_SESSION['empresaUser'] ;
                         </div> <!-- end row -->
 
                         <!-- MODAL -->
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <!-- ... Encabezado ... -->
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id="modalInput" readonly>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Sample modal content -->
                         <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -314,6 +329,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <form>
                                             <div class="mb-3">
                                                 <label for="inputText" class="form-label">Ingrese un texto:</label>
+                                                <input type="text" class="form-control" id="modalInput" readonly>
                                                 <input type="text" class="form-control" id="inputText" placeholder="Ingrese su texto aquí">
                                             </div>
                                             <div class="mb-3">
@@ -334,6 +350,17 @@ $empresaUser =$_SESSION['empresaUser'] ;
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.FIN modal -->
 
+                        <script>
+                            // Cuando se abra el modal
+                            $('#myModal').on('show.bs.modal', function (event) {
+                                var button = $(event.relatedTarget); // Botón que desencadenó el modal
+                                var idFormWeb = button.data('id'); // Extraer la información del atributo data-id
+                                var modal = $(this);
+                                
+                                // Asignar el valor de idFormWeb al input dentro del modal
+                                modal.find('#modalInput').val(idFormWeb);
+                            });
+                        </script>
                         
                     </div> <!-- container-fluid -->
                 </div>
