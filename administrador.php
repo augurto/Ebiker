@@ -273,9 +273,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 <tr>
                                                     <th>ID</th>
                                                     <th>Vendedor</th>
-                                                    <th>Tiempo</th>
-                                                    <th>Hora actual</th>
-                                                    <th>Tiempo Atencion</th>
+                                                    <th>Fecha Ingreso</th>
+                                                    <th>Tiempo no atendido</th>
                                                     <th>Accion</th>
                                                     <th>Fuente</th>
                                                     <th>Estado</th>
@@ -349,12 +348,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         }
                                                         // Cerrar la conexión a la base de datos
                                                         mysqli_close($con);
-                                                       
-                                               
-                                                        
                                                         echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
-                                                        echo "<td>" . $fechaActual2 . "</td>";
-                                                       /*  echo "<td>" . $diferenciaMinutos . "</td>"; */
                                                         if ($diferenciaDias > 0) {
                                                             echo "<td>".$diferenciaDias . " días, " . $diferenciaHoras . " horas y " . $diferenciaMinutos . " minutos". "</td>";
                                                         } elseif ($diferenciaHoras > 0) {
