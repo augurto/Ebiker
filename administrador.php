@@ -135,7 +135,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
                                                 $sql = "SELECT *
-                                                 FROM web_formularios where estado_web != 99 and estado_web=0 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
+                                                 FROM web_formularios where estado_web != 99 and estado_web=0 and prospecto !=4 and idEmpresa= $empresaUser and DATE(fecha) >= '2023-07-25' ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
                                                 
@@ -179,7 +179,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<td>
                                                                         
                                                                             <a href='asignar.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
-                                                                            Atendido
+                                                                            Asignar 
                                                                             </a>
                                                                         </td>";
                                                         

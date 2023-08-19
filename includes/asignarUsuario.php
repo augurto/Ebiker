@@ -8,7 +8,7 @@ $query = "UPDATE web_formularios SET randomUser = '$selectUsuario' WHERE id_form
 if (mysqli_query($con, $query)) {
     // La inserción fue exitosa, redirecciona a editarcliente.php con el parámetro id
     $id = mysqli_insert_id($con);
-    echo "Error en la inserción de datos: ".$idFormWeb.$selectUsuario;
+    header("Location: ../administrador.php?p=0");
     exit();
 } else {
     // Manejar el caso de error en la inserción
