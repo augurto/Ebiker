@@ -92,35 +92,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         </div>
                                         <!-- input group -->
                                     </div>
-                                    <!-- <div class="mb-6">
-                                                <label class="form-label">Fuente</label>
-                                                
-                                                <select class="form-control select2" id="prospecto" name="prospecto">
-                                                <?php
-                                             
-                                                include 'includes/conexion.php'; 
-                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $query2 = "SELECT * FROM user where id_user in(3,4,5,6)";
-                                                $result2 = mysqli_query($con, $query2);
-
-                                                // Verificar si se encontraron resultados
-                                                if (mysqli_num_rows($result2) > 0) {
-                                                    // Generar las opciones dentro del select
-                                                    while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                    $value2 = $row2['id_user'];
-                                                    $text2 = $row2['nombre_user'];
-                                                    echo "<option value='" . $value2 . "'>" . $text2 . "</option>";
-                                                    }
-                                                }
-
-                                                // Cerrar la conexión a la base de datos
-                                                mysqli_close($con);
-                                                ?>
-                                                </select>
-                                                <button type="button"
-                                        class="btn btn-soft-primary waves-effect waves-light"></button>
-
-                                    </div> -->
+                                   
                                 </div>
                             </div>
                         </div>
