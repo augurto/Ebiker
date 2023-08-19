@@ -276,7 +276,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>Fecha Ingreso</th>
                                                     <th>Tiempo no atendido</th>
                                                     <th>Accion</th>
-                                                    <th>Nombres</th>
+                                                   
                                                     
                                                     
                                                     
