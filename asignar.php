@@ -316,7 +316,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    <p>El valor del ID es: <span id="idValue"></span></p>
+                                    <p>El valor del ID es: <span id="idValueSpan"></span></p>
+
                                         <div class="mb-3">
                                             <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
                                             <input type="text" class="form-control" id="inputIdFormWeb" readonly>
@@ -341,19 +342,10 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                         <script>
                             $(document).ready(function () {
-                                $('.open-modal').click(function () {
+                                $('.btn-primary').click(function () {
                                     var idValue = $(this).data('id');
-                                    $('#idInput').val(idValue);
-                                });
-                            });
-                        </script>
-
-
-                        <script>
-                            $(document).ready(function () {
-                                $('.open-modal').click(function () {
-                                    var idValue = $(this).data('id');
-                                    $('#idValue').text(idValue);
+                                    $('#idValueSpan').text(idValue); // Actualiza el valor del span
+                                    $('#inputIdFormWeb').val(idValue); // Rellena el input con el valor del ID
                                 });
                             });
                         </script>
