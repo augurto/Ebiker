@@ -363,7 +363,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
                                                 while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
-                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'] . '</option>';
+                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'].$rowUsuario['id_user'] . '</option>';
                                                 }
                                             ?>
                                         </select>
