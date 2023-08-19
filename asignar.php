@@ -331,17 +331,19 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                     <p>El valor del ID es: <span id="idValueSpan"></span></p>
 
                                         <div class="mb-3">
-                                            <label for="inputIdFormWeb" class="form-label">ID del Formulario</label>
-                                            <input type="text" class="form-control" id="inputIdFormWeb" readonly>
+                                            
+                                        <form action="includes/asignarUsuario.php" method="post">
+                                            <input type="hidden" class="form-control" id="inputIdFormWeb" readonly>
+                                            <label for="inputIdFormWeb" class="form-label">ID del Usuario actual</label>
                                             <input type="text" class="form-control" id="myInput" readonly>
-                                            <input type="text" class="form-control" id="myInput">
+                                            
                                         </div>
                                         
                                         <table class="table">
                                         <thead>
                                             <tr>
-                                                <th>Random User</th>
-                                                <th>Cantidad</th>
+                                                <th>Vendedor</th>
+                                                <th>Cantidad no Atendidos</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -354,8 +356,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         </tbody>
                                     </table>
                                     <div class="mb-3">
-                                        <label for="selectUsuario" class="form-label">Usuario <?php echo  $randomUserValue ;?></label>
-                                        <select class="form-select" id="selectUsuario">
+                                        <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
+                                        <select class="form-select" id="selectUsuario" name="selectUsuario">
                                             <?php
                                                 $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
                                                 $resultUsuarios = mysqli_query($con, $queryUsuarios);
@@ -369,15 +371,16 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
 
                        
                         <script>
-                        var randomUserValue = <?php echo json_encode($randomUser); ?>;
+                            
                         $(document).ready(function () {
                             $('.btn-primary').click(function () {
                                 var idValue = $(this).data('id');
