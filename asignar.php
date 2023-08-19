@@ -354,13 +354,18 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                         </tbody>
                                     </table>
                                     <div class="mb-3">
-                                            <label for="selectEstado" class="form-label">Estado</label>
-                                            <select class="form-select" id="selectEstado">
-                                                <option value="1">En proceso</option>
-                                                <option value="2">Completado</option>
-                                                <option value="3">Cancelado</option>
-                                            </select>
-                                        </div>
+                                        <label for="selectUsuario" class="form-label">Usuario</label>
+                                        <select class="form-select" id="selectUsuario">
+                                            <?php
+                                                $queryUsuarios = "SELECT id_user, userName FROM user";
+                                                $resultUsuarios = mysqli_query($con, $queryUsuarios);
+
+                                                while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
+                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'] . '</option>';
+                                                }
+                                            ?>
+                                        </select>
+                                    </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
