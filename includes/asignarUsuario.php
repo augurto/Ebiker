@@ -1,14 +1,14 @@
 <?php
 include 'conexion.php';
 
-$idFormWeb = $_POST['inputIdFormWeb'];
-$selectUsuario = $_POST['selectUsuario'];
+$idFormWeb = $_GET['inputIdFormWeb'];
+$selectUsuario = $_GET['selectUsuario'];
 $query = "UPDATE web_formularios SET randomUser = '$selectUsuario' WHERE id_form_web = '$idFormWeb'";
 
 if (mysqli_query($con, $query)) {
     // La inserción fue exitosa, redirecciona a editarcliente.php con el parámetro id
     $id = mysqli_insert_id($con);
-    header("Location: ../administrador.php?p=0");
+    echo "Error en la inserción de datos: ".$idFormWeb.$selectUsuario;
     exit();
 } else {
     // Manejar el caso de error en la inserción

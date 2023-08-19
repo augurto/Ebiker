@@ -332,7 +332,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                         <div class="mb-3">
                                             
-                                        <form action="includes/asignarUsuario.php" method="post">
+                                    <form action="includes/asignarUsuario.php" method="get">
                                             <input type="hidden" class="form-control" id="inputIdFormWeb" name="inputIdFormWeb" readonly>
                                             <label for="inputIdFormWeb" class="form-label">ID del Usuario actual</label>
                                             <input type="text" class="form-control" id="myInput" readonly>
@@ -354,25 +354,25 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
-                                    </table>
-                                    <div class="mb-3">
-                                        <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
-                                        <select class="form-select" id="selectUsuario" name="selectUsuario">
-                                            <?php
-                                                $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
-                                                $resultUsuarios = mysqli_query($con, $queryUsuarios);
+                                         </table>
+                                        <div class="mb-3">
+                                            <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
+                                            <select class="form-select" id="selectUsuario" name="selectUsuario">
+                                                <?php
+                                                    $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
+                                                    $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
-                                                while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
-                                                    echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'].$rowUsuario['id_user'] . '</option>';
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
-                                    </div>
+                                                    while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
+                                                        echo '<option value="' . $rowUsuario['id_user'] . '">' . $rowUsuario['userName'].$rowUsuario['id_user'] . '</option>';
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light">Guardar cambios</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
