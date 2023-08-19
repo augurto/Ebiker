@@ -272,18 +272,11 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Vendedor</th>
+                                                    <th>Tiempo</th>
                                                     <th>Accion</th>
                                                     <th>Nombres</th>
-                                                    <th>Fuente</th>
-                                                    <th>Email</th>
-                                                    <th>Teléfono</th>
-                                                    <th>Estado</th>
-                                                    <th>Mensaje</th>
-                                                    <th>Fecha </th>
-                                                    <th>URL</th>
-                                                    <th>Nombre Formulario</th>
-                                                    <th>IP</th>
-                                                    <th>Aterrizaje</th>
+                                                    
                                                     
                                                     
                                                 </tr>
@@ -304,10 +297,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                 }
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
-                                                $sql = "SELECT 
-                                                id_form_web,date_create,datos_form,email,telefono,mensaje,fecha,URL,nombre_formulario,ip_formulario,
-                                                time,estado_web,estado_web,fuente_dato,id_user,idEmpresa,documentoCliente,tipoCliente,prospecto,
-                                                observacionCliente,idid,estadoCliente
+                                                $sql = "SELECT *
                                                  FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
@@ -322,7 +312,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        /* echo "<td>" . $row["datos_form"] . "</td>"; */
+                                                        echo "<td>" . $row["randomUser"] . "</td>";
+                                                        echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
@@ -407,10 +398,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
 
                                                           
 
-                                                        echo "<td>" . $row["email"] . "</td>";
-                                                       
-                                                        $telefonooo = $row["telefono"];
-                                                        echo "<td><a href='https://wa.me/51$telefonooo' target='_blank'>$telefonooo</a></td>";
+                                                        
                                                      
                                                         
                                                         $estadoCliente = $row["tipoCliente"];
@@ -430,14 +418,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo '<td><span class="badge rounded-pill" style="background-color: black; color: white;">Prospecto Venta</span></td>';
 
                                                         }
-
-
-                                                        echo "<td>" . $row["mensaje"] . "</td>";
-                                                        echo "<td>" . date('Y-m-d H:i:s', strtotime($row["fecha"] . '-5 hours')) . "</td>";
-                                                        echo "<td>" . $row["URL"] . "</td>";
-                                                        echo "<td>" . $row["nombre_formulario"] . "</td>";
-                                                        echo "<td>" . $row["ip_formulario"] . "</td>";
-                                                        echo "<td>" . $c . "</td>";
+                                                        
                                                                                                
                                                         echo "</tr>";
                                         
