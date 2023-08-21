@@ -17,6 +17,7 @@
 
         .cuadradito.rojo {
             border-color: red;
+            background-color: red;
         }
 
         input {
