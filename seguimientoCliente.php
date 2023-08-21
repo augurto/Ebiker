@@ -140,7 +140,7 @@ $dni = $_SESSION['dni'];
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Usuario Asignado a este Cliente : <?php echo $randomUser.$idUsuarioSesion ;?> </h4> 
+                            <h4 class="mb-sm-0">Usuario Asignado a este Cliente : <?php echo $randomUser ;?> </h4> 
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
@@ -154,8 +154,14 @@ $dni = $_SESSION['dni'];
                 </div>
                 <!-- end page title -->
 
-
-                <div class="row">
+                <?php
+                if ($randomUser != $idUsuarioSesion) {
+                    // El contenido del div no se mostrará si $randomUser es diferente de $idUsuarioSesion
+                    echo '<div class="row" style="display:none">';
+                } else {
+                    echo '<div class="row">';
+                }
+                ?>
                 <div class="col-lg-6">
                         
 
