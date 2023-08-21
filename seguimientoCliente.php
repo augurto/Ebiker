@@ -144,8 +144,33 @@ $dni = $_SESSION['dni'];
 
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                    <li class="breadcrumb-item active">Form Advanced</li>
+                                    
+                                    <li class="breadcrumb-item active">
+                                    <p>La página se recargará en <span id="contador">300</span> segundos.</p>
+                                    </li>
+                                    <script>
+                                        // Obtener el elemento del contador
+                                        var contadorElemento = document.getElementById("contador");
+
+                                        // Establecer el tiempo inicial en segundos (5 minutos)
+                                        var tiempoRestante = 300;
+
+                                        // Función para actualizar el contador
+                                        function actualizarContador() {
+                                            contadorElemento.textContent = tiempoRestante;
+
+                                            if (tiempoRestante > 0) {
+                                                tiempoRestante--;
+                                                setTimeout(actualizarContador, 1000); // Actualizar cada segundo
+                                            } else {
+                                                // Recargar la página al finalizar el temporizador
+                                                location.reload();
+                                            }
+                                        }
+
+                                        // Iniciar el contador
+                                        actualizarContador();
+                                    </script>
                                 </ol>
                             </div>
 
