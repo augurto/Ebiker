@@ -161,10 +161,15 @@ if ($resultadoContarFormularios) {
                 </li>
                 <!-- end li -->
                 <li>
+                <?php 
+                        if ($tipoUsuario == 1) {
+                            echo '
                         <a href="atendidos.php" class="waves-effect">
                             <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> <?php echo $conteoRegistros ; ?></span>
                             <span>Atendidos</span>
-                        </a>
+                        </a>';
+                    }
+                ?>
                 </li>
                 <li>
                     <?php 
