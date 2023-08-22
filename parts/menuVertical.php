@@ -181,6 +181,16 @@ if ($resultadoContarFormularios) {
                         }
                     ?>
                 </li>
+                <li>
+                    <?php 
+                        if ($tipoUsuario == 2) {
+                            echo '<a href="incio.php" class="waves-effect">
+                                <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> </span>
+                                <span>Consolidado</span>
+                            </a>';
+                        }
+                    ?>
+                </li>
                 
             </ul>
             <!-- end ul -->
