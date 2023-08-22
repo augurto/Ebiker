@@ -171,7 +171,7 @@ if ($resultadoContarFormularios) {
                         if ($tipoUsuario == 1) {
                             echo '
                         <a href="atendidos.php" class="waves-effect">
-                            <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> <?php echo $conteoRegistros ; ?></span>
+                            <i class="ri-dashboard-line"></i>
                             <span>Atendidos</span>
                         </a>';
                     }
@@ -181,7 +181,7 @@ if ($resultadoContarFormularios) {
                     <?php 
                         if ($tipoUsuario == 1) {
                             echo '<a href="clienteNuevo.php" class="waves-effect">
-                                <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> </span>
+                                <i class="ri-dashboard-line"></i>
                                 <span>Registrar Cliente</span>
                             </a>';
                         }
