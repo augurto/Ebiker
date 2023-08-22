@@ -184,7 +184,7 @@ if ($resultadoContarFormularios) {
                 <li>
                     <?php 
                         if ($tipoUsuario == 2) {
-                            echo '<a href="incio.php" class="waves-effect">
+                            echo '<a href="inicio.php" class="waves-effect">
                                 <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> </span>
                                 <span>Consolidado</span>
                             </a>';
