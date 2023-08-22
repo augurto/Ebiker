@@ -49,7 +49,6 @@
 
     <script>
         const cuadradoDiv = document.getElementById('cuadrado');
-        const cuadraditos = cuadradoDiv.querySelectorAll('.cuadradito');
         const filasInput = document.getElementById('filas');
         const columnasInput = document.getElementById('columnas');
 
@@ -57,30 +56,21 @@
         columnasInput.addEventListener('input', actualizarCuadraditos);
 
         function actualizarCuadraditos() {
-            const filas = parseInt(filasInput.value) || 0;
-            const columnas = parseInt(columnasInput.value) || 0;
-            const numCuadraditosRojo = 12;
+            const filas = parseInt(filasInput.value) || 1;
+            const columnas = parseInt(columnasInput.value) || 1;
             const totalCuadraditos = filas * columnas;
+
+            cuadradoDiv.innerHTML = '';
+
+            for (let i = 1; i <= totalCuadraditos; i++) {
+                const cuadradito = document.createElement('div');
+                const clase = (i <= 12) ? 'rojo' : '';
+                cuadradito.className = `cuadradito ${clase}`;
+                cuadradoDiv.appendChild(cuadradito);
+            }
 
             cuadradoDiv.style.gridTemplateColumns = `repeat(${columnas}, 1fr)`;
             cuadradoDiv.style.gridTemplateRows = `repeat(${filas}, 1fr)`;
-
-            cuadraditos.forEach((cuadradito, index) => {
-                const clase = (index < numCuadraditosRojo) ? 'rojo' : '';
-                cuadradito.className = `cuadradito ${clase}`;
-            });
-
-            if (totalCuadraditos > cuadraditos.length) {
-                for (let i = cuadraditos.length; i < totalCuadraditos; i++) {
-                    const nuevoCuadradito = document.createElement('div');
-                    nuevoCuadradito.className = 'cuadradito';
-                    cuadradoDiv.appendChild(nuevoCuadradito);
-                }
-            } else if (totalCuadraditos < cuadraditos.length) {
-                while (cuadraditos.length > totalCuadraditos) {
-                    cuadraditos[cuadraditos.length - 1].remove();
-                }
-            }
         }
     </script>
 </body>
