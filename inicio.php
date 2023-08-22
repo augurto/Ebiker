@@ -160,7 +160,7 @@ if ($tipoUsuario == 1) {
                                                     // Mostrar los datos en filas de la tabla
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
-                                                        $UsuarioVendedor=$row["id_user"];
+                                                        $UsuarioVendedor=$row["randomUser"];
                                                         $userQuery = "SELECT * FROM user WHERE id_user = $UsuarioVendedor";
                                                         $userResult = $conn->query($userQuery);
 
