@@ -148,7 +148,7 @@ if ($tipoUsuario == 1) {
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
                                                 $sql = "SELECT *
-                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
+                                                 FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser and DATE(fecha) >= '2023-07-25' ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
                                                 
