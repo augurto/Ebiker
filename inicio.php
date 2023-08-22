@@ -114,6 +114,7 @@ if ($tipoUsuario == 1) {
                                             <thead>
                                                 <tr>
                                                     <th>ID</th>
+                                                    <th>Vendedor</th>
                                                     <th>Accion</th>
                                                     <th>Nombres</th>
                                                     <th>Fuente</th>
@@ -146,10 +147,7 @@ if ($tipoUsuario == 1) {
                                                 }
 
                                                 // Consulta SQL para obtener los datos de la tabla "formulario_totem"
-                                                $sql = "SELECT 
-                                                id_form_web,date_create,datos_form,email,telefono,mensaje,fecha,URL,nombre_formulario,ip_formulario,
-                                                time,estado_web,estado_web,fuente_dato,id_user,idEmpresa,documentoCliente,tipoCliente,prospecto,
-                                                observacionCliente,idid,estadoCliente
+                                                $sql = "SELECT *
                                                  FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= $empresaUser ORDER BY fecha DESC";
                                                 
                                                 $result = $conn->query($sql);
@@ -162,8 +160,10 @@ if ($tipoUsuario == 1) {
                                                     // Mostrar los datos en filas de la tabla
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
+                                                        $UsuarioVendedor=$row["id_user"];
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
+                                                        echo "<td>" . $UsuarioVendedor . "</td>";
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
