@@ -161,6 +161,16 @@ if ($tipoUsuario == 1) {
                                                     while ($row = $result->fetch_assoc()) {
                                                         $prospecto=$row["prospecto"];
                                                         $UsuarioVendedor=$row["id_user"];
+                                                        $userQuery = "SELECT * FROM user WHERE id_user = $UsuarioVendedor";
+                                                        $userResult = $conn->query($userQuery);
+
+                                                        // Verificar si se encontró el usuario
+                                                        if ($userResult->num_rows > 0) {
+                                                            $userData = $userResult->fetch_assoc();
+                                                            $userName = $userData["userName"]; // Aquí capturamos el valor de userName
+                                                        } else {
+                                                            $userName = "Usuario no encontrado"; // Manejo de caso en que el usuario no se encuentra
+                                                        }
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                         echo "<td>" . $UsuarioVendedor . "</td>";
