@@ -173,7 +173,7 @@ if ($tipoUsuario == 1) {
                                                         }
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
-                                                        echo "<td>" . $UsuarioVendedor . "</td>";
+                                                        echo "<td>" . $userName . "</td>";
                                                         /* echo "<td>" . $row["datos_form"] . "</td>"; */
                                                         $url_dato = $row["URL"];
                                                         // Obtener los parámetros de la URL
