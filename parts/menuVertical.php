@@ -61,13 +61,7 @@ if ($resultadoContarFormularios) {
     // Si hubo un error en la consulta, asignar 0 al conteo
     $conteoRegistros = 0;
 }
-// Consulta SQL
-$sqlCount = "SELECT COUNT(*) as total FROM web_formularios where estado_web != 99 and prospecto !=4 and idEmpresa= 1 and DATE(fecha) >= '2023-07-25' ORDER BY fecha DESC";
 
-// Ejecutar la consulta y almacenar el resultado en una variable
-$resultadoCount = $conn->query($sqlCount);
-$filaCount = $resultadoCount->fetch_assoc();
-$contarLeads = $filaCount["total"];
 ?>
 
 <!-- ========== Left Sidebar Start ========== -->
