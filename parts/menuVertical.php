@@ -75,15 +75,20 @@ if ($resultadoContarFormularios) {
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
                 <li>
+                <?php
+                    if ($tipoUsuario == 1) {
+                        echo '
                         <a href="asignados.php" class="waves-effect">
-                            <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end"> <?php echo $conteoRegistros ; ?></span>
+                            <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">'. $conteoRegistros.'</span>
                             <span>Asignados</span>
-                        </a>
+                        </a>';
+                    }
+                    ?>
                 </li>
-
+              
                 <li>
                     <?php
-                    if ($tipoUsuario == 3) {
+                    if ($tipoUsuario == 4) {
                         echo '<a href="inicio.php" class="waves-effect">
                             <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">' . $noAtendidos . '</span>
                             <span>Inicio</span>
