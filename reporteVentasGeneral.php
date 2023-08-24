@@ -124,7 +124,7 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                             <a href="<?php echo $rutaArchivoNuevo; ?>" download class="text-dark"  style="font-size:15px;">
                                                
                                                 <?php
-                                                $nombreCorto = strlen($nombreArchivo) > 25 ? substr($nombreArchivo, 0, 25) . '...' : $nombreArchivo;
+                                                $nombreCorto = strlen($nombreArchivo) > 20 ? substr($nombreArchivo, 0, 20) . '...' : $nombreArchivo;
                                                 echo $nombreCorto;
                                                 ?>
                                                  <i class="ri-download-line"></i> <!-- Icono de descarga -->
