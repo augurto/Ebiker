@@ -107,6 +107,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>ID</th>
                                                     <!-- <th>Accion</th> -->
                                                     <th>Nombre Producto</th>
+                                                    <th>Vendedor</th>
                                                     <th>Precio</th>
                                                     <th>Cantidad</th>
                                                     <th>Total</th>
@@ -144,6 +145,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     // Mostrar los datos en filas de la tabla
                                                     while ($row = $result->fetch_assoc()) {
                                                         $nombreProducto=$row["nombreProducto"];
+                                                        $idUserVenta=$row["idUser"];
                                                         $precioProducto=$row["precioProducto"];
                                                         $cantidadProducto=$row["cantidadProducto"];
                                                         $montoTotal=$row["montoTotal"];
@@ -152,6 +154,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         echo "<tr>";
                                                         echo "<td>" . $id . "</td>";
                                                         echo "<td>" . $nombreProducto. "</td>";
+                                                        echo "<td>" . $idUserVenta. "</td>";
                                                         echo "<td>" . $precioProducto. "</td>";
                                                         echo "<td>" . $cantidadProducto . "</td>";
                                                         echo "<td>" . $montoTotal . "</td>";
