@@ -100,7 +100,7 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                 $observacionVenta = $row['observacionVenta'];
                                 $rutaArchivoNuevo = str_replace("../", "", $rutaArchivo);
                     ?>
-                    <div class="col-xl-3 col-sm-6">
+                    <div class="col-xl-4 col-sm-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex align-items-start">
