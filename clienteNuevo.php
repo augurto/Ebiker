@@ -213,6 +213,31 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                             </div>
                                             
                                             <div class="mb-12">
+                                                <label class="form-label">Tipo de Cliente</label>
+                                                <select class="form-control select2" id="tipoCliente" name="tipoCliente">
+                                                <?php
+                                                    include 'includes/conexion.php'; 
+                                                    // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                    $query = "SELECT * FROM tipoCliente";
+                                                    $result = mysqli_query($con, $query);
+
+                                                    // Verificar si se encontraron resultados
+                                                    if (mysqli_num_rows($result) > 0) {
+                                                        // Generar las opciones dentro del select
+                                                        while ($row = mysqli_fetch_assoc($result)) {
+                                                            $value = $row['valorTipoCliente'];
+                                                            $text = $row['descripcionTipoCliente'];
+                                                            echo "<option value='" . $value . "'>" . $text . "</option>";
+                                                        }
+                                                    }
+
+                                                    // Cerrar la conexión a la base de datos
+                                                    mysqli_close($con);
+                                                ?>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-12" id="divFuente" style="display:none;">
                                                 <label class="form-label">Fuente</label>
                                                 <select class="form-control select2" id="prospecto" name="prospecto">
                                                 <?php
@@ -237,33 +262,47 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                                 </select>
                                             </div>
 
-                                            <?php
-                                            if ($value2 === 6) {
-                                                echo '<div class="mb-12">
-                                                        <label class="form-label">Campaña</label>
-                                                        <select class="form-control select2" id="campana" name="campana">';
-                                                
-                                                include 'includes/conexion.php'; 
-                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                $queryCamp = "SELECT * FROM campaign";
-                                                $resultCamp = mysqli_query($con, $queryCamp);
+                                            <div class="mb-12" id="divCampana" style="display:none;">
+                                                <label class="form-label">Campaña</label>
+                                                <select class="form-control select2" id="campana" name="campana">
+                                                <?php
+                                                    include 'includes/conexion.php'; 
+                                                    // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                    $queryCamp = "SELECT * FROM campaign";
+                                                    $resultCamp = mysqli_query($con, $queryCamp);
 
-                                                // Verificar si se encontraron resultados
-                                                if (mysqli_num_rows($resultCamp) > 0) {
-                                                    // Generar las opciones dentro del select
-                                                    while ($rowCamp = mysqli_fetch_assoc($resultCamp)) {
-                                                        $valueCamp = $rowCamp['valorCampaign'];
-                                                        $textCamp = $rowCamp['nombreCampaign'];
-                                                        echo "<option value='" . $valueCamp . "'>" . $textCamp . "</option>";
+                                                    // Verificar si se encontraron resultados
+                                                    if (mysqli_num_rows($resultCamp) > 0) {
+                                                        // Generar las opciones dentro del select
+                                                        while ($rowCamp = mysqli_fetch_assoc($resultCamp)) {
+                                                            $valueCamp = $rowCamp['valorCampaign'];
+                                                            $textCamp = $rowCamp['nombreCampaign'];
+                                                            echo "<option value='" . $valueCamp . "'>" . $textCamp . "</option>";
+                                                        }
                                                     }
-                                                }
 
-                                                // Cerrar la conexión a la base de datos
-                                                mysqli_close($con);
+                                                    // Cerrar la conexión a la base de datos
+                                                    mysqli_close($con);
+                                                ?>
+                                                </select>
+                                            </div>
 
-                                                echo '</select></div>';
-                                            }
-                                            ?>
+                                            <script>
+                                                const tipoClienteSelect = document.getElementById('tipoCliente');
+                                                const divFuente = document.getElementById('divFuente');
+                                                const divCampana = document.getElementById('divCampana');
+
+                                                tipoClienteSelect.addEventListener('change', function() {
+                                                    if (this.value == 6) {
+                                                        divFuente.style.display = 'block';
+                                                        divCampana.style.display = 'block';
+                                                    } else {
+                                                        divFuente.style.display = 'none';
+                                                        divCampana.style.display = 'none';
+                                                    }
+                                                });
+                                            </script>
+
 
                                             
 
