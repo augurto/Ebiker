@@ -264,7 +264,19 @@ if ($tipoUsuario == 1) {
                                                     ?>
                                                 </select>
                                             </div>
-                                            
+                                            <script>
+                                                const prospectoSelect = document.getElementById('prospecto');
+                                                const divCampana = document.getElementById('divCampana');
+
+                                                prospectoSelect.addEventListener('change', () => {
+                                                    if (prospectoSelect.value === '6') {
+                                                        divCampana.style.display = 'block';
+                                                    } else {
+                                                        divCampana.style.display = 'none';
+                                                    }
+                                                });
+                                            </script>
+
 
                                             <div class="mt-6">
                                                 <label class="mb-1">Comentario</label>
