@@ -211,6 +211,7 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                                 </select>
 
                                             </div>
+                                            
                                             <div class="mb-12">
                                                 <label class="form-label">Fuente</label>
                                                 
@@ -229,6 +230,33 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                                     $value2 = $row2['tipoFuente'];
                                                     $text2 = $row2['descripcionFuente'];
                                                     echo "<option value='" . $value2 . "'>" . $text2 . "</option>";
+                                                    }
+                                                }
+
+                                                // Cerrar la conexión a la base de datos
+                                                mysqli_close($con);
+                                                ?>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="mb-12">
+                                                <label class="form-label">Campaña</label>
+                                                
+                                                <select class="form-control select2" id="campana" name="campana">
+                                                <?php
+                                                 include 'includes/conexion.php'; 
+                                                // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                $queryCamp = "SELECT * FROM campaign";
+                                                $resultCamp = mysqli_query($con, $queryCamp);
+
+                                                // Verificar si se encontraron resultados
+                                                if (mysqli_num_rows($resultCamp) > 0) {
+                                                    // Generar las opciones dentro del select
+                                                    while ($rowCamp = mysqli_fetch_assoc($resultCamp)) {
+                                                    $valueCamp = $rowCamp['valorCampaign'];
+                                                    $textCamp = $rowCamp['nombreCampaign'];
+                                                    echo "<option value='" . $valueCamp . "'>" . $textCamp . "</option>";
                                                     }
                                                 }
 
