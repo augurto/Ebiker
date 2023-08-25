@@ -22,9 +22,9 @@ $estadoWeb = 0;
 $estadoCliente =$tipoCliente;
 
 $query = "INSERT INTO web_formularios 
-(documentoCliente, datos_form, telefono, email, tipoCliente, prospecto, id_user, estado_web, mensaje, estadoCliente, idEmpresa,randomUser) 
+(documentoCliente, datos_form, telefono, email, tipoCliente, prospecto, id_user, estado_web, mensaje, estadoCliente, idEmpresa,randomUser,	aterrizajeFormulario,idCampaign) 
     VALUES 
-('$documento', '$datos', '$telefono', '$email', '$tipoCliente', '$prospecto', '$iduser', '$estadoWeb', '$comentario', '$estadoCliente', '$empresa','$userRandom')";
+('$documento', '$datos', '$telefono', '$email', '$tipoCliente', '$prospecto', '$iduser', '$estadoWeb', '$comentario', '$estadoCliente', '$empresa','$userRandom','$campana')";
 
 if (mysqli_query($con, $query)) {
     // La inserción fue exitosa, redirecciona a editarcliente.php con el parámetro id
