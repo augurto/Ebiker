@@ -11,6 +11,7 @@ $idweb = $_POST['idweb'];
 $iduser = $_POST['usuario'];
 $pr = $_POST['pr'];
 $tipoCliente = $_POST['tipoCliente'];
+$campana = $_POST['campana'];
 $prospecto = $_POST['prospecto'];
 $empresa = $_POST['empresa'];
 $userRandom = $_POST['userRandom'];
