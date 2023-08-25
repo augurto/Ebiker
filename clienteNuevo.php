@@ -237,36 +237,44 @@ $tipoUsuario = $_SESSION['tipoUsuario'];
                                                 </select>
                                             </div>
 
-                                            <?php
-                                            if ($value2 == 6) {
-                                                ?>
-                                                <div class="mb-12">
-                                                    <label class="form-label">Campaña</label>
-                                                    <select class="form-control select2" id="campana" name="campana">
-                                                        <?php
-                                                        include 'includes/conexion.php'; 
-                                                        // Realizar la consulta a la base de datos para obtener los datos de la tabla
-                                                        $queryCamp = "SELECT * FROM campaign";
-                                                        $resultCamp = mysqli_query($con, $queryCamp);
+                                            <div class="mb-12" id="divCampana" style="display: none;">
+                                                <label class="form-label">Campaña</label>
+                                                <select class="form-control select2" id="campana" name="campana">
+                                                    <?php
+                                                    include 'includes/conexion.php'; 
+                                                    // Realizar la consulta a la base de datos para obtener los datos de la tabla
+                                                    $queryCamp = "SELECT * FROM campaign";
+                                                    $resultCamp = mysqli_query($con, $queryCamp);
 
-                                                        // Verificar si se encontraron resultados
-                                                        if (mysqli_num_rows($resultCamp) > 0) {
-                                                            // Generar las opciones dentro del select
-                                                            while ($rowCamp = mysqli_fetch_assoc($resultCamp)) {
-                                                                $valueCamp = $rowCamp['valorCampaign'];
-                                                                $textCamp = $rowCamp['nombreCampaign'];
-                                                                echo "<option value='" . $valueCamp . "'>" . $textCamp . "</option>";
-                                                            }
+                                                    // Verificar si se encontraron resultados
+                                                    if (mysqli_num_rows($resultCamp) > 0) {
+                                                        // Generar las opciones dentro del select
+                                                        while ($rowCamp = mysqli_fetch_assoc($resultCamp)) {
+                                                            $valueCamp = $rowCamp['valorCampaign'];
+                                                            $textCamp = $rowCamp['nombreCampaign'];
+                                                            echo "<option value='" . $valueCamp . "'>" . $textCamp . "</option>";
                                                         }
+                                                    }
 
-                                                        // Cerrar la conexión a la base de datos
-                                                        mysqli_close($con);
-                                                        ?>
-                                                    </select>
-                                                </div>
-                                                <?php
-                                            }
-                                            ?>
+                                                    // Cerrar la conexión a la base de datos
+                                                    mysqli_close($con);
+                                                    ?>
+                                                </select>
+                                            </div>
+
+                                            <script>
+                                                const prospectoSelect = document.getElementById('prospecto');
+                                                const divCampana = document.getElementById('divCampana');
+
+                                                prospectoSelect.addEventListener('change', () => {
+                                                    if (prospectoSelect.value === '6') {
+                                                        divCampana.style.display = 'block';
+                                                    } else {
+                                                        divCampana.style.display = 'none';
+                                                    }
+                                                });
+                                            </script>
+
 
 
                                             <!-- MOSTRAR SOLO CUANDO SE SELECCIONE WHATSAPP -->
