@@ -142,7 +142,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                             <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
                                             <select class="form-select" id="selectUsuario" name="selectUsuario">
                                                 <?php
-                                                $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
+                                                $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1 and estadoUser = 0";
                                                 $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
                                                 while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
