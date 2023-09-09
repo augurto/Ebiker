@@ -194,8 +194,18 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo "<td>". $diferenciaMinutos . " minutos". "</td>";
                                                         }
                                                         $url_dato = $row["URL"];
-                                                        echo '<td><span class="badge rounded-pill" style="background-color: black; color: white;">'.$nombreCampana.'</span></td>';
+                                                        if ($nombreCampana ="Ebiker Trujillo"){
+                                                            echo '<td><span class="badge rounded-pill" style="background-color: blue; color: white;">Trujillo</span></td>';
 
+
+                                                        }elseif(empty($nombreCampana)){
+                                                            echo '<td><span class="badge rounded-pill" style="background-color: green; color: white;">Manual</span></td>';
+
+                                                        }else{
+                                                            echo '<td><span class="badge rounded-pill" style="background-color: orange; color: white;">Web</span></td>';
+
+                                                        }
+                                                       
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
 
