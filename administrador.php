@@ -159,7 +159,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             $userData = $userResult->fetch_assoc();
                                                             $userName = $userData["userName"]; // Aquí capturamos el valor de userName
                                                         } else {
-                                                            $userName = "Usuario no encontrado"; // Manejo de caso en que el usuario no se encuentra
+                                                            $userName = "No asignado"; // Manejo de caso en que el usuario no se encuentra
                                                         }
                                                         $fechaActual2 = date("Y-m-d H:i:s");
                                                         // Obtener la fecha actual en formato Unix Timestamp
