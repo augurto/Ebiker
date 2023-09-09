@@ -194,7 +194,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo "<td>". $diferenciaMinutos . " minutos". "</td>";
                                                         }
                                                         $url_dato = $row["URL"];
-                                                        if ($nombreCampana ="Ebiker Trujillo"){
+                                                        if ($nombreCampana ='Ebiker Trujillo'){
                                                             echo '<td><span class="badge rounded-pill" style="background-color: blue; color: white;">Trujillo</span></td>';
 
 
