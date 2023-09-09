@@ -109,7 +109,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                     <th>Vendedor</th>
                                                     <th>Fecha Ingreso</th>
                                                     <th>Tiempo no atendido</th>
-                                                    <th>Accion</th>
+                                                    <th>Campaña</th>
                                                     <th>Fuente</th>
                                                     <th>Estado</th>
                                                     <th>Nombres</th>
@@ -149,6 +149,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                         $prospecto=$row["prospecto"];
                                                         $idUsuarioRandom=$row["randomUser"];
                                                         $idConsulta=$row['id_form_web'];
+                                                        $nombreCampana =$row['nombre_formulario'];
                                                         // Consulta para obtener el usuario con el id_usuario específico
                                                         $userQuery = "SELECT * FROM user WHERE id_user = $idUsuarioRandom";
                                                         $userResult = $conn->query($userQuery);
@@ -193,6 +194,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             echo "<td>". $diferenciaMinutos . " minutos". "</td>";
                                                         }
                                                         $url_dato = $row["URL"];
+                                                        echo '<td><span class="badge rounded-pill" style="background-color: black; color: white;">'.$nombreCampana.'</span></td>';
+
                                                         // Obtener los parámetros de la URL
                                                         $params = parse_url($url_dato, PHP_URL_QUERY);
 
@@ -213,45 +216,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             // Obtener el valor de $row["estado_web"]
                                                             $estado_web = $row["estado_web"];
 
-                                                            if ($estado_web == 0 && !empty($a)) {
-                                                                echo "<td>
-                                                                
-                                                                <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
-                                                                    Atender
-                                                                </a>                                                       
-                                                                </td>";
-                                                               
-                                                            } elseif ($estado_web == 1) {
-                                                                echo "<td>
-                                                                        
-                                                                            <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
-                                                                            Atendido
-                                                                            </a>
-                                                                        </td>";
-                                                                   
-                                                            } elseif (empty($a) && $estado_web == 0  ) {
-                                                                echo "<td>
-                                                                    <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
-                                                                        Atender
-                                                                    </a>
-                                                                </td>";
-                                                               
-                                                            }
                                                             
-                                                        
-                                                            if (empty($row["id_user"])) {
-                                                                if ($a == "Google ADS") {
-                                                                    $fuenteOriginal = 2;
-                                                                } elseif ($a == "Meta ADS") {
-                                                                    $fuenteOriginal = 3;
-                                                                } else {
-                                                                    $fuenteOriginal = 1;
-                                                                }
-                                                            } else {
-                                                                $fuenteOriginal = $row["prospecto"];
-                                                            }
-                                                            
-                                                        /* condicional para mostrar si es de facebook, google, organico o presencial */
+                                                      
                                                       
 
                                                                 $queryFuente = "SELECT colorFuente,descripcionFuente FROM fuente WHERE tipoFuente = '$fuenteOriginal'";
