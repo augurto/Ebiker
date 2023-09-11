@@ -91,7 +91,7 @@ $dni = $_SESSION['dni'];
 ?>
 
 <!doctype html>
-<html lang="en">
+<html lang="ES">
 
 <head>
 
