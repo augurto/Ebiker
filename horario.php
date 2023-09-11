@@ -29,6 +29,12 @@ $empresaUser = $_SESSION['empresaUser'];
     <link href="assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    
+    
+    <link href="assets/libs/datatables.net-autofill-bs4/css/autoFill.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="assets/libs/datatables.net-keytable-bs4/css/keyTable.bootstrap4.min.css" rel="stylesheet"
+        type="text/css" />
 
     <!-- Responsive datatable examples -->
     <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
@@ -227,6 +233,10 @@ $empresaUser = $_SESSION['empresaUser'];
 
     <!-- Datatable init js -->
     <script src="assets/js/pages/datatables.init.js"></script>
+    <!-- Table Editable plugin -->
+    <script src="assets/libs/table-edits/build/table-edits.min.js"></script>
+
+    <script src="assets/js/pages/table-editable.init.js"></script>
 
     <script src="assets/js/app.js"></script>
 
