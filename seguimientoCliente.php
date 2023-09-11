@@ -338,7 +338,7 @@ $dni = $_SESSION['dni'];
                                                 ?>
                                                 <label class="mb-1">Campaña : </label> <?php 
                                                 $camp=$_GET['f'];
-                                                echo '<span class="badge rounded-pill">'.$camp.'</span>'; ?>
+                                                echo '<span class="badge rounded-pill"  style="background-color:green" >'.$camp.'</span>'; ?>
 
 
                                             </div>
