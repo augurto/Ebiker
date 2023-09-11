@@ -336,7 +336,8 @@ $dni = $_SESSION['dni'];
 
                                                 mysqli_close($con);
                                                 ?>
-                                                <label class="mb-1">Campaña : </label>
+                                                <label class="mb-1">Campaña : </label> <?php echo '<span class="badge rounded-pill">'.$_GET['f'].'</span>'; ?>
+
 
                                             </div>
                                             <br>

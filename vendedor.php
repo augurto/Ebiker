@@ -186,7 +186,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             if ($estado_web == 0 && !empty($a)) {
                                                                 echo "<td>
                                                                 
-                                                                <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
+                                                                <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $c . "'  class='btn btn-danger waves-effect waves-light'>
                                                                     Atender
                                                                 </a>
 
@@ -198,7 +198,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             } elseif ($estado_web == 1) {
                                                                 echo "<td>
                                                                         
-                                                                            <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-primary waves-effect waves-light'>
+                                                                            <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $c . "'  class='btn btn-primary waves-effect waves-light'>
                                                                             Atendido
                                                                             </a>
 
@@ -208,7 +208,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                                     </td>";
                                                             } elseif (empty($a) && $estado_web == 0  ) {
                                                                 echo "<td>
-                                                                    <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $tipoFuente . "'  class='btn btn-danger waves-effect waves-light'>
+                                                                    <a href='seguimientoCliente.php?id=" . $row['id_form_web'] . "&pr=" . $a . "&f=" . $c . "'  class='btn btn-danger waves-effect waves-light'>
                                                                         Atender
                                                                     </a>
                                                                 </td>";
@@ -221,6 +221,8 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                                     $fuenteOriginal = 2;
                                                                 } elseif ($a == "Meta ADS") {
                                                                     $fuenteOriginal = 3;
+                                                                } elseif ($a == "TIKTOK ADS") {
+                                                                    $fuenteOriginal = 11;
                                                                 } else {
                                                                     $fuenteOriginal = 1;
                                                                 }
