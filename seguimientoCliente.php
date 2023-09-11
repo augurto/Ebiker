@@ -311,6 +311,8 @@ $dni = $_SESSION['dni'];
                                                         $fuenteOriginal = 2;
                                                     } elseif ($_GET['pr'] == "Meta ADS") {
                                                         $fuenteOriginal = 3;
+                                                    } elseif ($_GET['pr'] == "TIKTOK ADS") {
+                                                        $fuenteOriginal = 11;
                                                     } else {
                                                         $fuenteOriginal = 1;
                                                     }
