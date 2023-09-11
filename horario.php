@@ -105,7 +105,9 @@ $empresaUser = $_SESSION['empresaUser'];
                                 <h4 class="card-title">Datatable Editable</h4>
 
                                     <?php
-                                    
+                                    // Tu conexión a la base de datos
+                                    include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
+
                                     // Consulta SQL para obtener el horario con el nombre del usuario
                                     $query = "SELECT hv.id, u.name AS name_user, hv.age, hv.gender
                                             FROM horario_vendedor hv
