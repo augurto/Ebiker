@@ -336,6 +336,7 @@ $dni = $_SESSION['dni'];
 
                                                 mysqli_close($con);
                                                 ?>
+                                                <label class="mb-1">Campaña : </label>
 
                                             </div>
                                             <br>
