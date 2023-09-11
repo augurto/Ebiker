@@ -123,7 +123,21 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 <tr>
                                                     <td><?php echo $row3['userName']; ?></td>
                                                     <td><?php echo $row3['cantidad']; ?></td>
-                                                    <td><?php echo $row3['sede']; ?></td>
+                                                    <td>
+                                                        <?php 
+                                                        if($row3['sede']==0){
+                                                        echo 'Independencia'; 
+                                                        }elseif($row3['sede']==1){
+                                                            echo 'Mega Plaza';
+                                                        }elseif($row3['sede']==2){
+                                                            echo 'Los Olivos';
+                                                        }elseif($row3['sede']==3){
+                                                            echo 'Surco';
+                                                        }else{
+                                                            echo 'Trujillo';
+                                                        }
+                                                        ?>
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
