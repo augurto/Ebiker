@@ -262,7 +262,7 @@ $dni = $_SESSION['dni'];
                                             <div class="row mb-3">
                                                 <label for="example-email-input" class="col-sm-2 col-form-label">Usuario Asignado</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text"  value="<?php echo $randomUser  ; ?>" 
+                                                    <input class="form-control" type="text"  value="<?php echo $idUsuarioSesion  ; ?>" 
                                                         id="example-email-input" name="randomUser" readonly >
                                                 </div>
                                             </div>
