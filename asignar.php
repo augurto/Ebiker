@@ -99,7 +99,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                     <?php
 
 
-                                    $query3 = "SELECT u.userName, wf.randomUser, COUNT(*) AS cantidad
+                                    $query3 = "SELECT u.userName,u.sede, wf.randomUser, COUNT(*) AS cantidad
                                         FROM web_formularios wf
                                         INNER JOIN user u ON u.id_user = wf.randomUser
                                         WHERE wf.estado_web = 0
@@ -115,6 +115,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                             <tr>
                                                 <th>Vendedor</th>
                                                 <th>Cantidad no Atendidos</th>
+                                                <th>Sede</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -122,6 +123,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 <tr>
                                                     <td><?php echo $row3['userName']; ?></td>
                                                     <td><?php echo $row3['cantidad']; ?></td>
+                                                    <td><?php echo $row3['sede']; ?></td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
