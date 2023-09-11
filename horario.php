@@ -104,83 +104,55 @@ $empresaUser = $_SESSION['empresaUser'];
                             <div class="card-body">
                                 <h4 class="card-title">Datatable Editable</h4>
 
-                                <div class="table-responsive">
-                                    <table class="table table-editable table-nowrap align-middle table-edits">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Age</th>
-                                                <th>Gender</th>
-                                                <th>Edit</th>
-                                            </tr>
-                                        </thead>
-                                        <!-- end thead -->
-                                        <tbody>
-                                            <tr data-id="1">
-                                                <td data-field="id" style="width: 80px">1</td>
-                                                <td data-field="name">David McHenry</td>
-                                                <td data-field="age">24</td>
-                                                <td data-field="gender">Male</td>
-                                                <td style="width: 100px">
+                                    <?php
+                                    
+                                    // Consulta SQL para obtener el horario con el nombre del usuario
+                                    $query = "SELECT hv.id, u.name AS name_user, hv.age, hv.gender
+                                            FROM horario_vendedor hv
+                                            INNER JOIN user u ON hv.id_user = u.id_user";
+
+                                    $result = mysqli_query($con, $query);
+
+                                    if (mysqli_num_rows($result) > 0) {
+                                        // Imprimir la tabla con los resultados
+                                        echo '<div class="table-responsive">
+                                                <table class="table table-editable table-nowrap align-middle table-edits">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Name</th>
+                                                            <th>Age</th>
+                                                            <th>Gender</th>
+                                                            <th>Edit</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>';
+
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            echo '<tr data-id="' . $row['id'] . '">';
+                                            echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
+                                            echo '<td data-field="name">' . $row['name_user'] . '</td>';
+                                            echo '<td data-field="age">' . $row['age'] . '</td>';
+                                            echo '<td data-field="gender">' . $row['gender'] . '</td>';
+                                            echo '<td style="width: 100px">
                                                     <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
                                                         <i class="fas fa-pencil-alt"></i>
                                                     </a>
-                                                </td>
-                                            </tr>
-                                            <!-- end tr -->
-                                            <tr data-id="2">
-                                                <td data-field="id">2</td>
-                                                <td data-field="name">Frank Kirk</td>
-                                                <td data-field="age">22</td>
-                                                <td data-field="gender">Male</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <!-- end tr -->
-                                            <tr data-id="3">
-                                                <td data-field="id">3</td>
-                                                <td data-field="name">Rafael Morales</td>
-                                                <td data-field="age">26</td>
-                                                <td data-field="gender">Male</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <!-- end tr -->
-                                            <tr data-id="4">
-                                                <td data-field="id">4</td>
-                                                <td data-field="name">Mark Ellison</td>
-                                                <td data-field="age">32</td>
-                                                <td data-field="gender">Male</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <!-- end tr -->
-                                            <tr data-id="5">
-                                                <td data-field="id">5</td>
-                                                <td data-field="name">Minnie Walter</td>
-                                                <td data-field="age">27</td>
-                                                <td data-field="gender">Female</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            <!-- end tr -->
-                                        </tbody>
-                                        <!-- end tbody -->
-                                    </table>
-                                </div>
+                                                </td>';
+                                            echo '</tr>';
+                                        }
+
+                                        echo '</tbody>
+                                            </table>
+                                        </div>';
+                                    } else {
+                                        echo "No se encontraron registros.";
+                                    }
+
+                                    // Cierra la conexión a la base de datos
+                                    mysqli_close($con);
+                                    ?>
+
                             </div>
                             <!-- end cardbody -->
                         </div>
