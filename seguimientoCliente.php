@@ -180,11 +180,12 @@ $dni = $_SESSION['dni'];
                 <!-- end page title -->
 
                 <?php
-                if ($randomUser != $idUsuarioSesion || ($tipoUsuario == 2)) {
+                if ($randomUser = $idUsuarioSesion || ($tipoUsuario == 2)) {
                     // El contenido del div no se mostrará si $randomUser es diferente de $idUsuarioSesion
-                    echo '<div class="row" style="display:none">';
-                } else {
                     echo '<div class="row">';
+                } else {
+                    
+                    echo '<div class="row" style="display:none">';
                 }
                 ?>
                 <div class="col-lg-6">
