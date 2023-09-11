@@ -234,7 +234,9 @@ if ($tipoUsuario == 1) {
                                                                     $fuenteOriginal = 2;
                                                                 } elseif ($a == "Meta ADS") {
                                                                     $fuenteOriginal = 3;
-                                                                } else {
+                                                                } elseif($a== "TIKTOK ADS"){
+
+                                                                }else {
                                                                     $fuenteOriginal = 1;
                                                                 }
                                                             } else {
