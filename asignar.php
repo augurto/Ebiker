@@ -104,7 +104,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                         INNER JOIN user u ON u.id_user = wf.randomUser
                                         WHERE wf.estado_web = 0
                                         GROUP BY wf.randomUser
-                                        ORDER BY cantidad ASC";
+                                        ORDER BY u.sede ASC";
 
                                     $result3 = mysqli_query($con, $query3);
                                     ?>
