@@ -104,57 +104,60 @@ $empresaUser = $_SESSION['empresaUser'];
                             <div class="card-body">
                                 <h4 class="card-title">Datatable Editable</h4>
 
-                                    <?php
-                                    // Tu conexión a la base de datos
-                                    include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
+                                <?php
+                                // Tu conexión a la base de datos
+                                include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
-                                    // Consulta SQL para obtener el horario con el nombre del usuario
-                                    $query = "SELECT hv.id, u.name AS name_user, hv.age, hv.gender
-                                            FROM horario_vendedor hv
-                                            INNER JOIN user u ON hv.id_user = u.id_user";
+                                // Consulta SQL para obtener los datos de la tabla horario_vendedor
+                                $query = "SELECT * FROM horario_vendedor";
 
-                                    $result = mysqli_query($con, $query);
+                                $result = mysqli_query($con, $query);
 
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // Imprimir la tabla con los resultados
-                                        echo '<div class="table-responsive">
-                                                <table class="table table-editable table-nowrap align-middle table-edits">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>ID</th>
-                                                            <th>Name</th>
-                                                            <th>Age</th>
-                                                            <th>Gender</th>
-                                                            <th>Edit</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>';
+                                if (mysqli_num_rows($result) > 0) {
+                                    // Imprimir la tabla con los resultados
+                                    echo '<div class="table-responsive">
+                                            <table class="table table-editable table-nowrap align-middle table-edits">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>ID de Usuario</th>
+                                                        <th>Días</th>
+                                                        <th>Hora de Entrada</th>
+                                                        <th>Hora de Salida</th>
+                                                        <th>Sede</th>
+                                                        <th>Estado</th>
+                                                        <th>Editar</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>';
 
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            echo '<tr data-id="' . $row['id'] . '">';
-                                            echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
-                                            echo '<td data-field="name">' . $row['name_user'] . '</td>';
-                                            echo '<td data-field="age">' . $row['age'] . '</td>';
-                                            echo '<td data-field="gender">' . $row['gender'] . '</td>';
-                                            echo '<td style="width: 100px">
-                                                    <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </a>
-                                                </td>';
-                                            echo '</tr>';
-                                        }
-
-                                        echo '</tbody>
-                                            </table>
-                                        </div>';
-                                    } else {
-                                        echo "No se encontraron registros.";
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<tr data-id="' . $row['id'] . '">';
+                                        echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
+                                        echo '<td data-field="id_user">' . $row['id_user'] . '</td>';
+                                        echo '<td data-field="dias">' . $row['dias'] . '</td>';
+                                        echo '<td data-field="hora_entrada">' . $row['hora_entrada'] . '</td>';
+                                        echo '<td data-field="hora_salida">' . $row['hora_salida'] . '</td>';
+                                        echo '<td data-field="sede">' . $row['sede'] . '</td>';
+                                        echo '<td data-field="estado">' . $row['estado'] . '</td>';
+                                        echo '<td style="width: 100px">
+                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                    <i class="fas fa-pencil-alt"></i>
+                                                </a>
+                                            </td>';
+                                        echo '</tr>';
                                     }
 
-                                    // Cierra la conexión a la base de datos
-                                    mysqli_close($con);
-                                    ?>
+                                    echo '</tbody>
+                                        </table>
+                                    </div>';
+                                } else {
+                                    echo "No se encontraron registros.";
+                                }
 
+                                // Cierra la conexión a la base de datos
+                                mysqli_close($con);
+                                ?>
                             </div>
                             <!-- end cardbody -->
                         </div>
