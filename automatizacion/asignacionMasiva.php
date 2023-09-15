@@ -22,14 +22,16 @@ if ($result) {
         $hora_salida = $row['hora_salida'];
 
         // Verificar si la hora actual está dentro del rango de horas de trabajo
-        if ($currentTime >= $hora_entrada && $currentTime <= $hora_salida) {
+        $isWithinWorkingHours = ($currentTime >= $hora_entrada && $currentTime <= $hora_salida);
+
+        if ($isWithinWorkingHours) {
             // Si está dentro del horario, establecer el estado en 1
             $updateQuery = "UPDATE horario_vendedor SET estado = 1 WHERE id_user = $id_user";
-            $message = "El estado del usuario $id_user se ha actualizado a 1 (Dentro del horario).";
+            $message = "El estado del usuario $id_user se ha actualizado a 1 (Dentro del horario: $hora_entrada - $hora_salida).";
         } else {
             // Si está fuera del horario, establecer el estado en 0
             $updateQuery = "UPDATE horario_vendedor SET estado = 0 WHERE id_user = $id_user";
-            $message = "El estado del usuario $id_user se ha actualizado a 0 (Fuera del horario).";
+            $message = "El estado del usuario $id_user se ha actualizado a 0 (Fuera del horario: $hora_entrada - $hora_salida).";
         }
 
         if (mysqli_query($con, $updateQuery)) {
