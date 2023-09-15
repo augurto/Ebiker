@@ -212,7 +212,7 @@ $empresaUser = $_SESSION['empresaUser'];
                             $dayOfWeek = date('N');
                             
                             // Consulta SQL para obtener los IDs de usuarios con estado = 1 para el día actual
-                            $query = "SELECT id_user FROM horario_vendedor WHERE numero_dias = $dayOfWeek AND estado = 1";
+                            $query = "SELECT id_user FROM horario_vendedor WHERE numero_dias = date('N') AND estado = 1";
                             
                             $result = mysqli_query($con, $query);
                             
