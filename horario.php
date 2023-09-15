@@ -152,7 +152,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     echo '</td>';
                                                     echo '<td>';
                                                     echo '<input type="checkbox" id="actionSwitch' . $row['id'] . '" switch="none"';
-                                                    if ($row['estado'] == 1) {
+                                                    if ($row['trabajaHoy'] == 1) {
                                                         echo ' checked ';
                                                     }
                                                     echo '/>';

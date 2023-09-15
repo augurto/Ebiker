@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = $_POST['id'];
 
     // Verificar el estado actual del registro
-    $query = "SELECT estado FROM horario_vendedor WHERE id = ?";
+    $query = "SELECT trabajaHoy FROM horario_vendedor WHERE id = ?";
     $stmt = $con->prepare($query);
     $stmt->bind_param("i", $id);
     $stmt->execute();
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $nuevoEstado = ($estadoActual == 1) ? 0 : 1;
 
     // Actualizar el estado en la base de datos
-    $query = "UPDATE horario_vendedor SET estado = ? WHERE id = ?";
+    $query = "UPDATE horario_vendedor SET trabajaHoy = ? WHERE id = ?";
     $stmt = $con->prepare($query);
     $stmt->bind_param("ii", $nuevoEstado, $id);
 
