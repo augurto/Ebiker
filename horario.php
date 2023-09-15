@@ -110,6 +110,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                 include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
+                                
                                 $query = "SELECT *
                                 FROM horario_vendedor
                                 WHERE numero_dias = DAYOFWEEK(CURDATE())
