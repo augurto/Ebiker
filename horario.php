@@ -106,11 +106,11 @@ $empresaUser = $_SESSION['empresaUser'];
 
                                 <?php
                                 // Tu conexión a la base de datos
-                                
+
                                 include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
-                                
+
                                 $query = "SELECT *
                                 FROM horario_vendedor
                                 WHERE numero_dias = DAYOFWEEK(CURDATE())
@@ -122,7 +122,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                 if (mysqli_num_rows($result) > 0) {
                                     // Imprimir la tabla con los resultados
                                     echo '<div class="table-responsive">
-                                            <table class="table table-editable table-nowrap align-middle table-edits">
+                                            <table class="table mb-0">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -132,32 +132,25 @@ $empresaUser = $_SESSION['empresaUser'];
                                                         <th>Hora de Salida</th>
                                                         <th>Sede</th>
                                                         <th>Estado</th>
-                                                        <th>Editar</th>
+                                                        <th>Acción</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>';
 
-                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo '<tr data-id="' . $row['id'] . '" data-id_user="' . $row['id_user'] . '" data-dias="' . $row['dias'] . '" data-hora_entrada="' . $row['hora_entrada'] . '" data-hora_salida="' . $row['hora_salida'] . '" data-sede="' . $row['sede'] . '" data-estado="' . $row['estado'] . '">';
-                                                    echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
-                                                    echo '<td data-field="id_user">' . $row['id_user'] . '</td>';
-                                                    echo '<td data-field="dias">' . $row['dias'] . '</td>';
-                                                    echo '<td data-field="hora_entrada">' . $row['hora_entrada'] . '</td>';
-                                                    echo '<td data-field="hora_salida">' . $row['hora_salida'] . '</td>';
-                                                    echo '<td data-field="sede">' . $row['sede'] . '</td>';
-                                                    echo '<td data-field="estado">' . $row['estado'] . '</td>';
-                                                    echo '<td style="width: 100px">';
-                                                    echo '<a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                            <i class="fas fa-pencil-alt"></i>
-                                                          </a>';
-                                                    echo '<button class="btn btn-primary btn-sm save" style="display: none;">Guardar</button>';
-                                                    echo '<input type="hidden" class="original-value" value="' . $row['estado'] . '">';
-                                                    echo '</td>';
-                                                    echo '</tr>';
-                                                }
-                                                
-                                                
-                                                
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<tr>';
+                                        echo '<td>' . $row['id'] . '</td>';
+                                        echo '<td>' . $row['id_user'] . '</td>';
+                                        echo '<td>' . $row['dias'] . '</td>';
+                                        echo '<td>' . $row['hora_entrada'] . '</td>';
+                                        echo '<td>' . $row['hora_salida'] . '</td>';
+                                        echo '<td>' . $row['sede'] . '</td>';
+                                        echo '<td>' . $row['estado'] . '</td>';
+                                        echo '<td><input type="checkbox" id="switch'.$row['id'].'" switch="none" checked />
+                                                <label for="switch'.$row['id'].'" data-on-label="On" data-off-label="Off"></label>
+                                            </td>';
+                                        echo '</tr>';
+                                    }
 
                                     echo '</tbody>
                                         </table>
@@ -169,67 +162,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                 // Cierra la conexión a la base de datos
                                 mysqli_close($con);
                                 ?>
-                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                                <script>
-                                    $(document).ready(function () {
-                                        // Manejar clic en botones "Editar"
-                                        $(".edit").on("click", function () {
-                                            var row = $(this).closest("tr");
-                                            row.find(".edit").hide();
-                                            row.find(".save").show();
-                                            row.find(".select-field").show();
-                                            row.find(".original-value").hide();
-                                        });
 
-                                        // Manejar clic en botones "Guardar"
-                                        $(".save").on("click", function () {
-                                            var row = $(this).closest("tr");
-                                            var id = row.data("id");
-                                            var id_user = row.data("id_user");
-                                            var dias = row.data("dias");
-                                            var hora_entrada = row.data("hora_entrada");
-                                            var hora_salida = row.data("hora_salida");
-                                            var sede = row.data("sede");
-                                            var estado = row.find(".select-field").val(); // Captura el valor editado
-
-                                            // Aquí puedes realizar alguna acción adicional si lo necesitas antes de enviar los datos
-
-                                            // Realizar la solicitud AJAX para actualizar los datos
-                                            $.ajax({
-                                                type: "POST",
-                                                url: "includes/actualizarHorario.php",
-                                                data: {
-                                                    id: id,
-                                                    id_user: id_user,
-                                                    dias: dias,
-                                                    hora_entrada: hora_entrada,
-                                                    hora_salida: hora_salida,
-                                                    sede: sede,
-                                                    estado: estado
-                                                },
-                                                success: function (response) {
-                                                    console.log(response);
-
-                                                    // Realizar acciones adicionales después de la actualización si es necesario
-
-                                                    if (response === "success") {
-                                                        row.find(".edit").show();
-                                                        row.find(".save").hide();
-                                                        row.find(".select-field").hide();
-                                                        row.find(".original-value").show();
-                                                        row.find(".original-value").text(estado);
-                                                    } else {
-                                                        alert("Error al actualizar.");
-                                                    }
-                                                }
-                                            });
-                                        });
-                                    });
-                                </script>
-
-
-
-
+                               
 
                             </div>
                             <!-- end cardbody -->
