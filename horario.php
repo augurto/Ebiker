@@ -141,7 +141,21 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     echo '<td>' . $row['dias'] . '</td>';
                                                     echo '<td>' . $row['hora_entrada'] . '</td>';
                                                     echo '<td>' . $row['hora_salida'] . '</td>';
-                                                    echo '<td>' . $row['sede'] . '</td>';
+                                                    echo '<td>';
+                                                    $sede = $row['sede'];
+                                                    if ($sede == 1) {
+                                                        echo 'Surco';
+                                                    } elseif ($sede == 2) {
+                                                        echo 'Mega Plaza';
+                                                    } elseif ($sede == 3) {
+                                                        echo 'Los Olivos';
+                                                    } elseif ($sede == 4) {
+                                                        echo 'Independencia';
+                                                    } else {
+                                                        echo 'Sede no Registrada';
+                                                    }
+                                                    echo '</td>';
+
                                                     echo '<td>' . ($row['estado'] == 1 ? 'Trabajando' : 'Fuera de Horario') . '</td>';
                                                     echo '<td>';
                                                     echo '<input type="checkbox" id="switch' . $row['id'] . '" switch="none"';
