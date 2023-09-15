@@ -8,7 +8,7 @@ $dayOfWeek = date('N');
 $currentTime = date('H:i:s');
 
 // Consulta SQL para seleccionar los IDs de usuarios y sus horarios
-$query = "SELECT id_user, hora_entrada, hora_salida
+$query = "SELECT id, id_user, hora_entrada, hora_salida
 FROM horario_vendedor
 WHERE WEEKDAY(CURDATE()) + 1 = numero_dias";
 
@@ -17,6 +17,7 @@ $result = mysqli_query($con, $query);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         // Obtener los datos del usuario y su horario
+        $id = $row['id'];
         $id_user = $row['id_user'];
         $hora_entrada = $row['hora_entrada'];
         $hora_salida = $row['hora_salida'];
@@ -26,18 +27,18 @@ if ($result) {
 
         if ($isWithinWorkingHours) {
             // Si está dentro del horario, establecer el estado en 1
-            $updateQuery = "UPDATE horario_vendedor SET estado = 1 WHERE id_user = $id_user";
-            $message = "El estado del usuario $id_user se ha actualizado a 1 (Dentro del horario: $hora_entrada - $hora_salida).";
+            $updateQuery = "UPDATE horario_vendedor SET estado = 1 WHERE id = $id";
+            $message = "El estado del usuario ID $id_user se ha actualizado a 1 (Dentro del horario: $hora_entrada - $hora_salida).";
         } else {
             // Si está fuera del horario, establecer el estado en 0
-            $updateQuery = "UPDATE horario_vendedor SET estado = 0 WHERE id_user = $id_user";
-            $message = "El estado del usuario $id_user se ha actualizado a 0 (Fuera del horario: $hora_entrada - $hora_salida).";
+            $updateQuery = "UPDATE horario_vendedor SET estado = 0 WHERE id = $id";
+            $message = " $id El estado del usuario ID $id_user se ha actualizado a 0 (Fuera del horario: $hora_entrada - $hora_salida).";
         }
 
         if (mysqli_query($con, $updateQuery)) {
             echo $message . "<br>";
         } else {
-            echo "Error al actualizar el estado del usuario $id_user.<br>";
+            echo "Error al actualizar el estado del usuario ID $id_user.<br>";
         }
     }
 } else {
