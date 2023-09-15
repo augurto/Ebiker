@@ -145,7 +145,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     echo '<td data-field="hora_entrada">' . $row['hora_entrada'] . '</td>';
                                                     echo '<td data-field="hora_salida">' . $row['hora_salida'] . '</td>';
                                                     echo '<td data-field="sede">' . $row['sede'] . '</td>';
-                                                    echo '<td data-field="estado" data-original="' . $row['estado'] . '">' . $row['estado'] . '</td>';
+                                                    echo '<td data-field="estado">' . $row['estado'] . '</td>';
                                                     echo '<td style="width: 100px">';
                                                     echo '<a class="btn btn-outline-secondary btn-sm edit" title="Edit">
                                                             <i class="fas fa-pencil-alt"></i>
@@ -190,8 +190,9 @@ $empresaUser = $_SESSION['empresaUser'];
                                         var hora_entrada = row.data("hora_entrada");
                                         var hora_salida = row.data("hora_salida");
                                         var sede = row.data("sede");
+                                        var sede = row.data("estado");
                                         // Dentro de tu función para "Guardar"
-                                        var estado = row.data("estado").val(estado);
+                                      
                                         console.log("Estado antes de la solicitud AJAX: " + estado);
 
                                         $.ajax({
