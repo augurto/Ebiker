@@ -171,66 +171,62 @@ $empresaUser = $_SESSION['empresaUser'];
                                 ?>
                                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                                 <script>
-                                $(document).ready(function () {
-                                    // Manejar clic en botones "Editar"
-                                    $(".edit").on("click", function () {
-                                        var row = $(this).closest("tr");
-                                        row.find(".edit").hide();
-                                        row.find(".save").show();
-                                        row.find(".select-field").show();
-                                        row.find(".original-value").hide();
-                                    });
+                                    $(document).ready(function () {
+                                        // Manejar clic en botones "Editar"
+                                        $(".edit").on("click", function () {
+                                            var row = $(this).closest("tr");
+                                            row.find(".edit").hide();
+                                            row.find(".save").show();
+                                            row.find(".select-field").show();
+                                            row.find(".original-value").hide();
+                                        });
 
-                                    // Manejar clic en botones "Guardar"
-                                    $(".save").on("click", function () {
-                                        var row = $(this).closest("tr");
-                                        var id = row.data("id");
-                                        var id_user = row.data("id_user");
-                                        var dias = row.data("dias");
-                                        var hora_entrada = row.data("hora_entrada");
-                                        var hora_salida = row.data("hora_salida");
-                                        var sede = row.data("sede");
-                                        var estado = row.data("estado");
-                                        // Dentro de tu función para "Guardar"
-                                      
-                                        console.log("Estado antes de la solicitud AJAX: " + estado);
+                                        // Manejar clic en botones "Guardar"
+                                        $(".save").on("click", function () {
+                                            var row = $(this).closest("tr");
+                                            var id = row.data("id");
+                                            var id_user = row.data("id_user");
+                                            var dias = row.data("dias");
+                                            var hora_entrada = row.data("hora_entrada");
+                                            var hora_salida = row.data("hora_salida");
+                                            var sede = row.data("sede");
+                                            var estado = row.find(".select-field").val(); // Captura el valor editado
 
-                                        $.ajax({
-                                            type: "POST",
-                                            url: "includes/actualizarHorario.php",
-                                            data: {
-                                                id: id,
-                                                id_user: id_user,
-                                                dias: dias,
-                                                hora_entrada: hora_entrada,
-                                                hora_salida: hora_salida,
-                                                sede: sede,
-                                                estado: estado
-                                            },
-                                            success: function (response) {
-                                                console.log(response);
-                                                console.log("ID: " + id);
-                                                console.log("ID de Usuario: " + id_user);
-                                                console.log("Días: " + dias);
-                                                console.log("Hora de entrada: " + hora_entrada);
-                                                console.log("Hora de salida: " + hora_salida);
-                                                console.log("Sede: " + sede);
-                                                console.log("Estado: " + estado);
+                                            // Aquí puedes realizar alguna acción adicional si lo necesitas antes de enviar los datos
 
-                                                if (response === "success") {
-                                                    row.find(".edit").show();
-                                                    row.find(".save").hide();
-                                                    row.find(".select-field").hide();
-                                                    row.find(".original-value").show();
-                                                    row.find(".original-value").text(estado);
-                                                } else {
-                                                    alert("Error al actualizar.");
+                                            // Realizar la solicitud AJAX para actualizar los datos
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "includes/actualizarHorario.php",
+                                                data: {
+                                                    id: id,
+                                                    id_user: id_user,
+                                                    dias: dias,
+                                                    hora_entrada: hora_entrada,
+                                                    hora_salida: hora_salida,
+                                                    sede: sede,
+                                                    estado: estado
+                                                },
+                                                success: function (response) {
+                                                    console.log(response);
+
+                                                    // Realizar acciones adicionales después de la actualización si es necesario
+
+                                                    if (response === "success") {
+                                                        row.find(".edit").show();
+                                                        row.find(".save").hide();
+                                                        row.find(".select-field").hide();
+                                                        row.find(".original-value").show();
+                                                        row.find(".original-value").text(estado);
+                                                    } else {
+                                                        alert("Error al actualizar.");
+                                                    }
                                                 }
-                                            }
+                                            });
                                         });
                                     });
-                                });
-                            </script>
+                                </script>
+
 
 
 
