@@ -150,9 +150,17 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     }
                                                     echo '/>';
                                                     echo '</td>';
-                                                    echo '<td><label for="switch' . $row['id'] . '" data-on-label="On" data-off-label="Off" onclick="confirmChange(' . $row['id'] . ')"></label></td>';
+                                                    echo '<td>';
+                                                    echo '<input type="checkbox" id="actionSwitch' . $row['id'] . '" switch="none"';
+                                                    if ($row['estado'] == 1) {
+                                                        echo ' checked ';
+                                                    }
+                                                    echo '/>';
+                                                    echo '<label for="actionSwitch' . $row['id'] . '" data-on-label="On" data-off-label="Off" onclick="confirmChange(' . $row['id'] . ')"></label>';
+                                                    echo '</td>';
                                                     echo '</tr>';
                                                 }
+                                                
                                                 
 
                                     echo '</tbody>
