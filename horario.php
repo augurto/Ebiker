@@ -106,6 +106,7 @@ $empresaUser = $_SESSION['empresaUser'];
 
                                 <?php
                                 // Tu conexión a la base de datos
+                                
                                 include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
