@@ -28,11 +28,11 @@ if ($result) {
         if ($isWithinWorkingHours) {
             // Si está dentro del horario, establecer el estado en 1
             $updateQuery = "UPDATE horario_vendedor SET estado = 1 WHERE id = $id";
-            $message = "El estado del usuario ID $id_user se ha actualizado a 1 (Dentro del horario: $hora_entrada - $hora_salida).";
+            $message = "$id estado del usuario ID $id_user se ha actualizado a 1 (Dentro del horario: $hora_entrada - $hora_salida).";
         } else {
             // Si está fuera del horario, establecer el estado en 0
             $updateQuery = "UPDATE horario_vendedor SET estado = 0 WHERE id = $id";
-            $message = " $id El estado del usuario ID $id_user se ha actualizado a 0 (Fuera del horario: $hora_entrada - $hora_salida).";
+            $message = " $id estado del usuario ID $id_user se ha actualizado a 0 (Fuera del horario: $hora_entrada - $hora_salida).";
         }
 
         if (mysqli_query($con, $updateQuery)) {
