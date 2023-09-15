@@ -205,6 +205,31 @@ $empresaUser = $_SESSION['empresaUser'];
 
                             </div>
                             <!-- end cardbody -->
+                            <?php 
+                            include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
+
+                            // Obtener el día de la semana actual (1 para domingo, 2 para lunes, etc.)
+                            $dayOfWeek = date('N');
+                            
+                            // Consulta SQL para obtener los IDs de usuarios con estado = 1 para el día actual
+                            $query = "SELECT id_user FROM horario_vendedor WHERE numero_dias = $dayOfWeek AND estado = 1";
+                            
+                            $result = mysqli_query($con, $query);
+                            
+                            if (mysqli_num_rows($result) > 0) {
+                                echo '<h2>IDs de Usuarios con Estado = 1 para el Día Actual:</h2>';
+                                echo '<ul>';
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<li>' . $row['id_user'] . '</li>';
+                                }
+                                echo '</ul>';
+                            } else {
+                                echo "No se encontraron registros para el día actual con estado = 1.";
+                            }
+                            
+                            // Cierra la conexión a la base de datos
+                            mysqli_close($con);
+                            ?>
                         </div>
                         <!-- end card -->
                     </div>
