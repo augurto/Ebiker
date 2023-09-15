@@ -13,14 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
     $stmt = $con->prepare("UPDATE horario_vendedor SET dias = ?, hora_entrada = ?, hora_salida = ?, sede = ?, estado = ? WHERE id = ?");
     $stmt->bind_param("ssssii", $dias, $hora_entrada, $hora_salida, $sede, $estado, $id);
 
-    if ($stmt->execute()) {
-        // Si la actualización fue exitosa
-        echo "success";
-    } else {
-        // Si hubo un error en la actualización
-        echo "error";
+    try {
+        if ($stmt->execute()) {
+            // Si la actualización fue exitosa
+            echo "success";
+        } else {
+            // Si hubo un error en la actualización
+            echo "error";
+        }
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
-
+    
     // Cierra la declaración y la conexión
     $stmt->close();
     $con->close();
