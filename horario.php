@@ -134,24 +134,26 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 </thead>
                                                 <tbody>';
 
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo '<tr>';
-                                        echo '<td>' . $row['id'] . '</td>';
-                                        echo '<td>' . $row['id_user'] . '</td>';
-                                        echo '<td>' . $row['dias'] . '</td>';
-                                        echo '<td>' . $row['hora_entrada'] . '</td>';
-                                        echo '<td>' . $row['hora_salida'] . '</td>';
-                                        echo '<td>' . $row['sede'] . '</td>';
-                                        echo '<td>';
-                                        echo '<input type="checkbox" id="switch' . $row['id'] . '" switch="none"';
-                                        if ($row['estado'] == 1) {
-                                            echo ' checked ';
-                                        }
-                                        echo '/>';
-                                        echo '</td>';
-                                        echo '<td><label for="switch' . $row['id'] . '" data-on-label="On" data-off-label="Off" onclick="confirmChange(' . $row['id'] . ')"></label></td>';
-                                        echo '</tr>';
-                                    }
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo '<tr>';
+                                                    echo '<td>' . $row['id'] . '</td>';
+                                                    echo '<td>' . $row['id_user'] . '</td>';
+                                                    echo '<td>' . $row['dias'] . '</td>';
+                                                    echo '<td>' . $row['hora_entrada'] . '</td>';
+                                                    echo '<td>' . $row['hora_salida'] . '</td>';
+                                                    echo '<td>' . $row['sede'] . '</td>';
+                                                    echo '<td>' . ($row['estado'] == 1 ? 'On' : 'Off') . '</td>';
+                                                    echo '<td>';
+                                                    echo '<input type="checkbox" id="switch' . $row['id'] . '" switch="none"';
+                                                    if ($row['estado'] == 1) {
+                                                        echo ' checked ';
+                                                    }
+                                                    echo '/>';
+                                                    echo '</td>';
+                                                    echo '<td><label for="switch' . $row['id'] . '" data-on-label="On" data-off-label="Off" onclick="confirmChange(' . $row['id'] . ')"></label></td>';
+                                                    echo '</tr>';
+                                                }
+                                                
 
                                     echo '</tbody>
                                         </table>
