@@ -1,8 +1,9 @@
 <?php
 include 'conexion.php'; // Incluye tu archivo de conexión
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST['dias']) && isset($_POST['hora_entrada']) && isset($_POST['hora_salida']) && isset($_POST['sede']) && isset($_POST['estado'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST['id_user']) && isset($_POST['dias']) && isset($_POST['hora_entrada']) && isset($_POST['hora_salida']) && isset($_POST['sede']) && isset($_POST['estado'])) {
     $id = $_POST['id'];
+    $id_user = $_POST['id_user'];
     $dias = $_POST['dias'];
     $hora_entrada = $_POST['hora_entrada'];
     $hora_salida = $_POST['hora_salida'];
@@ -10,8 +11,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
     $estado = $_POST['estado'];
 
     // Evita la inyección SQL usando sentencias preparadas
-    $stmt = $con->prepare("UPDATE horario_vendedor SET dias = ?, hora_entrada = ?, hora_salida = ?, sede = ?, estado = ? WHERE id = ?");
-    $stmt->bind_param("ssssii", $dias, $hora_entrada, $hora_salida, $sede, $estado, $id);
+    $stmt = $con->prepare("UPDATE horario_vendedor SET id_user = ?, dias = ?, hora_entrada = ?, hora_salida = ?, sede = ?, estado = ? WHERE id = ?");
+    $stmt->bind_param("isssiii", $id_user, $dias, $hora_entrada, $hora_salida, $sede, $estado, $id);
 
     try {
         if ($stmt->execute()) {
