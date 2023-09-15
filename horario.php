@@ -109,10 +109,12 @@ $empresaUser = $_SESSION['empresaUser'];
                                 include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
-                                $query = "SELECT *
-                                        FROM horario_vendedor
-                                        WHERE numero_dias = DAYOFWEEK(CURDATE())
-                                        ORDER BY hora_entrada";
+                                $query = "SELECT hv.*, u.userName AS nombre_usuario
+                                FROM horario_vendedor AS hv
+                                INNER JOIN user AS u ON hv.id_user = u.id_user
+                                WHERE hv.numero_dias = DAYOFWEEK(CURDATE())
+                                ORDER BY hv.sede;
+                                ";
 
                                 $result = mysqli_query($con, $query);
 
@@ -137,7 +139,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 while ($row = mysqli_fetch_assoc($result)) {
                                                     echo '<tr>';
                                                     echo '<td>' . $row['id'] . '</td>';
-                                                    echo '<td>' . $row['id_user'] . '</td>';
+                                                    echo '<td>' . $row['nombre_usuario'] . '</td>';
                                                     echo '<td>' . $row['dias'] . '</td>';
                                                     echo '<td>' . $row['hora_entrada'] . '</td>';
                                                     echo '<td>' . $row['hora_salida'] . '</td>';
