@@ -138,7 +138,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 <tbody>';
 
                                                 while ($row = mysqli_fetch_assoc($result)) {
-                                                    echo '<tr data-id="' . $row['id'] . '">';
+                                                    echo '<tr data-id="' . $row['id'] . '" data-id_user="' . $row['id_user'] . '" data-dias="' . $row['dias'] . '" data-hora_entrada="' . $row['hora_entrada'] . '" data-hora_salida="' . $row['hora_salida'] . '" data-sede="' . $row['sede'] . '">';
                                                     echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
                                                     echo '<td data-field="id_user">' . $row['id_user'] . '</td>';
                                                     echo '<td data-field="dias">' . $row['dias'] . '</td>';
@@ -155,6 +155,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     echo '</td>';
                                                     echo '</tr>';
                                                 }
+                                                
                                                 
                                                 
 
