@@ -225,6 +225,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                             }
                                         });
                                     });
+
                                 });
                                 </script>
 
