@@ -190,7 +190,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                         var hora_entrada = row.data("hora_entrada");
                                         var hora_salida = row.data("hora_salida");
                                         var sede = row.data("sede");
-                                        var sede = row.data("estado");
+                                        var estado = row.data("estado");
                                         // Dentro de tu función para "Guardar"
                                       
                                         console.log("Estado antes de la solicitud AJAX: " + estado);
