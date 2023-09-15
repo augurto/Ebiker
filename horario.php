@@ -190,7 +190,9 @@ $empresaUser = $_SESSION['empresaUser'];
                                         var hora_entrada = row.data("hora_entrada");
                                         var hora_salida = row.data("hora_salida");
                                         var sede = row.data("sede");
+                                        // Dentro de tu función para "Guardar"
                                         var estado = row.find(".select-field").val();
+                                        console.log("Estado antes de la solicitud AJAX: " + estado);
 
                                         $.ajax({
                                             type: "POST",
