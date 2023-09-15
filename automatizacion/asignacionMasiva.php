@@ -36,7 +36,7 @@ if ($result) {
         }
 
         if (mysqli_query($con, $updateQuery)) {
-            echo $message . "<br>";
+            echo "<script>console.log('$message');</script>";
         } else {
             echo "Error al actualizar el estado del usuario ID $id_user.<br>";
         }
