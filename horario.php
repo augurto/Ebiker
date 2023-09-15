@@ -111,8 +111,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
                                 $query = "SELECT *
                                 FROM horario_vendedor
-                                WHERE DATE(fecha) = CURDATE()
-                                ORDER BY hora_entrada
+                                WHERE numero_dias = DAYOFWEEK(CURDATE())
+                                ORDER BY hora_entrada                                
                                 ";
 
                                 $result = mysqli_query($con, $query);
