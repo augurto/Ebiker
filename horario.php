@@ -142,7 +142,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     echo '<td>' . $row['hora_entrada'] . '</td>';
                                                     echo '<td>' . $row['hora_salida'] . '</td>';
                                                     echo '<td>' . $row['sede'] . '</td>';
-                                                    echo '<td>' . ($row['estado'] == 1 ? 'On' : 'Off') . '</td>';
+                                                    echo '<td>' . ($row['estado'] == 1 ? 'Trabajando' : 'Fuera de Horario') . '</td>';
                                                     echo '<td>';
                                                     echo '<input type="checkbox" id="switch' . $row['id'] . '" switch="none"';
                                                     if ($row['estado'] == 1) {
