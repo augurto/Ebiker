@@ -184,11 +184,11 @@ $empresaUser = $_SESSION['empresaUser'];
                                     $(".save").on("click", function () {
                                         var row = $(this).closest("tr");
                                         var id = row.data("id");
-                                        var id_user = row.find("[data-field='id_user']").text();
-                                        var dias = row.find("[data-field='dias']").text();
-                                        var hora_entrada = row.find("[data-field='hora_entrada']").text();
-                                        var hora_salida = row.find("[data-field='hora_salida']").text();
-                                        var sede = row.find("[data-field='sede']").text();
+                                        var id_user = row.data("id_user");
+                                        var dias = row.data("dias");
+                                        var hora_entrada = row.data("hora_entrada");
+                                        var hora_salida = row.data("hora_salida");
+                                        var sede = row.data("sede");
                                         var estado = row.find(".select-field").val();
 
                                         $.ajax({
@@ -226,7 +226,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                         });
                                     });
                                 });
-                                </script>
+                            </script>
+
 
 
 
