@@ -137,33 +137,60 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 </thead>
                                                 <tbody>';
 
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo '<tr data-id="' . $row['id'] . '">';
-                                        echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
-                                        echo '<td data-field="id_user">' . $row['id_user'] . '</td>';
-                                        echo '<td data-field="dias">' . $row['dias'] . '</td>';
-                                        echo '<td data-field="hora_entrada">' . $row['hora_entrada'] . '</td>';
-                                        echo '<td data-field="hora_salida">' . $row['hora_salida'] . '</td>';
-                                        echo '<td data-field="sede">' . $row['sede'] . '</td>';
-                                        echo '<td data-field="estado">' . $row['estado'] . '</td>';
-                                        echo '<td style="width: 100px">
-                                                <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                            </td>';
-                                        echo '</tr>';
-                                    }
-
-                                    echo '</tbody>
-                                        </table>
-                                    </div>';
-                                } else {
-                                    echo "No se encontraron registros.";
-                                }
-
-                                // Cierra la conexión a la base de datos
-                                mysqli_close($con);
-                                ?>
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                    echo '<tr data-id="' . $row['id'] . '">';
+                                                    echo '<td data-field="id" style="width: 80px">' . $row['id'] . '</td>';
+                                                    echo '<td data-field="id_user">' . $row['id_user'] . '</td>';
+                                                    echo '<td data-field="dias">
+                                                            <select>
+                                                                <option value="1" ' . ($row['numero_dias'] == 1 ? 'selected' : '') . '>Lunes</option>
+                                                                <option value="2" ' . ($row['numero_dias'] == 2 ? 'selected' : '') . '>Martes</option>
+                                                                <option value="3" ' . ($row['numero_dias'] == 3 ? 'selected' : '') . '>Miércoles</option>
+                                                                <option value="4" ' . ($row['numero_dias'] == 4 ? 'selected' : '') . '>Jueves</option>
+                                                                <option value="5" ' . ($row['numero_dias'] == 5 ? 'selected' : '') . '>Viernes</option>
+                                                                <option value="6" ' . ($row['numero_dias'] == 6 ? 'selected' : '') . '>Sábado</option>
+                                                                <option value="7" ' . ($row['numero_dias'] == 7 ? 'selected' : '') . '>Domingo</option>
+                                                            </select>
+                                                          </td>';
+                                                    echo '<td data-field="hora_entrada">
+                                                            <select>
+                                                                <option value="09:00:00" ' . ($row['hora_entrada'] == '09:00:00' ? 'selected' : '') . '>09:00 AM</option>
+                                                                <option value="10:00:00" ' . ($row['hora_entrada'] == '10:00:00' ? 'selected' : '') . '>10:00 AM</option>
+                                                                <!-- Agrega más opciones de hora según sea necesario -->
+                                                            </select>
+                                                          </td>';
+                                                    echo '<td data-field="hora_salida">
+                                                            <select>
+                                                                <option value="17:00:00" ' . ($row['hora_salida'] == '17:00:00' ? 'selected' : '') . '>05:00 PM</option>
+                                                                <option value="18:00:00" ' . ($row['hora_salida'] == '18:00:00' ? 'selected' : '') . '>06:00 PM</option>
+                                                                <!-- Agrega más opciones de hora según sea necesario -->
+                                                            </select>
+                                                          </td>';
+                                                    echo '<td data-field="sede">' . $row['sede'] . '</td>';
+                                                    echo '<td data-field="estado">
+                                                            <select>
+                                                                <option value="0" ' . ($row['estado'] == 0 ? 'selected' : '') . '>Deshabilitado</option>
+                                                                <option value="1" ' . ($row['estado'] == 1 ? 'selected' : '') . '>Habilitado</option>
+                                                            </select>
+                                                          </td>';
+                                                    echo '<td style="width: 100px">
+                                                            <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                                <i class="fas fa-pencil-alt"></i>
+                                                            </a>
+                                                        </td>';
+                                                    echo '</tr>';
+                                                }
+                                            
+                                                echo '</tbody>
+                                                    </table>
+                                                </div>';
+                                            } else {
+                                                echo "No se encontraron registros.";
+                                            }
+                                            
+                                            // Cierra la conexión a la base de datos
+                                            mysqli_close($con);
+                                            ?>
                             </div>
                             <!-- end cardbody -->
                         </div>
