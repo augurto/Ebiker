@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
             echo "success";
         } else {
             // Si hubo un error en la actualización
-            echo "error";
+            echo "Error al actualizar los datos.";
         }
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
@@ -30,6 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST
     $con->close();
 } else {
     // Si los datos no son válidos
-    echo "error";
+    echo "Error: Datos no válidos.";
 }
 ?>
