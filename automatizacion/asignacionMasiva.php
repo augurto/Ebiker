@@ -8,10 +8,11 @@ $dayOfWeek = date('N');
 $currentTime = date('H:i:s');
 
 // Consulta SQL para seleccionar los IDs de usuarios que cumplen las condiciones
-$query = "SELECT id_user
-          FROM horario_vendedor
-          WHERE numero_dias = date('N') 
-          AND date('H:i:s') BETWEEN hora_entrada AND hora_salida";
+$query = "UPDATE horario_vendedor
+SET estado = 1
+WHERE WEEKDAY(CURDATE()) + 1 = numero_dias -- Día de la semana actual (1 para lunes, 2 para martes, etc.)
+AND CURTIME() BETWEEN hora_entrada AND hora_salida; -- Hora actual dentro del rango de trabajo
+";
 
 $result = mysqli_query($con, $query);
 
