@@ -112,7 +112,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                 $query = "SELECT *
                                 FROM horario_vendedor
                                 WHERE DATE(fecha) = CURDATE()
-                                ORDER BY hora_entrada;
+                                ORDER BY hora_entrada
                                 ";
 
                                 $result = mysqli_query($con, $query);
