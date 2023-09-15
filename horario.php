@@ -106,16 +106,13 @@ $empresaUser = $_SESSION['empresaUser'];
 
                                 <?php
                                 // Tu conexión a la base de datos
-
                                 include 'includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 
                                 // Consulta SQL para obtener los datos de la tabla horario_vendedor
-
                                 $query = "SELECT *
-                                FROM horario_vendedor
-                                WHERE numero_dias = DAYOFWEEK(CURDATE())
-                                ORDER BY hora_entrada                                
-                                ";
+                                        FROM horario_vendedor
+                                        WHERE numero_dias = DAYOFWEEK(CURDATE())
+                                        ORDER BY hora_entrada";
 
                                 $result = mysqli_query($con, $query);
 
@@ -145,10 +142,14 @@ $empresaUser = $_SESSION['empresaUser'];
                                         echo '<td>' . $row['hora_entrada'] . '</td>';
                                         echo '<td>' . $row['hora_salida'] . '</td>';
                                         echo '<td>' . $row['sede'] . '</td>';
-                                        echo '<td>' . $row['estado'] . '</td>';
-                                        echo '<td><input type="checkbox" id="switch'.$row['id'].'" switch="none" checked />
-                                                <label for="switch'.$row['id'].'" data-on-label="On" data-off-label="Off"></label>
-                                            </td>';
+                                        echo '<td>';
+                                        echo '<input type="checkbox" id="switch' . $row['id'] . '" switch="none"';
+                                        if ($row['estado'] == 1) {
+                                            echo ' checked ';
+                                        }
+                                        echo '/>';
+                                        echo '</td>';
+                                        echo '<td><label for="switch' . $row['id'] . '" data-on-label="On" data-off-label="Off" onclick="confirmChange(' . $row['id'] . ')"></label></td>';
                                         echo '</tr>';
                                     }
 
@@ -162,6 +163,31 @@ $empresaUser = $_SESSION['empresaUser'];
                                 // Cierra la conexión a la base de datos
                                 mysqli_close($con);
                                 ?>
+                                <script>
+                                function confirmChange(id) {
+                                    if (confirm('¿Desea cambiar el estado?')) {
+                                        // El usuario ha confirmado el cambio de estado
+                                        // Realizar una solicitud AJAX para actualizar la base de datos
+                                        $.ajax({
+                                            type: "POST",
+                                            url: "includes/actualizarHorario.php", // Reemplaza con la URL correcta
+                                            data: { id: id },
+                                            success: function(response) {
+                                                if (response === "success") {
+                                                    alert('Estado actualizado correctamente.');
+                                                } else {
+                                                    alert('Error al actualizar el estado.');
+                                                }
+                                            }
+                                        });
+                                    } else {
+                                        // El usuario ha cancelado la acción
+                                        // Restablecer el interruptor a su estado original
+                                        document.getElementById("switch" + id).checked = !document.getElementById("switch" + id).checked;
+                                    }
+                                }
+                                </script>
+
 
                                
 

@@ -1,32 +1,37 @@
 <?php
-include 'conexion.php'; // Incluye tu archivo de conexión
+// Tu conexión a la base de datos
+include 'conexion.php'; // Asegúrate de incluir la conexión adecuada
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST['id_user']) && isset($_POST['dias']) && isset($_POST['hora_entrada']) && isset($_POST['hora_salida']) && isset($_POST['sede']) && isset($_POST['estado'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = $_POST['id'];
-    $id_user = $_POST['id_user'];
-    $dias = $_POST['dias'];
-    $hora_entrada = $_POST['hora_entrada'];
-    $hora_salida = $_POST['hora_salida'];
-    $sede = $_POST['sede'];
-    $estado = $_POST['estado'];
 
-    // Evita la inyección SQL usando sentencias preparadas
-    $stmt = $con->prepare("UPDATE horario_vendedor SET id_user = ?, dias = ?, hora_entrada = ?, hora_salida = ?, sede = ?, estado = ? WHERE id = ?");
-    $stmt->bind_param("isssiii", $id_user, $dias, $hora_entrada, $hora_salida, $sede, $estado, $id);
+    // Verificar el estado actual del registro
+    $query = "SELECT estado FROM horario_vendedor WHERE id = ?";
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($estadoActual);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Cambiar el estado (1 si estaba en 0, 0 si estaba en 1)
+    $nuevoEstado = ($estadoActual == 1) ? 0 : 1;
+
+    // Actualizar el estado en la base de datos
+    $query = "UPDATE horario_vendedor SET estado = ? WHERE id = ?";
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("ii", $nuevoEstado, $id);
 
     try {
         if ($stmt->execute()) {
-            // Si la actualización fue exitosa
             echo "success";
         } else {
-            // Si hubo un error en la actualización
-            echo "Error al actualizar los datos.";
+            echo "Error al actualizar el estado.";
         }
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
     }
-    
-    // Cierra la declaración y la conexión
+
     $stmt->close();
     $con->close();
 } else {
