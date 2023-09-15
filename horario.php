@@ -193,6 +193,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 estado: estado
                                             },
                                             success: function (response) {
+                                                console.log(response);
                                                 if (response === "success") {
                                                     row.find(".edit").show();
                                                     row.find(".save").hide();
