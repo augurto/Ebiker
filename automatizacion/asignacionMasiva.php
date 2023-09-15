@@ -10,7 +10,7 @@ $currentTime = date('H:i:s');
 // Consulta SQL para seleccionar los IDs de usuarios y sus horarios
 $query = "SELECT id, id_user, hora_entrada, hora_salida
 FROM horario_vendedor
-WHERE WEEKDAY(CURDATE()) = numero_dias";
+WHERE WEEKDAY(CURDATE()) + 2 = numero_dias";
 
 $result = mysqli_query($con, $query);
 
