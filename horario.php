@@ -194,6 +194,13 @@ $empresaUser = $_SESSION['empresaUser'];
                                             },
                                             success: function (response) {
                                                 console.log(response);
+                                                console.log("ID: " + id);
+                                                console.log("Días: " + dias);
+                                                console.log("Hora de entrada: " + hora_entrada);
+                                                console.log("Hora de salida: " + hora_salida);
+                                                console.log("Sede: " + sede);
+                                                console.log("Estado: " + estado);
+
                                                 if (response === "success") {
                                                     row.find(".edit").show();
                                                     row.find(".save").hide();
