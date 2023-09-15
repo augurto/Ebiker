@@ -1,5 +1,5 @@
 <?php
-include 'conexion.php'; // Incluye tu archivo de conexión
+include './includes/conexion.php'; // Incluye tu archivo de conexión
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id']) && isset($_POST['dias']) && isset($_POST['hora_entrada']) && isset($_POST['hora_salida']) && isset($_POST['sede']) && isset($_POST['estado'])) {
     $id = $_POST['id'];
