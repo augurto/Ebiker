@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
         if ($stmt->execute()) {
             echo "success";
         } else {
-            echo "Error al actualizar el estado.";
+            echo "Se actualizo el estado.";
         }
     } catch (Exception $e) {
         echo "Error: " . $e->getMessage();
