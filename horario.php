@@ -163,6 +163,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                 // Cierra la conexión a la base de datos
                                 mysqli_close($con);
                                 ?>
+                                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
                                 <script>
                                 function confirmChange(id) {
                                     if (confirm('¿Desea cambiar el estado?')) {
