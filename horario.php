@@ -182,19 +182,29 @@ $empresaUser = $_SESSION['empresaUser'];
                                     $(".save").on("click", function () {
                                         var row = $(this).closest("tr");
                                         var id = row.data("id");
+                                        var id_user = row.find("[data-field='id_user']").text();
+                                        var dias = row.find("[data-field='dias']").text();
+                                        var hora_entrada = row.find("[data-field='hora_entrada']").text();
+                                        var hora_salida = row.find("[data-field='hora_salida']").text();
+                                        var sede = row.find("[data-field='sede']").text();
                                         var estado = row.find(".select-field").val();
-                                        var originalEstado = row.find(".original-value").val();
 
                                         $.ajax({
                                             type: "POST",
                                             url: "includes/actualizarHorario.php",
                                             data: {
                                                 id: id,
+                                                id_user: id_user,
+                                                dias: dias,
+                                                hora_entrada: hora_entrada,
+                                                hora_salida: hora_salida,
+                                                sede: sede,
                                                 estado: estado
                                             },
                                             success: function (response) {
                                                 console.log(response);
                                                 console.log("ID: " + id);
+                                                console.log("ID de Usuario: " + id_user);
                                                 console.log("Días: " + dias);
                                                 console.log("Hora de entrada: " + hora_entrada);
                                                 console.log("Hora de salida: " + hora_salida);
@@ -206,7 +216,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     row.find(".save").hide();
                                                     row.find(".select-field").hide();
                                                     row.find(".original-value").show();
-                                                    row.find(".original-value").val(estado);
+                                                    row.find(".original-value").text(estado);
                                                 } else {
                                                     alert("Error al actualizar.");
                                                 }
@@ -215,6 +225,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                     });
                                 });
                                 </script>
+
 
                             </div>
                             <!-- end cardbody -->
