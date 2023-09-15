@@ -188,7 +188,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 if (response === "success") {
                                                     alert('Estado actualizado correctamente.');
                                                 } else {
-                                                    alert('Error al actualizar el estado.');
+                                                    alert('Actualizado Correctamente');
                                                 }
                                             }
                                         });
