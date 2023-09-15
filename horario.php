@@ -242,8 +242,8 @@ $empresaUser = $_SESSION['empresaUser'];
                             // Consulta SQL para seleccionar los IDs de usuarios que cumplen las condiciones
                             $query = "SELECT id_user
                                     FROM horario_vendedor
-                                    WHERE numero_dias = $dayOfWeek
-                                    AND '$currentTime' BETWEEN hora_entrada AND hora_salida";
+                                    WHERE numero_dias = date('N')
+                                    AND date('H:i:s') BETWEEN hora_entrada AND hora_salida";
 
                             $result = mysqli_query($con, $query);
 
