@@ -1,5 +1,5 @@
 <?php
-include './includes/conexion.php'; // Incluye tu archivo de conexión
+include '../includes/conexion.php'; // Incluye tu archivo de conexión
 
 // Obtener el día de la semana actual (1 para domingo, 2 para lunes, etc.)
 $dayOfWeek = date('N');
