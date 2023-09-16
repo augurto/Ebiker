@@ -39,16 +39,8 @@ $empresaUser = $_SESSION['empresaUser'];
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
-    <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
-
-
-
 
 </head>
 
@@ -170,8 +162,10 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     <?php
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
 
-                                                    $query = "SELECT id_user, userName FROM user where tipo_user =1 ";
-                                                    $result = mysqli_query($con, $query);
+                                                    $idUserActual = $row3['randomUser'];
+                                                    $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual";
+
+                                                    $result = mysqli_query($con, $queryUsuarios);
 
                                                     // Verifica si la consulta fue exitosa
                                                     if ($result) {
@@ -280,9 +274,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                         <label for="selectUsuario" class="form-label">Asignar a Usuario</label>
                                         <select class="form-select" id="selectUsuario" name="selectUsuario">
                                             <?php
-                                            $idUserActual = $row3['randomUser'];
-                                            $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual";
-                                            
+                                            $queryUsuarios = "SELECT id_user, userName FROM user where tipo_user =1";
                                             $resultUsuarios = mysqli_query($con, $queryUsuarios);
 
                                             while ($rowUsuario = mysqli_fetch_assoc($resultUsuarios)) {
@@ -357,15 +349,6 @@ $empresaUser = $_SESSION['empresaUser'];
     <script src="assets/libs/metismenu/metisMenu.min.js"></script>
     <script src="assets/libs/simplebar/simplebar.min.js"></script>
     <script src="assets/libs/node-waves/waves.min.js"></script>
-
-    <script src="assets/libs/select2/js/select2.min.js"></script>
-    <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-    <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
-    <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
-    <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
-    <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
-    <script src="assets/js/pages/form-advanced.init.js"></script>
-    
 
     <!-- Required datatable js -->
     <script src="assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
