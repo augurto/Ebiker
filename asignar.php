@@ -169,6 +169,15 @@ $empresaUser = $_SESSION['empresaUser'];
 
                                         </tbody>
                                     </table>
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('[data-toggle="modal"]').click(function() {
+                                                var target = $(this).data('target');
+                                                $(target).modal('show');
+                                            });
+                                        });
+
+                                    </script>
 
 
                                 </div>
