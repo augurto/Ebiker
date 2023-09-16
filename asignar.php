@@ -157,7 +157,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="myModalLabel">Armando el mundo Perfecto de Ambar
+                                                        <h5 class="modal-title mt-0" id="myModalLabel">Armando el mundo perfecto de Ambar
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
@@ -177,9 +177,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                                         ?>
                                                         <div>
                                                             
-                                                            <label class="form-label">Multiple Select</label>
-                                                            <select class="select2 form-control select2-multiple"
-                                                                multiple="multiple" data-placeholder="Selecciona Usuarios">
+                                                        <select class="select2 form-control select2-multiple"
+                                                    multiple="multiple" data-placeholder="Choose ...">
                                                                 <?php
                                                                 // Itera a través de los resultados de la consulta y genera las opciones
                                                                 while ($row = mysqli_fetch_assoc($result)) {
