@@ -116,30 +116,57 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 <th>Vendedor</th>
                                                 <th>Cantidad no Atendidos</th>
                                                 <th>Sede</th>
+                                                <th>Acción</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
-                                                <tr>
-                                                    <td><?php echo $row3['userName']; ?></td>
-                                                    <td><?php echo $row3['cantidad']; ?></td>
-                                                    <td>
-                                                        <?php 
-                                                        if($row3['sede']==0){
-                                                        echo 'Independencia'; 
-                                                        }elseif($row3['sede']==1){
-                                                            echo 'Mega Plaza';
-                                                        }elseif($row3['sede']==2){
-                                                            echo 'Los Olivos';
-                                                        }elseif($row3['sede']==3){
-                                                            echo 'Surco';
-                                                        }else{
-                                                            echo 'Trujillo';
-                                                        }
-                                                        ?>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>
+                                        <?php while ($row3 = mysqli_fetch_assoc($result3)) { ?>
+                                        <tr>
+                                            <td><?php echo $row3['userName']; ?></td>
+                                            <td><?php echo $row3['cantidad']; ?></td>
+                                            <td>
+                                                <?php 
+                                                if($row3['sede']==0){
+                                                    echo 'Independencia'; 
+                                                } elseif($row3['sede']==1){
+                                                    echo 'Mega Plaza';
+                                                } elseif($row3['sede']==2){
+                                                    echo 'Los Olivos';
+                                                } elseif($row3['sede']==3){
+                                                    echo 'Surco';
+                                                } else {
+                                                    echo 'Trujillo';
+                                                }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row3['randomUser']; ?>">
+                                                    Ver ID User
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal<?php echo $row3['randomUser']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">ID User</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
                                         </tbody>
                                     </table>
 
