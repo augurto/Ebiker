@@ -161,16 +161,18 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
                                                     <?php
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
-                                                    
-                                                    $query = "SELECT id_user, userName FROM user";
+
+                                                    $query = "SELECT id_user, userName FROM user where tipo_user =1 ";
                                                     $result = mysqli_query($con, $query);
 
                                                     // Verifica si la consulta fue exitosa
                                                     if ($result) {
                                                         ?>
                                                         <div>
+                                                            
                                                             <label class="form-label">Multiple Select</label>
-                                                            <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
+                                                            <select class="select2 form-control select2-multiple"
+                                                                multiple="multiple" data-placeholder="Selecciona Usuarios">
                                                                 <?php
                                                                 // Itera a través de los resultados de la consulta y genera las opciones
                                                                 while ($row = mysqli_fetch_assoc($result)) {
