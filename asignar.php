@@ -141,43 +141,41 @@ $empresaUser = $_SESSION['empresaUser'];
                                                 ?>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $row3['randomUser']; ?>">
-                                                    Ver ID User
-                                                </button>
+                                                
+                                                <button type="button" class="btn btn-primary waves-effect waves-light"
+                                                data-bs-toggle="modal" data-bs-target="#myModal<?php echo $row3['randomUser']; ?>">Reasignar</button>
                                             </td>
                                         </tr>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal<?php echo $row3['randomUser']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
+                                        <!-- sample modal content -->
+                                        <div id="myModal<?php echo $row3['randomUser']; ?>" class="modal fade" tabindex="-1" role="dialog"
+                                            aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">ID User</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
+                                                        <h5 class="modal-title mt-0" id="myModalLabel">Modal Heading
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
+                                                    <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                                        <button type="button" class="btn btn-light waves-effect"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="button"
+                                                            class="btn btn-primary waves-effect waves-light">Save
+                                                            changes</button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                </div><!-- /.modal-content -->
+                                            </div><!-- /.modal-dialog -->
+                                        </div><!-- /.modal -->
+                                        
                                     <?php } ?>
 
                                         </tbody>
                                     </table>
-                                    <script>
-                                        $(document).ready(function() {
-                                            $('[data-toggle="modal"]').click(function() {
-                                                var target = $(this).data('target');
-                                                $(target).modal('show');
-                                            });
-                                        });
-
-                                    </script>
+                                    
 
 
                                 </div>
