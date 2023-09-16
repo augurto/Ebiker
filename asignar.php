@@ -30,6 +30,11 @@ $empresaUser = $_SESSION['empresaUser'];
     <link href="assets/libs/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/libs/datatables.net-select-bs4/css//select.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
+    <link href="assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="assets/libs/spectrum-colorpicker2/spectrum.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
+
     <!-- Responsive datatable examples -->
     <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
@@ -163,7 +168,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
 
                                                     $idUserActual = $row3['randomUser'];
-                                                    $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual";
+                                                    $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual AND estadoUsuario =0";
 
                                                     $result = mysqli_query($con, $queryUsuarios);
 
@@ -372,6 +377,13 @@ $empresaUser = $_SESSION['empresaUser'];
 
     <!-- Datatable init js -->
     <script src="assets/js/pages/datatables.init.js"></script>
+    <script src="assets/libs/select2/js/select2.min.js"></script>
+    <script src="assets/libs/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="assets/libs/spectrum-colorpicker2/spectrum.min.js"></script>
+    <script src="assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js"></script>
+    <script src="assets/libs/admin-resources/bootstrap-filestyle/bootstrap-filestyle.min.js"></script>
+    <script src="assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
+    <script src="assets/js/pages/form-advanced.init.js"></script>
 
     <script src="assets/js/app.js"></script>
 
