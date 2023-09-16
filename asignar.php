@@ -166,9 +166,8 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
                                                     <?php
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
-
                                                     $idUserActual = $row3['randomUser'];
-                                                    $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual AND estadoUsuario =0";
+                                                    $queryUsuarios = "SELECT id_user, userName FROM user WHERE tipo_user = 1 AND id_user != $idUserActual AND estadoUsuario = 0";
 
                                                     $result = mysqli_query($con, $queryUsuarios);
 
@@ -176,20 +175,19 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     if ($result) {
                                                         ?>
                                                         <div>
-                                                            
-                                                        <select class="select2 form-control select2-multiple"
-                                                    multiple="multiple" data-placeholder="Choose ...">
-                                                                <?php
-                                                                // Itera a través de los resultados de la consulta y genera las opciones
-                                                                while ($row = mysqli_fetch_assoc($result)) {
-                                                                    $id_user = $row['id_user'];
-                                                                    $userName = $row['userName'];
-                                                                    ?>
-                                                                    <option value="<?php echo $id_user; ?>"><?php echo $userName; ?></option>
-                                                                <?php
-                                                                }
+                                                            <?php
+                                                            // Itera a través de los resultados de la consulta y genera checkboxes
+                                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                                $id_user = $row['id_user'];
+                                                                $userName = $row['userName'];
                                                                 ?>
-                                                            </select>
+                                                                <label>
+                                                                    <input type="checkbox" name="usuarios[]" value="<?php echo $id_user; ?>">
+                                                                    <?php echo $userName; ?>
+                                                                </label><br>
+                                                            <?php
+                                                            }
+                                                            ?>
                                                         </div>
                                                         <?php
                                                     } else {
@@ -197,6 +195,7 @@ $empresaUser = $_SESSION['empresaUser'];
                                                         echo "Error en la consulta SQL: " . mysqli_error($con);
                                                     }
                                                     ?>
+
 
                                                     </div>
                                                     <div class="modal-footer">
