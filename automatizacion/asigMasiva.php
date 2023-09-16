@@ -6,7 +6,7 @@ $contador = 0;
 
 // Realiza la consulta para obtener los registros
 $query = "SELECT id_form_web
-          FROM web_formularios_prueba
+          FROM web_formularios
           WHERE estado_web != 99
             AND estado_web = 0
             AND prospecto != 4
@@ -24,7 +24,7 @@ if ($result) {
         
         // Actualiza la columna randomUser con el valor consecutivo
         $id_form_web = $row['id_form_web'];
-        $updateQuery = "UPDATE web_formularios_prueba
+        $updateQuery = "UPDATE web_formularios
                         SET randomUser = $valorConsecutivo
                         WHERE id_form_web = $id_form_web";
 
