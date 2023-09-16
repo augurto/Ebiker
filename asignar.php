@@ -152,20 +152,51 @@ $empresaUser = $_SESSION['empresaUser'];
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title mt-0" id="myModalLabel">Modal Heading
+                                                        <h5 class="modal-title mt-0" id="myModalLabel">Armando el mundo Perfecto de Ambar
                                                         </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                     <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
+                                                    <?php
+                                                    // Realiza una consulta SQL para obtener la lista de usuarios
+                                                    
+                                                    $query = "SELECT id_user, userName FROM user";
+                                                    $result = mysqli_query($con, $query);
+
+                                                    // Verifica si la consulta fue exitosa
+                                                    if ($result) {
+                                                        ?>
+                                                        <div>
+                                                            <label class="form-label">Multiple Select</label>
+                                                            <select class="select2 form-control select2-multiple" multiple="multiple" data-placeholder="Choose ...">
+                                                                <?php
+                                                                // Itera a través de los resultados de la consulta y genera las opciones
+                                                                while ($row = mysqli_fetch_assoc($result)) {
+                                                                    $id_user = $row['id_user'];
+                                                                    $userName = $row['userName'];
+                                                                    ?>
+                                                                    <option value="<?php echo $id_user; ?>"><?php echo $userName; ?></option>
+                                                                <?php
+                                                                }
+                                                                ?>
+                                                            </select>
+                                                        </div>
+                                                        <?php
+                                                    } else {
+                                                        // Manejar el error si la consulta no fue exitosa
+                                                        echo "Error en la consulta SQL: " . mysqli_error($con);
+                                                    }
+                                                    ?>
+
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-light waves-effect"
-                                                            data-bs-dismiss="modal">Close</button>
+                                                            data-bs-dismiss="modal">Cerrar</button>
                                                         <button type="button"
-                                                            class="btn btn-primary waves-effect waves-light">Save
-                                                            changes</button>
+                                                            class="btn btn-primary waves-effect waves-light">Reasignar
+                                                            </button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
