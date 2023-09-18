@@ -164,6 +164,9 @@ $empresaUser = $_SESSION['empresaUser'];
                                                     </div>
                                                     <div class="modal-body">
                                                     <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
+                                                    <label for="cantidad">Cantidad:</label>
+                                                    <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad" required>
+
                                                     <?php
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
                                                     $idUserActual = $row3['randomUser'];
