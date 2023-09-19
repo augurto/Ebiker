@@ -200,7 +200,7 @@ if ($resultadoContarFormularios) {
                 <li>
                     <?php 
                         if ($tipoUsuario == 2) {
-                            echo '<a href="inicio.php" class="waves-effect">
+                            echo '<a href="./asignar.php.php" class="waves-effect">
                                 <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">'.$contarLeads.'</span>
                                 <span>Reasignacion</span>
                             </a>';
@@ -210,7 +210,7 @@ if ($resultadoContarFormularios) {
                 <li>
                     <?php 
                         if ($tipoUsuario == 2) {
-                            echo '<a href="horario.php" class="waves-effect">
+                            echo '<a href="./horario.php" class="waves-effect">
                                 <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">'.$contarLeads.'</span>
                                 <span>Horario</span>
                             </a>';
