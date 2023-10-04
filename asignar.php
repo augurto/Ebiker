@@ -163,7 +163,10 @@ $empresaUser = $_SESSION['empresaUser'];
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                    <input type="text" class="form-control" value="<?php echo $row3['randomUser']; ?>" readonly>
+                                                    <form id="reasignarForm<?php echo $row3['randomUser']; ?>" method="post" action="reasignar.php">
+                                                    <input type="hidden" name="randomUser" value="<?php echo $row3['randomUser']; ?>">
+                                                    <label for="cantidad">Cantidad:</label>
+                                                    <input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Ingrese la cantidad" required>
                                                     <?php
                                                     // Realiza una consulta SQL para obtener la lista de usuarios
                                                     $idUserActual = $row3['randomUser'];
@@ -195,19 +198,24 @@ $empresaUser = $_SESSION['empresaUser'];
                                                         echo "Error en la consulta SQL: " . mysqli_error($con);
                                                     }
                                                     ?>
-
+                                                    </form>
+            
 
                                                     </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light waves-effect"
-                                                            data-bs-dismiss="modal">Cerrar</button>
-                                                        <button type="button"
-                                                            class="btn btn-primary waves-effect waves-light">Reasignar
-                                                            </button>
+                                                   <div class="modal-footer">
+                                                        <button type="button" class="btn btn-light waves-effect" data-bs-dismiss="modal">Cerrar</button>
+                                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="enviarForm('<?php echo $row3['randomUser']; ?>')">Reasignar</button>
                                                     </div>
                                                 </div><!-- /.modal-content -->
                                             </div><!-- /.modal-dialog -->
                                         </div><!-- /.modal -->
+                                        <script>
+                                        // Función para enviar el formulario con los checkboxes seleccionados
+                                        function enviarForm(randomUser) {
+                                            const form = document.getElementById('reasignarForm' + randomUser);
+                                            form.submit();
+                                        }
+                                        </script>
                                         
                                     <?php } ?>
 
