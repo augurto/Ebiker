@@ -217,6 +217,16 @@ if ($resultadoContarFormularios) {
                         }
                     ?>
                 </li>
+                <li>
+                    <?php 
+                        if ($tipoUsuario == 2) {
+                            echo '<a href="./evaluacionCrediticia.php" class="waves-effect">
+                                <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">1</span>
+                                <span>Ev. Cred.</span>
+                            </a>';
+                        }
+                    ?>
+                </li>
                 
             </ul>
             <!-- end ul -->
