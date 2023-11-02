@@ -94,8 +94,8 @@ if ($tipoUsuario == 1) {
                 $data = json_decode($response, true);
 
                 $nombre = $data['nombres'];
-                $apellido_paterno = $data['apellido_paterno'];
-                $apellido_materno = $data['apellido_materno'];
+                $apellido_paterno = $data['apellidoPaterno'];
+                $apellido_materno = $data['apellidoMaterno'];
 
                 echo "Nombre: $nombre\n";
                 echo "Apellido Paterno: $apellido_paterno\n";
