@@ -49,11 +49,6 @@ if ($tipoUsuario == 1) {
     <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        .btn {
-            line-height: 0.3 !important;
-        }
-    </style>
 
 </head>
 
@@ -75,21 +70,51 @@ if ($tipoUsuario == 1) {
         <div class="main-content">
 
             <div class="page-content">
+                <?php
+                $curl = curl_init();
+
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'https://api.apis.net.pe/v2/reniec/dni?numero=70668404',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'GET',
+                    CURLOPT_HTTPHEADER => array(
+                        'Authorization: Bearer apis-token-6245.wt-VO39h1kYcilm8CMcL-WdJ6p7C-J-s'
+                    ),
+                ));
+
+                $response = curl_exec($curl);
+
+                curl_close($curl);
+
+                $data = json_decode($response, true);
+
+                $nombre = $data['nombres'];
+                $apellido_paterno = $data['apellido_paterno'];
+                $apellido_materno = $data['apellido_materno'];
+
+                echo "Nombre: $nombre\n";
+                echo "Apellido Paterno: $apellido_paterno\n";
+                echo "Apellido Materno: $apellido_materno\n";
+                ?>
+
                 <div class="container-fluid">
                     <div class="col-xl-6">
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Evaluacion Crediticia Pendiente</h4>
                                 <form class="needs-validation" novalidate>
-                                    
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom03" class="form-label">Nombres</label>
-                                                <select class="form-select" id="validationCustom03" required>
-                                                    <option selected disabled value="">Choose...</option>
-                                                    <option>...</option>
-                                                </select>
+                                                <input type="text" class="form-control" id="validationCustom04" placeholder="City" required>
+
                                                 <div class="invalid-feedback">
                                                     Please select a valid state.
                                                 </div>
@@ -100,8 +125,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom04" class="form-label">Apellido Paterno</label>
-                                                <input type="text" class="form-control" id="validationCustom04"
-                                                    placeholder="City" required>
+                                                <input type="text" class="form-control" id="validationCustom04" placeholder="City" required>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid city.
                                                 </div>
@@ -111,8 +135,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom05" class="form-label">Apellido Materno</label>
-                                                <input type="text" class="form-control" id="validationCustom05"
-                                                    placeholder="Zip" required>
+                                                <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid zip.
                                                 </div>
@@ -123,9 +146,15 @@ if ($tipoUsuario == 1) {
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="validationCustom01" class="form-label">First name</label>
-                                                <input type="text" class="form-control" id="validationCustom01"
-                                                    placeholder="First name" value="Mark" required>
+                                                <label for="validationCustom01" class="form-label">Estado Civil</label>
+                                                <select class="form-select" id="validationCustom03" required>
+                                                    <option selected disabled value="">Choose...</option>
+                                                    <option value="1">Soltero</option>
+                                                    <option value="2">Casado</option>
+                                                    <option value="3">Viudo</option>
+                                                    <option value="4">Divorciado</option>
+                                                    <option value="5">Otro</option>
+                                                </select>
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
@@ -134,9 +163,8 @@ if ($tipoUsuario == 1) {
                                         <!-- end col -->
                                         <div class="col-md-6">
                                             <div class="mb-3">
-                                                <label for="validationCustom02" class="form-label">Last name</label>
-                                                <input type="text" class="form-control" id="validationCustom02"
-                                                    placeholder="Last name" value="Otto" required>
+                                                <label for="validationCustom02" class="form-label">Celular</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
@@ -144,21 +172,19 @@ if ($tipoUsuario == 1) {
                                         </div>
                                         <!-- end col -->
                                     </div>
-                                    
+
                                     <!-- end row -->
                                     <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
-                                            required>
+                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                         <label class="form-check-label" for="invalidCheck">
-                                            Agree to terms and conditions
-                                        </label>
+                                            Validad Cliente </label>
                                         <div class="invalid-feedback">
                                             You must agree before submitting.
                                         </div>
                                     </div>
                                     <!-- end formcheck -->
                                     <div>
-                                        <button class="btn btn-primary" type="submit">Submit form</button>
+                                        <button class="btn btn-primary" type="submit">Actualizar</button>
                                     </div>
                                 </form>
                                 <!-- end form -->
@@ -183,6 +209,9 @@ if ($tipoUsuario == 1) {
     <!-- END layout-wrapper -->
 
     <?php include './parts/sidebar.php'; ?>
+
+    <script src="assets/libs/parsleyjs/parsley.min.js"></script>
+    <script src="assets/js/pages/form-validation.init.js"></script>
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
