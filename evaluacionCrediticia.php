@@ -74,7 +74,7 @@ if ($tipoUsuario == 1) {
                 $curl = curl_init();
 
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'https://api.apis.net.pe/v2/reniec/dni?numero=70668404',
+                    CURLOPT_URL => 'https://api.apis.net.pe/v2/reniec/dni?numero=10156695',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
