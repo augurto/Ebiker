@@ -155,7 +155,7 @@ $empresaUser =$_SESSION['empresaUser'] ;
                                                             time, estado_web, estado_web, fuente_dato, id_user, idEmpresa, documentoCliente, tipoCliente, prospecto,
                                                             observacionCliente, idid, estadoCliente
                                                         FROM web_formularios
-                                                        WHERE estado_web != 99 AND prospecto != 4 AND idEmpresa = $empresaUser AND randomUser = $idUsuarioSesion ";
+                                                        WHERE estado_web != 99  AND idEmpresa = $empresaUser AND randomUser = $idUsuarioSesion ";
 
                                                 if ($tipoUsuario == 2) {
                                                     $sql .= " ORDER BY fecha DESC";
