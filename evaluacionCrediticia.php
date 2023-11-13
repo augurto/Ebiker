@@ -216,7 +216,7 @@ if ($tipoUsuario == 1) {
                                     </div>
                                     <!-- end row -->
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom01" class="form-label">Tipo de ingresos</label>
                                                 <select class="form-select" id="validationCustom03" required>
@@ -231,17 +231,7 @@ if ($tipoUsuario == 1) {
                                             </div>
                                         </div>
                                         <!-- end col -->
-                                        <div class="col-md-6">
-                                            <div class="mb-3">
-                                                <label for="validationCustom02" class="form-label">Precio</label>
-                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
-                                                <div class="valid-feedback">
-                                                    Looks good!
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end col -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom02" class="form-label">Ingreso Promedio</label>
                                                 <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
@@ -251,7 +241,7 @@ if ($tipoUsuario == 1) {
                                             </div>
                                         </div>
                                         <!-- end col -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom02" class="form-label">Inicial</label>
                                                 <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
