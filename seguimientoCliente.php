@@ -232,15 +232,14 @@ $dni = $_SESSION['dni'];
                                     <div class="row">
                                         <div class="col-lg-12">
 
-                                            <div class="row mb-6">
+                                            <?php if (empty($documento)) : ?>
+                                                <div class="row mb-6">
                                                 <label for="example-text-input" class="col-sm-2 col-form-label">Datos</label>
                                                 <div class="col-sm-10">
                                                     <input class="form-control" type="text" placeholder="Nombres y Apellidos" id="example-text-input" name="datos" value="<?php echo $datosForm; ?>">
                                                 </div>
                                             </div>
                                             <br>
-
-                                            <?php if (empty($documento)) : ?>
                                                 <div class="row mb-6">
                                                     <label for="example-number-input" class="col-sm-2 col-form-label">Documento</label>
                                                     <div class="col-sm-10">
@@ -248,10 +247,16 @@ $dni = $_SESSION['dni'];
                                                     </div>
                                                 </div>
                                             <?php else : ?>
+                                               <div class="row mb-6">
+                                                <label for="example-text-input" class="col-sm-2 col-form-label">Datos</label>
+                                                <div class="col-sm-10">
+                                                <input class="form-control" type="text" placeholder="Nombres y Apellidos" id="example-text-input" name="datos" value="<?php echo $nombres_apellidos; ?>">
+                                                </div>
+                                            </div>
+                                            <br>
                                                 <div class="row mb-6">
                                                     <label for="example-number-input" class="col-sm-2 col-form-label">Documento</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" type="text" placeholder="Nombres y Apellidos" id="example-text-input" name="datos2" value="<?php echo $nombres_apellidos; ?>">
 
                                                         <input class="form-control" type="number" id="example-number-input" name="documento" maxlength="9" value="<?php echo $documento ?>" readonly>
                                                     </div>
