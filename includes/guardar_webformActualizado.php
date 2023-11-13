@@ -59,6 +59,10 @@ if (mysqli_query($con, $query)) {
         // Redireccionar a seguimientoCliente.php con variables en la URL
         header("Location: ../seguimientoClienteVendido.php?id=$id&pr=$pr");
         exit;
+    }elseif ($tipoCliente == 10 && $empresa == 1) {
+        // Redireccionar a seguimientoCliente.php con variables en la URL
+        header("Location: ../evaluacionCrediticia.php?id=$id");
+        exit;
     } else {
         // Redireccionar a vendedor.php con el parámetro p=0
         header("Location: ../vendedor.php?p=0");

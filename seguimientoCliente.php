@@ -527,7 +527,7 @@ $dni = $_SESSION['dni'];
 
                                         // Consulta a la base de datos
 
-                                        $sql = "SELECT * FROM web_formularios WHERE idOriginal = '$idUrl' or  id_form_web = '$idUrl' order by fecha desc ";  // Modifica la consulta según tus necesidades
+                                        $sql = "SELECT * FROM web_formularios WHERE idOriginal = '$idOriginal' or  id_form_web = '$idUrl' order by fecha desc ";  // Modifica la consulta según tus necesidades
                                         $result = mysqli_query($con, $sql);
 
                                         // Generar elementos para cada fila de la consulta
