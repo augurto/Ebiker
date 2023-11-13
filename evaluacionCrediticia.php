@@ -113,7 +113,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom03" class="form-label">Nombres</label>
-                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Nombres" required>
+                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Nombres" readonly>
 
                                                 <div class="invalid-feedback">
                                                     Please select a valid state.
@@ -125,7 +125,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom04" class="form-label">Apellido Paterno</label>
-                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Apellido Paterno" required>
+                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Apellido Paterno" readonly>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid city.
                                                 </div>
@@ -135,7 +135,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom05" class="form-label">Apellido Materno</label>
-                                                <input type="text" class="form-control" id="validationCustom05" placeholder="Apellido Materno" required>
+                                                <input type="text" class="form-control" id="validationCustom05" placeholder="Apellido Materno" readonly>
                                                 <div class="invalid-feedback">
                                                     Please provide a valid zip.
                                                 </div>
@@ -144,7 +144,7 @@ if ($tipoUsuario == 1) {
                                         <!-- end col -->
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom01" class="form-label">Estado Civil</label>
                                                 <select class="form-select" id="validationCustom03" required>
@@ -161,10 +161,20 @@ if ($tipoUsuario == 1) {
                                             </div>
                                         </div>
                                         <!-- end col -->
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Edad</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom02" class="form-label">Celular</label>
-                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
@@ -174,15 +184,88 @@ if ($tipoUsuario == 1) {
                                     </div>
 
                                     <!-- end row -->
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                        <label class="form-check-label" for="invalidCheck">
-                                            Validad Cliente </label>
-                                        <div class="invalid-feedback">
-                                            You must agree before submitting.
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom01" class="form-label">Modelo</label>
+                                                <select class="form-select" id="validationCustom03" required>
+                                                    <option selected disabled value="">Seleccionar</option>
+                                                    <option value="1">Modelo1</option>
+                                                    <option value="2">Modelo2</option>
+                                                    <option value="3">Modelo3</option>
+                                                    <option value="4">Modelo4</option>
+                                                    <option value="5">Otro</option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
                                         </div>
+                                        <!-- end col -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Precio</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        
                                     </div>
-                                    <!-- end formcheck -->
+                                    <!-- end row -->
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom01" class="form-label">Tipo de ingresos</label>
+                                                <select class="form-select" id="validationCustom03" required>
+                                                    <option selected disabled value="">Seleccionar</option>
+                                                    <option value="Dependiente">Dependiente</option>
+                                                    <option value="Independiente">Independiente</option>
+                                                    <option value="Otro">Otro</option>
+                                                </select>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Precio</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Ingreso Promedio</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="validationCustom02" class="form-label">Inicial</label>
+                                                <input type="number" class="form-control" id="validationCustom02" placeholder="Celular" value="Otto" required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end col -->
+                                        
+                                    </div>
+
+                                    <!-- end row -->
+                                    
                                     <div>
                                         <button class="btn btn-primary" type="submit">Actualizar</button>
                                     </div>
