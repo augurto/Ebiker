@@ -41,7 +41,8 @@ if ($tipoUsuario == 1) {
 
     <!-- Responsive datatable examples -->
     <link href="assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
+    <!-- Plugins css -->
+    <link href="assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap Css -->
     <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
@@ -212,7 +213,7 @@ if ($tipoUsuario == 1) {
                                             </div>
                                         </div>
                                         <!-- end col -->
-                                        
+
                                     </div>
                                     <!-- end row -->
                                     <div class="row">
@@ -251,25 +252,25 @@ if ($tipoUsuario == 1) {
                                             </div>
                                         </div>
                                         <!-- end col -->
-                                        
+
                                     </div>
 
                                     <!-- end row -->
-                                    
+
                                     <div>
-                                    <form action="#" class="dropzone">
-                                        <div class="fallback">
-                                            <input name="file" type="file" multiple="multiple">
-                                        </div>
-                                        <div class="dz-message needsclick">
-                                            <div class="mb-3">
-                                                <i class="display-4 text-muted ri-upload-cloud-2-line"></i>
+                                        <form action="#" class="dropzone">
+                                            <div class="fallback">
+                                                <input name="file" type="file" multiple="multiple">
                                             </div>
-                                            <h4>Drop files here or click to upload.</h4>
-                                        </div>
-                                    </form>
-                                    <!-- end form -->
-                                </div>
+                                            <div class="dz-message needsclick">
+                                                <div class="mb-3">
+                                                    <i class="display-4 text-muted ri-upload-cloud-2-line"></i>
+                                                </div>
+                                                <h4>Drop files here or click to upload.</h4>
+                                            </div>
+                                        </form>
+                                        <!-- end form -->
+                                    </div>
                                     <div>
                                         <button class="btn btn-primary" type="submit">Actualizar</button>
                                     </div>
@@ -299,6 +300,10 @@ if ($tipoUsuario == 1) {
 
     <script src="assets/libs/parsleyjs/parsley.min.js"></script>
     <script src="assets/js/pages/form-validation.init.js"></script>
+
+    <!-- Plugins js -->
+    <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+
 
     <!-- JAVASCRIPT -->
     <script src="assets/libs/jquery/jquery.min.js"></script>
