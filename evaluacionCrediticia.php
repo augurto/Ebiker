@@ -164,7 +164,7 @@ if ($tipoUsuario == 1) {
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label for="validationCustom02" class="form-label">Edad</label>
-                                                <input type="number" class="form-control" id="validationCustom02" name="edad" placeholder="Celular" value="Otto" required>
+                                                <input type="number" class="form-control" id="validationCustom02" name="edad" placeholder="Edad" value="Otto" required>
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
