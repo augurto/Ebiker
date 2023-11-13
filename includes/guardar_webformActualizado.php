@@ -65,7 +65,7 @@ if (mysqli_query($con, $query)) {
         exit;
     } else {
         // Redireccionar a vendedor.php con el parámetro p=0
-        header("Location: ../vendedor.php?p=0");
+        header("Location: ../vendedor.php?p=$tipoCliente-$empresa");
         exit;
     }
 
