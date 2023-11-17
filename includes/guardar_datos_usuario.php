@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     
     // Realizar la consulta a la base de datos
-    $query = "SELECT * FROM user WHERE documento = '$dni' OR userName = '$dni' AND pass_user = '$password' AND estadoUsuario=2 ";
+    $query = "SELECT * FROM user WHERE documento = '$dni' OR userName = '$dni' AND pass_user = '$password'";
     $result = mysqli_query($con, $query);
     
     // Verificar si se encontraron resultados
@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dni = $row['documento'];
         $idUser = $row['id_user'];
         $empresaUsuario = $row['empresaUser'];
+        $estadoUsuario = $row['estadoUsuario'];
 
         // Iniciar sesión y guardar los datos en variables de sesión
         session_start();
@@ -32,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['empresaUser'] = $empresaUsuario;
         
         // Redireccionar según el tipo de usuario
-        if ($tipoUsuario == 1) {
+        if ($tipoUsuario == 1 || $estadoUsuario==2) {
             header("Location: ../vendedor.php");
             exit();
-        } elseif ($tipoUsuario == 2) {
+        } elseif ($tipoUsuario == 2 || $estadoUsuario==2) {
             header("Location: ../administrador.php");
             exit();
         }
