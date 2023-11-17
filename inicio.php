@@ -135,9 +135,9 @@ if ($tipoUsuario == 1) {
                                                 <?php
                                                 // Establecer la conexión con la base de datos
                                                 $servername = "localhost";
-                                                $username = "u291982824_ebiker2";
+                                                $username = "u291982824_ebiker";
                                                 $password = "21.17.Ebiker";
-                                                $dbname = "u291982824_ebiker2";
+                                                $dbname = "u291982824_ebiker";
 
                                                 $conn = new mysqli($servername, $username, $password, $dbname);
 
