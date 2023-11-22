@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['empresaUser'] = $empresaUsuario;
         
         // Redireccionar según el tipo de usuario
-        if ($tipoUsuario == 1 && $estadoUsuario==2) {
+        if ($tipoUsuario == 1) {
             header("Location: ../vendedor.php");
             exit();
-        } elseif ($tipoUsuario == 2 && $estadoUsuario==2) {
+        } elseif ($tipoUsuario == 2) {
             header("Location: ../administrador.php");
             exit();
         }
