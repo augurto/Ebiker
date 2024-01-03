@@ -1,7 +1,7 @@
 <?php
 include '../includes/conexion.php'; // Asegúrate de incluir la conexión adecuada
 // Los valores a asignar consecutivamente
-$valoresConsecutivos = [4, 6, 107, 108];
+$valoresConsecutivos = [4, 107, 108];
 $contador = 0;
 
 // Realiza la consulta para obtener los registros
